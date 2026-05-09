@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MonTrack_PengingatTagihanTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7ec993c22b647186c3469f19872482901de38f22")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7ce6dd4113d1446b7d1f61e606dc94916fbef27b")]
 [assembly: System.Reflection.AssemblyProductAttribute("MonTrack_PengingatTagihanTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MonTrack_PengingatTagihanTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

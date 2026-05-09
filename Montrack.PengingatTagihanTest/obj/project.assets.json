@@ -1074,6 +1074,16 @@
             "related": ".xml"
           }
         }
+      },
+      "MonTrack_PengingatTagihan/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/MonTrack_PengingatTagihan.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MonTrack_PengingatTagihan.dll": {}
+        }
       }
     }
   },
@@ -2267,11 +2277,17 @@
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
+    },
+    "MonTrack_PengingatTagihan/1.0.0": {
+      "type": "project",
+      "path": "../MonTrack.PengingatTagihan/MonTrack_PengingatTagihan.csproj",
+      "msbuildProject": "../MonTrack.PengingatTagihan/MonTrack_PengingatTagihan.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "MSTest >= 4.0.1"
+      "MSTest >= 4.0.1",
+      "MonTrack_PengingatTagihan >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2305,7 +2321,11 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\uuser1\\Documents\\C#\\MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan\\MonTrack_PengingatTagihan.csproj": {
+              "projectPath": "C:\\Users\\uuser1\\Documents\\C#\\MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan\\MonTrack_PengingatTagihan.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
