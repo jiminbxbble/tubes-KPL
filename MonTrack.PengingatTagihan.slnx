@@ -1,3 +1,4 @@
 <Solution>
-  <Project Path="MonTrack.PengingatTagihan/MonTrack.PengingatTagihan.csproj" />
+  <Project Path="MonTrack.PengingatTagihan/MonTrack_PengingatTagihan.csproj" />
+  <Project Path="Montrack.PengingatTagihanTest/MonTrack_PengingatTagihanTest.csproj" Id="636d2d24-cd9c-49cb-8ebf-4c12c730d0f5" />
 </Solution>

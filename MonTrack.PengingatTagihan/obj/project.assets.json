@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\uuser1\\Documents\\C#\\MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan.csproj",
-      "projectName": "MonTrack.PengingatTagihan",
-      "projectPath": "C:\\Users\\uuser1\\Documents\\C#\\MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan.csproj",
+      "projectUniqueName": "C:\\Users\\uuser1\\Documents\\C#\\MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan\\MonTrack_PengingatTagihan.csproj",
+      "projectName": "MonTrack_PengingatTagihan",
+      "projectPath": "C:\\Users\\uuser1\\Documents\\C#\\MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan\\MonTrack_PengingatTagihan.csproj",
       "packagesPath": "C:\\Users\\uuser1\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\uuser1\\Documents\\C#\\MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan\\obj\\",
       "projectStyle": "PackageReference",

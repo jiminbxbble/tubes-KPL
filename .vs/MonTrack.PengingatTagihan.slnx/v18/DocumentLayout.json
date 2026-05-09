@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\uuser1\\Documents\\C#\\MonTrack.PengingatTagihan\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0B76F4EA-A485-426E-9493-66218F9C6D1D}|MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan.csproj|c:\\users\\uuser1\\documents\\c#\\montrack.pengingattagihan\\montrack.pengingattagihan\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B76F4EA-A485-426E-9493-66218F9C6D1D}|MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan.csproj|solutionrelative:montrack.pengingattagihan\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2B6D4549-70A8-EB01-CDE2-20867A4A54E8}|MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan.csproj|c:\\users\\uuser1\\documents\\c#\\montrack.pengingattagihan\\montrack.pengingattagihan\\pengingattagihan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B6D4549-70A8-EB01-CDE2-20867A4A54E8}|MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan.csproj|solutionrelative:montrack.pengingattagihan\\pengingattagihan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{636D2D24-CD9C-49CB-8EBF-4C12C730D0F5}|Montrack.PengingatTagihanTest\\Montrack.PengingatTagihanTest.csproj|c:\\users\\uuser1\\documents\\c#\\montrack.pengingattagihan\\montrack.pengingattagihantest\\test1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{636D2D24-CD9C-49CB-8EBF-4C12C730D0F5}|Montrack.PengingatTagihanTest\\Montrack.PengingatTagihanTest.csproj|solutionrelative:montrack.pengingattagihantest\\test1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B6D4549-70A8-EB01-CDE2-20867A4A54E8}|MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan.csproj|c:\\users\\uuser1\\documents\\c#\\montrack.pengingattagihan\\montrack.pengingattagihan\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B6D4549-70A8-EB01-CDE2-20867A4A54E8}|MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan.csproj|solutionrelative:montrack.pengingattagihan\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,6 +27,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PengingatTagihan.cs",
+              "DocumentMoniker": "C:\\Users\\uuser1\\Documents\\C#\\MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan\\PengingatTagihan.cs",
+              "RelativeDocumentMoniker": "MonTrack.PengingatTagihan\\PengingatTagihan.cs",
+              "ToolTip": "C:\\Users\\uuser1\\Documents\\C#\\MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan\\PengingatTagihan.cs",
+              "RelativeToolTip": "MonTrack.PengingatTagihan\\PengingatTagihan.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-09T15:51:16.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Test1.cs",
+              "DocumentMoniker": "C:\\Users\\uuser1\\Documents\\C#\\MonTrack.PengingatTagihan\\Montrack.PengingatTagihanTest\\Test1.cs",
+              "RelativeDocumentMoniker": "Montrack.PengingatTagihanTest\\Test1.cs",
+              "ToolTip": "C:\\Users\\uuser1\\Documents\\C#\\MonTrack.PengingatTagihan\\Montrack.PengingatTagihanTest\\Test1.cs",
+              "RelativeToolTip": "Montrack.PengingatTagihanTest\\Test1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-09T15:47:31.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\uuser1\\Documents\\C#\\MonTrack.PengingatTagihan\\MonTrack.PengingatTagihan\\Program.cs",
               "RelativeDocumentMoniker": "MonTrack.PengingatTagihan\\Program.cs",
