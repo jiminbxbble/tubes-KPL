@@ -14,7 +14,7 @@ namespace PencatatanKeuangan
             bool isRunning = true;
 
             Console.WriteLine("=====================================");
-            Console.WriteLine("    Selamat Datang di MonTrack!      ");
+            Console.WriteLine("    Selamat Datang di MonTrack       ");
             Console.WriteLine("=====================================");
 
             while (isRunning)
@@ -33,7 +33,7 @@ namespace PencatatanKeuangan
                     if (!double.TryParse(Console.ReadLine(), out double amount))
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Input nominal tidak valid, masukkan angka");
+                        Console.WriteLine("Input nominal tidak valid, masukkan angka yang valid!");
                         Console.ResetColor();
                         continue;
                     }

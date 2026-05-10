@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "Services\\TransactionManager.cs",
               "ToolTip": "C:\\Users\\User\\Downloads\\tubes-KPL\\PencatatanKeuangan\\Services\\TransactionManager.cs",
               "RelativeToolTip": "Services\\TransactionManager.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAgwEsAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-10T03:29:46.36Z",
               "EditorCaption": ""
@@ -55,8 +55,7 @@
               "RelativeToolTip": "Repositories\\DataRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T03:28:55.527Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T03:28:55.527Z"
             },
             {
               "$type": "Document",
@@ -80,8 +79,7 @@
               "RelativeToolTip": "Models\\Transaction.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T03:27:17.951Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T03:27:17.951Z"
             },
             {
               "$type": "Document",
@@ -93,8 +91,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAADQAAAAAAAAAAAAQwEkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T03:24:51.827Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T03:24:51.827Z"
             }
           ]
         }
