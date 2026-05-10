@@ -48,5 +48,11 @@ namespace DaftarRiwayat_Transaksi
         {
             Console.WriteLine($"[{Date.ToShortDateString()}] {Category}: Rp{Amount}");
         }
+
+        // Override ToString dari RiwayatManager memanggil sesuai formatnya
+        public override string ToString()
+        {
+            return $"[{Date.ToShortDateString()}] {Category.PadRight(15)} | Rp{Amount,10:N0} | Ket: {Description}";
+        }
     }
 }
