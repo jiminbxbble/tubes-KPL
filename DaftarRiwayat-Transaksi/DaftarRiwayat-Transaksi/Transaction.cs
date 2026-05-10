@@ -14,15 +14,15 @@ namespace DaftarRiwayat_Transaksi
 
         public Transaction(int id, double amount, string category, DateTime date, string description = "-")
         {
-            // PRE-CONDITIONS
-            if (id <= 0) throw new ArgumentException("ID harus lebih besar dari 0.");
+            // PRE-CONDITIONS
+            if (id <= 0) throw new ArgumentException("ID harus lebih besar dari 0.");
 
             if (amount <= 0) throw new ArgumentOutOfRangeException(nameof(amount), "Nominal transaksi harus positif.");
 
             if (string.IsNullOrWhiteSpace(category)) throw new ArgumentNullException(nameof(category), "Kategori tidak boleh kosong.");
 
             if (date > DateTime.Now) throw new ArgumentException("Tanggal tidak boleh di masa depan.");
-            
+
             if (description.Length > 100)
                 throw new ArgumentException("Deskripsi terlalu panjang, maksimal 100 karakter.");
 
@@ -32,8 +32,8 @@ namespace DaftarRiwayat_Transaksi
             this.Date = date;
             this.Description = string.IsNullOrWhiteSpace(description) ? "-" : description;
 
-            // INVARIANTS
-            ObjectInvariant();
+            // INVARIANTS
+            ObjectInvariant();
         }
 
         private void ObjectInvariant()
