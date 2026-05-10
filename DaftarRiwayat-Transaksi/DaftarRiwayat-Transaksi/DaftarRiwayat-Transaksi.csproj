@@ -6,6 +6,7 @@
     <RootNamespace>DaftarRiwayat_Transaksi</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <StartupObject>DaftarRiwayat_Transaksi.TestRunner</StartupObject>
   </PropertyGroup>
 
   <ItemGroup> 
