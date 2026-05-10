@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DaftarRiwayat_Transaksi.Models;
 using DaftarRiwayat_Transaksi.Configs;
+using System.Linq;
 
 namespace DaftarRiwayat_Transaksi.Services
 {
@@ -12,6 +13,12 @@ namespace DaftarRiwayat_Transaksi.Services
         public RiwayatManager()
         {
             riwayatItems = new List<T>();
+        }
+
+        // Fitur: Filter Data
+        public List<T> FilterItems(Func<T, bool> kriteria)
+        {
+            return riwayatItems.Where(kriteria).ToList();
         }
 
         public void AddItem(T item)
@@ -50,6 +57,23 @@ namespace DaftarRiwayat_Transaksi.Services
             }
 
             Console.WriteLine("--------------------------------\n");
+        }
+
+        // Fitur: Menampilkan list hasil filter secara khusus
+        public void DisplayCustomList(List<T> list, AppConfig config, string judul)
+        {
+            Console.WriteLine($"\n--- {judul.ToUpper()} ---");
+            if (list.Count == 0)
+            {
+                Console.WriteLine("Data tidak ditemukan.");
+                return;
+            }
+
+            foreach (var item in list.Take(config.MaxDisplayItems))
+            {
+                string output = item?.ToString() ?? "";
+                Console.WriteLine(output.Replace("Rp", config.DefaultCurrency ?? "IDR"));
+            }
         }
     }
 }
