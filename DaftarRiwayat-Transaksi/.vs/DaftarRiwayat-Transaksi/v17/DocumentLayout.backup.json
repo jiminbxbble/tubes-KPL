@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{800482FC-910F-424B-B550-08C876E70B70}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\kontruksi perangkat lunak\\tubes-kpl\\daftarriwayat-transaksi\\daftarriwayat-transaksi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{800482FC-910F-424B-B550-08C876E70B70}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|solutionrelative:daftarriwayat-transaksi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Program.cs",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi\\Program.cs",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Program.cs",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T06:33:32.537Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
