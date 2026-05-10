@@ -18,7 +18,7 @@ namespace PencatatanKeuangan.Services
             { "Gaji", TransactionType.Pemasukan },
             { "Makan", TransactionType.Pengeluaran },
             { "Transport", TransactionType.Pengeluaran },
-            { "Ngedate", TransactionType.Pengeluaran }
+            { "Dating", TransactionType.Pengeluaran }
         };
 
         public TransactionManager(DataRepository<Transaction> repository)
@@ -32,7 +32,7 @@ namespace PencatatanKeuangan.Services
             // Pre-conditions (Syarat sebelum fungsi jalan)
             if (amount <= 0)
             {
-                throw new ArgumentException("Nominal transaksi harus lebih besar dari 0 yaa!");
+                throw new ArgumentException("Nominal transaksi harus lebih besar dari 0!");
             }
             if (string.IsNullOrWhiteSpace(category))
             {
