@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DaftarRiwayat_Transaksi.Models;
+using DaftarRiwayat_Transaksi.Configs;
 
 namespace DaftarRiwayat_Transaksi.Services
 {
@@ -30,9 +31,17 @@ namespace DaftarRiwayat_Transaksi.Services
         }
 
         // Fitur: Menampilkan semua data ke Console
-        public void DisplayAll()
+        public void DisplayAll(AppConfig config)
         {
             Console.WriteLine("\n--- DAFTAR RIWAYAT TRANSAKSI ---");
+
+            int count = 0;
+            foreach (var item in riwayatItems)
+            {
+                if (count >= config.MaxDisplayItems) break;
+                Console.WriteLine(item.ToString());
+                count++;
+            }
 
             if (riwayatItems.Count == 0)
             {
@@ -40,10 +49,6 @@ namespace DaftarRiwayat_Transaksi.Services
                 return;
             }
 
-            foreach (var item in riwayatItems)
-            {
-                Console.WriteLine(item.ToString());
-            }
             Console.WriteLine("--------------------------------\n");
         }
     }

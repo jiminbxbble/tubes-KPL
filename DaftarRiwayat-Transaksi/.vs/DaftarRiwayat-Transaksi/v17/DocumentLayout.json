@@ -3,20 +3,32 @@
   "WorkspaceRootPath": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\kontruksi perangkat lunak\\tubes-kpl\\daftarriwayat-transaksi\\daftarriwayat-transaksi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|solutionrelative:daftarriwayat-transaksi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\kontruksi perangkat lunak\\tubes-kpl\\daftarriwayat-transaksi\\daftarriwayat-transaksi\\services\\riwayatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|solutionrelative:daftarriwayat-transaksi\\services\\riwayatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\kontruksi perangkat lunak\\tubes-kpl\\daftarriwayat-transaksi\\daftarriwayat-transaksi\\daftarriwayat-transaksi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|solutionrelative:daftarriwayat-transaksi\\daftarriwayat-transaksi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\kontruksi perangkat lunak\\tubes-kpl\\daftarriwayat-transaksi\\daftarriwayat-transaksi\\services\\configservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|solutionrelative:daftarriwayat-transaksi\\services\\configservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\kontruksi perangkat lunak\\tubes-kpl\\daftarriwayat-transaksi\\daftarriwayat-transaksi\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|solutionrelative:daftarriwayat-transaksi\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\kontruksi perangkat lunak\\tubes-kpl\\daftarriwayat-transaksi\\daftarriwayat-transaksi\\configs\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|solutionrelative:daftarriwayat-transaksi\\configs\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\kontruksi perangkat lunak\\tubes-kpl\\daftarriwayat-transaksi\\daftarriwayat-transaksi\\configs\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|solutionrelative:daftarriwayat-transaksi\\configs\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\kontruksi perangkat lunak\\tubes-kpl\\daftarriwayat-transaksi\\daftarriwayat-transaksi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|solutionrelative:daftarriwayat-transaksi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\kontruksi perangkat lunak\\tubes-kpl\\daftarriwayat-transaksi\\daftarriwayat-transaksi\\daftarriwayat-transaksi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D9BD7A37-6F6B-42EB-AF7B-5B52633C06F0}|DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj|solutionrelative:daftarriwayat-transaksi\\daftarriwayat-transaksi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +46,85 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "config.json",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Configs\\config.json",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi\\Configs\\config.json",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Configs\\config.json",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi\\Configs\\config.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-10T14:44:51.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ConfigService.cs",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Services\\ConfigService.cs",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi\\Services\\ConfigService.cs",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Services\\ConfigService.cs",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi\\Services\\ConfigService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T14:43:20.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AppConfig.cs",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Configs\\AppConfig.cs",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi\\Configs\\AppConfig.cs",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Configs\\AppConfig.cs",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi\\Configs\\AppConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T14:38:51.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RiwayatManager.cs",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Services\\RiwayatManager.cs",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi\\Services\\RiwayatManager.cs",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Services\\RiwayatManager.cs",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi\\Services\\RiwayatManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T09:25:16.587Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Program.cs",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi\\Program.cs",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Program.cs",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T07:21:54.111Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Models\\Transaction.cs",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi\\Models\\Transaction.cs",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Models\\Transaction.cs",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi\\Models\\Transaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T07:22:41.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "DaftarRiwayat-Transaksi.csproj",
               "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj",
               "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi.csproj",
@@ -43,44 +133,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-05-10T09:51:34.958Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RiwayatManager.cs",
-              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Services\\RiwayatManager.cs",
-              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi\\Services\\RiwayatManager.cs",
-              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Services\\RiwayatManager.cs",
-              "RelativeToolTip": "DaftarRiwayat-Transaksi\\Services\\RiwayatManager.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAIAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T09:25:16.587Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Transaction.cs",
-              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Models\\Transaction.cs",
-              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi\\Models\\Transaction.cs",
-              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Models\\Transaction.cs",
-              "RelativeToolTip": "DaftarRiwayat-Transaksi\\Models\\Transaction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T07:22:41.339Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Program.cs",
-              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi\\Program.cs",
-              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Kontruksi Perangkat Lunak\\tubes-KPL\\DaftarRiwayat-Transaksi\\DaftarRiwayat-Transaksi\\Program.cs",
-              "RelativeToolTip": "DaftarRiwayat-Transaksi\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T07:21:54.111Z",
-              "EditorCaption": ""
             }
           ]
         }
