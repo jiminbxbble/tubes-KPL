@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using DaftarRiwayat_Transaksi.Services;
 
-namespace DaftarRiwayat_Transaksi
+namespace DaftarRiwayat_Transaksi.Models
 {
     public class Transaction
     {
@@ -26,11 +27,11 @@ namespace DaftarRiwayat_Transaksi
             if (description.Length > 100)
                 throw new ArgumentException("Deskripsi terlalu panjang, maksimal 100 karakter.");
 
-            this.Id = id;
-            this.Amount = amount;
-            this.Category = category;
-            this.Date = date;
-            this.Description = string.IsNullOrWhiteSpace(description) ? "-" : description;
+            Id = id;
+            Amount = amount;
+            Category = category;
+            Date = date;
+            Description = string.IsNullOrWhiteSpace(description) ? "-" : description;
 
             // INVARIANTS
             ObjectInvariant();
@@ -38,10 +39,10 @@ namespace DaftarRiwayat_Transaksi
 
         private void ObjectInvariant()
         {
-            Debug.Assert(this.Id > 0);
-            Debug.Assert(this.Amount > 0);
-            Debug.Assert(!string.IsNullOrEmpty(this.Category));
-            Debug.Assert(this.Description != null);
+            Debug.Assert(Id > 0);
+            Debug.Assert(Amount > 0);
+            Debug.Assert(!string.IsNullOrEmpty(Category));
+            Debug.Assert(Description != null);
         }
 
         public void DisplayInfo()

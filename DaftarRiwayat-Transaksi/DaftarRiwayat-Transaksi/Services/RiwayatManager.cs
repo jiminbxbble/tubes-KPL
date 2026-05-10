@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using DaftarRiwayat_Transaksi.Models;
 
-namespace DaftarRiwayat_Transaksi
+namespace DaftarRiwayat_Transaksi.Services
 {
     public class RiwayatManager<T>
     {
