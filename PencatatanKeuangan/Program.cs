@@ -33,12 +33,12 @@ namespace PencatatanKeuangan
                     if (!double.TryParse(Console.ReadLine(), out double amount))
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Input nominal tidak valid, masukin angka ya bebs!");
+                        Console.WriteLine("Input nominal tidak valid, masukkan angka");
                         Console.ResetColor();
                         continue;
                     }
 
-                    Console.Write("Kategori (misal: Uang Saku, Makan, Ngedate): ");
+                    Console.Write("Kategori: ");
                     string category = Console.ReadLine();
 
                     Console.Write("Deskripsi Singkat: ");
@@ -64,7 +64,7 @@ namespace PencatatanKeuangan
                 else if (choice == "2")
                 {
                     isRunning = false;
-                    Console.WriteLine("Keluar dari sistem. Semangat ngerjain laporannya bebs!");
+                    Console.WriteLine("Keluar dari sistem.");
                 }
                 else
                 {

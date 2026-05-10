@@ -36,7 +36,7 @@ namespace PencatatanKeuangan.Services
             }
             if (string.IsNullOrWhiteSpace(category))
             {
-                throw new ArgumentException("Kategori nggak boleh kosong dong bebs.");
+                throw new ArgumentException("Kategori tidak boleh kosong.");
             }
 
             // Validasi kategori via Table-Driven

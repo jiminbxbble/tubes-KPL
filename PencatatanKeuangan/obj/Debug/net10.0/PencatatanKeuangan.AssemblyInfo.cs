@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PencatatanKeuangan")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd844412e74b9e81917fb69fc56a40f08eb6ce11")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b15da88f26285f5e0addd1ff0e78ed882d4585f5")]
 [assembly: System.Reflection.AssemblyProductAttribute("PencatatanKeuangan")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PencatatanKeuangan")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
