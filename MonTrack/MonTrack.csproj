@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- CsvHelper - Library untuk membaca/menulis file CSV -->
+    <!-- Teknik: Code Reuse / Library (menggunakan pihak ketiga) -->
+    <PackageReference Include="CsvHelper" Version="30.0.0" />
+  </ItemGroup>
+
+</Project>

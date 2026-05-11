@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -75,17 +75,17 @@ namespace MonTrack.Tests
         /// </summary>
         public async void PerformanceTest_Export10000Transactions()
         {
-            Console.WriteLine("\n╔════════════════════════════════════════════════════════════╗");
-            Console.WriteLine("║       PERFORMANCE TEST - EXPORT 10.000 TRANSACTIONS         ║");
-            Console.WriteLine("║       CLO2: Atribut Kualitas Performance                    ║");
-            Console.WriteLine("╚════════════════════════════════════════════════════════════╝\n");
+            Console.WriteLine("\nΓòöΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòù");
+            Console.WriteLine("Γòæ       PERFORMANCE TEST - EXPORT 10.000 TRANSACTIONS         Γòæ");
+            Console.WriteLine("Γòæ       CLO2: Atribut Kualitas Performance                    Γòæ");
+            Console.WriteLine("ΓòÜΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓò¥\n");
 
             try
             {
                 // Generate dummy data
                 Console.WriteLine("Generating 10.000 dummy transactions...");
                 var transactions = GenerateDummyTransactions(10000);
-                Console.WriteLine($"✓ Generated {transactions.Count} transactions\n");
+                Console.WriteLine($"Γ£ô Generated {transactions.Count} transactions\n");
 
                 // Memory snapshot sebelum eksekusi
                 long memoryBefore = GC.GetTotalMemory(false);
@@ -117,59 +117,59 @@ namespace MonTrack.Tests
                 FileInfo fileInfo = new FileInfo(filePath);
                 double fileSizeMB = fileInfo.Length / (1024.0 * 1024.0);
 
-                // ═══════════════════════════════════════════════════════════
+                // ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
                 // HASIL PERFORMANCE TESTING
-                // ═══════════════════════════════════════════════════════════
-                Console.WriteLine("\n╔════════════════════════════════════════════════════════════╗");
-                Console.WriteLine("║                    HASIL PERFORMANCE TEST                  ║");
-                Console.WriteLine("╚════════════════════════════════════════════════════════════╝\n");
+                // ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+                Console.WriteLine("\nΓòöΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòù");
+                Console.WriteLine("Γòæ                    HASIL PERFORMANCE TEST                  Γòæ");
+                Console.WriteLine("ΓòÜΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓò¥\n");
 
-                Console.WriteLine("📊 METRICS:");
-                Console.WriteLine($"   • Execution Time:        {executionTimeMs:F2} ms ({executionTimeSec:F2} seconds)");
-                Console.WriteLine($"   • Throughput:            {throughput:F0} transactions/second");
-                Console.WriteLine($"   • Memory Used:           {(memoryUsed / 1024.0):F2} KB");
-                Console.WriteLine($"   • Output File Size:      {fileSizeMB:F2} MB");
-                Console.WriteLine($"   • Transactions Exported: {transactions.Count:N0}");
+                Console.WriteLine("≡ƒôè METRICS:");
+                Console.WriteLine($"   ΓÇó Execution Time:        {executionTimeMs:F2} ms ({executionTimeSec:F2} seconds)");
+                Console.WriteLine($"   ΓÇó Throughput:            {throughput:F0} transactions/second");
+                Console.WriteLine($"   ΓÇó Memory Used:           {(memoryUsed / 1024.0):F2} KB");
+                Console.WriteLine($"   ΓÇó Output File Size:      {fileSizeMB:F2} MB");
+                Console.WriteLine($"   ΓÇó Transactions Exported: {transactions.Count:N0}");
 
-                Console.WriteLine("\n📈 PERFORMANCE ANALYSIS:");
+                Console.WriteLine("\n≡ƒôê PERFORMANCE ANALYSIS:");
                 if (executionTimeMs < 5000)
                 {
-                    Console.WriteLine("   ✓ EXCELLENT: Ekspor < 5 detik untuk 10K transaksi");
+                    Console.WriteLine("   Γ£ô EXCELLENT: Ekspor < 5 detik untuk 10K transaksi");
                 }
                 else if (executionTimeMs < 10000)
                 {
-                    Console.WriteLine("   ✓ GOOD: Ekspor < 10 detik untuk 10K transaksi");
+                    Console.WriteLine("   Γ£ô GOOD: Ekspor < 10 detik untuk 10K transaksi");
                 }
                 else
                 {
-                    Console.WriteLine("   ⚠ ACCEPTABLE: Ekspor membutuhkan waktu lebih lama");
+                    Console.WriteLine("   ΓÜá ACCEPTABLE: Ekspor membutuhkan waktu lebih lama");
                 }
 
                 if (throughput > 1000)
                 {
-                    Console.WriteLine("   ✓ EXCELLENT: Throughput > 1000 tx/s");
+                    Console.WriteLine("   Γ£ô EXCELLENT: Throughput > 1000 tx/s");
                 }
                 else if (throughput > 500)
                 {
-                    Console.WriteLine("   ✓ GOOD: Throughput > 500 tx/s");
+                    Console.WriteLine("   Γ£ô GOOD: Throughput > 500 tx/s");
                 }
 
-                Console.WriteLine($"\n🎯 CONCLUSION:");
+                Console.WriteLine($"\n≡ƒÄ» CONCLUSION:");
                 Console.WriteLine($"   Sistem dapat mengekspor {transactions.Count:N0} transaksi");
                 Console.WriteLine($"   dalam {executionTimeMs:F0}ms dengan throughput {throughput:F0} tx/s");
-                Console.WriteLine($"   Atribut kualitas PERFORMANCE terpenuhi ✓\n");
+                Console.WriteLine($"   Atribut kualitas PERFORMANCE terpenuhi Γ£ô\n");
 
                 // Verifikasi file content
                 if (File.Exists(filePath))
                 {
                     var lines = File.ReadAllLines(filePath);
-                    Console.WriteLine($"✓ File berhasil dibuat dengan {lines.Length} baris (termasuk header)");
+                    Console.WriteLine($"Γ£ô File berhasil dibuat dengan {lines.Length} baris (termasuk header)");
                     Console.WriteLine($"  File location: {filePath}");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"\n✗ ERROR: {ex.Message}");
+                Console.WriteLine($"\nΓ£ù ERROR: {ex.Message}");
                 Console.WriteLine($"  Stack trace: {ex.StackTrace}");
             }
         }
@@ -178,12 +178,12 @@ namespace MonTrack.Tests
         /// Test performa dengan berbagai ukuran dataset
         /// Untuk melihat scalability
         /// </summary>
-        public async void PerformanceTest_Scalability()
+        public async Task PerformanceTest_Scalability()
         {
-            Console.WriteLine("\n╔════════════════════════════════════════════════════════════╗");
-            Console.WriteLine("║      PERFORMANCE TEST - SCALABILITY ANALYSIS                ║");
-            Console.WriteLine("║      Mengukur performa dengan berbagai ukuran dataset       ║");
-            Console.WriteLine("╚════════════════════════════════════════════════════════════╝\n");
+            Console.WriteLine("\nΓòöΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòù");
+            Console.WriteLine("Γòæ      PERFORMANCE TEST - SCALABILITY ANALYSIS                Γòæ");
+            Console.WriteLine("Γòæ      Mengukur performa dengan berbagai ukuran dataset       Γòæ");
+            Console.WriteLine("ΓòÜΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓò¥\n");
 
             var testSizes = new[] { 1000, 5000, 10000 };
 
@@ -204,10 +204,10 @@ namespace MonTrack.Tests
                 double executionTimeMs = stopwatch.Elapsed.TotalMilliseconds;
                 double throughput = size / stopwatch.Elapsed.TotalSeconds;
 
-                Console.WriteLine($"  ✓ Time: {executionTimeMs:F2}ms | Throughput: {throughput:F0} tx/s");
+                Console.WriteLine($"  Γ£ô Time: {executionTimeMs:F2}ms | Throughput: {throughput:F0} tx/s");
             }
 
-            Console.WriteLine("\n✓ Scalability test selesai");
+            Console.WriteLine("\nΓ£ô Scalability test selesai");
         }
 
         /// <summary>
@@ -218,15 +218,15 @@ namespace MonTrack.Tests
             PerformanceTest_Export10000Transactions();
             await Task.Delay(1000);
 
-            Console.WriteLine("\n════════════════════════════════════════════════════════════");
+            Console.WriteLine("\nΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ");
             Console.WriteLine("Menjalankan scalability test...");
-            Console.WriteLine("════════════════════════════════════════════════════════════");
+            Console.WriteLine("ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ");
 
             await PerformanceTest_Scalability();
 
-            Console.WriteLine("\n╔════════════════════════════════════════════════════════════╗");
-            Console.WriteLine("║         SEMUA PERFORMANCE TESTS SELESAI                    ║");
-            Console.WriteLine("╚════════════════════════════════════════════════════════════╝");
+            Console.WriteLine("\nΓòöΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòù");
+            Console.WriteLine("Γòæ         SEMUA PERFORMANCE TESTS SELESAI                    Γòæ");
+            Console.WriteLine("ΓòÜΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓò¥");
 
             CleanupTestFiles();
         }
@@ -245,12 +245,12 @@ namespace MonTrack.Tests
                     {
                         File.Delete(file);
                     }
-                    Console.WriteLine("\n✓ Cleanup: File performance test berhasil dihapus");
+                    Console.WriteLine("\nΓ£ô Cleanup: File performance test berhasil dihapus");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"\n⚠ Cleanup error: {ex.Message}");
+                Console.WriteLine($"\nΓÜá Cleanup error: {ex.Message}");
             }
         }
     }
