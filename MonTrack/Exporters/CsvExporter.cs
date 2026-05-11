@@ -28,7 +28,7 @@ namespace MonTrack.Exporters
             {
                 // --- Teknik Code Reuse / Library ---
                 // Menggunakan library pihak ketiga 'CsvHelper' untuk menangani penulisan file CSV.
-                // Ini mengurangi kerumitan dalam memformat string CSV secara manual.
+                // Ini mengurangi kerumitan dalam memformat string CSV secara manual. kata google gini okeh sih bag
                 using (var writer = new StreamWriter(filePath))
                 using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {
@@ -38,7 +38,7 @@ namespace MonTrack.Exporters
             }
             catch (Exception ex)
             {
-                // Defensive Programming: Menangani error saat proses I/O atau penulisan CSV.
+                // Defensive Programming: Menangani error saat proses I/O atau penulisan CSV. letsgooooo
                 Console.WriteLine($"Error during CSV export: {ex.Message}");
                 throw;
             }

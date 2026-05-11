@@ -10,7 +10,7 @@ namespace MonTrack
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static async Task Main(string[] args) // CLI buat nyoba nyoba aja bang
         {
             Console.WriteLine("╔════════════════════════════════════════════════════════════╗");
             Console.WriteLine("║                   MONTRACK - EXPORT DEMO                   ║");
