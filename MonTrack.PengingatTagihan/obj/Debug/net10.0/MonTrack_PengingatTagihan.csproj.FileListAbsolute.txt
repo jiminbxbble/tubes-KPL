@@ -1,0 +1,15 @@
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\bin\Debug\net10.0\MonTrack_PengingatTagihan.exe
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\bin\Debug\net10.0\MonTrack_PengingatTagihan.deps.json
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\bin\Debug\net10.0\MonTrack_PengingatTagihan.runtimeconfig.json
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\bin\Debug\net10.0\MonTrack_PengingatTagihan.dll
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\bin\Debug\net10.0\MonTrack_PengingatTagihan.pdb
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\obj\Debug\net10.0\MonTrack_PengingatTagihan.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\obj\Debug\net10.0\MonTrack_PengingatTagihan.AssemblyInfoInputs.cache
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\obj\Debug\net10.0\MonTrack_PengingatTagihan.AssemblyInfo.cs
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\obj\Debug\net10.0\MonTrack_PengingatTagihan.csproj.CoreCompileInputs.cache
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\obj\Debug\net10.0\MonTrack_PengingatTagihan.sourcelink.json
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\obj\Debug\net10.0\MonTrack_PengingatTagihan.dll
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\obj\Debug\net10.0\refint\MonTrack_PengingatTagihan.dll
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\obj\Debug\net10.0\MonTrack_PengingatTagihan.pdb
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\obj\Debug\net10.0\MonTrack_PengingatTagihan.genruntimeconfig.cache
+C:\Users\uuser1\Documents\C#\MonTrack.PengingatTagihan\MonTrack.PengingatTagihan\obj\Debug\net10.0\ref\MonTrack_PengingatTagihan.dll
