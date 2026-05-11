@@ -18,8 +18,9 @@ namespace MonTrack.Services
             // Strategy Pattern: Menyiapkan berbagai strategi ekspor yang didukung.
             _exporters = new Dictionary<string, IDataExporter>(StringComparer.OrdinalIgnoreCase)
             {
-                { "CSV", new CsvExporter() }
-                // Bisa ditambahkan exporter lain (misal JSON, PDF) tanpa mengubah class ini (OCP).
+                { "CSV", new CsvExporter() },
+                { "PDF", new PdfExporter() }
+                // Bisa ditambahkan exporter lain tanpa mengubah class ini (OCP).
             };
         }
 

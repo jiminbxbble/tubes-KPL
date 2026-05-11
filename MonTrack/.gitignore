@@ -6,6 +6,11 @@
 # dotenv files
 .env
 
+# Export output files (CSV, PDF, etc.)
+*.csv
+*.pdf
+!README.pdf
+
 # User-specific files
 *.rsuser
 *.suo
