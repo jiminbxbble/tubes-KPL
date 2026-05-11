@@ -58,7 +58,9 @@ namespace MonTrack
         static async Task ExportCSV(List<Transaction> data, ExportApiService service)
         {
             Console.WriteLine("\n--- CSV Export ---");
-            string outputPath = "export_data.csv";
+            string exportFolder = "ExportResults";
+            Directory.CreateDirectory(exportFolder);
+            string outputPath = Path.Combine(exportFolder, $"export_data_{DateTime.Now:yyyyMMdd_HHmmss}.csv");
             var stopwatch = Stopwatch.StartNew();
 
             try
@@ -82,7 +84,9 @@ namespace MonTrack
         static async Task ExportPDF(List<Transaction> data, ExportApiService service)
         {
             Console.WriteLine("\n--- PDF Export ---");
-            string outputPath = "export_data.pdf";
+            string exportFolder = "ExportResults";
+            Directory.CreateDirectory(exportFolder);
+            string outputPath = Path.Combine(exportFolder, $"export_data_{DateTime.Now:yyyyMMdd_HHmmss_fff}.pdf");
             var stopwatch = Stopwatch.StartNew();
 
             try
@@ -111,7 +115,9 @@ namespace MonTrack
 
             int recordCount = 10000;
             var dummyData = GenerateDummyTransactions(recordCount);
-            string outputPath = "performance_test_export.csv";
+            string exportFolder = "ExportResults";
+            Directory.CreateDirectory(exportFolder);
+            string outputPath = Path.Combine(exportFolder, $"performance_test_export_{DateTime.Now:yyyyMMdd_HHmmss}.csv");
             var stopwatch = Stopwatch.StartNew();
 
             try
