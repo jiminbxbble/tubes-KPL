@@ -29,7 +29,7 @@ class Program
         Console.WriteLine("==================================================");
 
         Console.WriteLine("============= Proses Penyelesaian Tagihan =============");
-        semuaTagihan[1].TandaiLunas(); 
+        semuaTagihan[1].TandaiLunas();
 
         Console.WriteLine("============= Daftar Tagihan Telah Lunas =============");
         var daftarLunas = semuaTagihan.Where(x => x.StatusSaatIni == PengingatTagihan.TagihanState.Lunas).ToList();
@@ -42,7 +42,7 @@ class Program
         {
             foreach (var lunas in daftarLunas)
             {
-                Console.WriteLine($"- {lunas.Nama} | STATUS: SELESAI DICATAT | Tanggal Selesai: {DateTime.Now.ToShortDateString()}");
+                Console.WriteLine($"- {lunas.Nama} | Status: Selesai Dicatat | Tanggal Selesai: {DateTime.Now.ToShortDateString()}");
             }
         }
 
