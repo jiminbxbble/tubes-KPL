@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MonTrack.Auth")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be6fe2dcfd1c9eea724cc46c1cebc11d05df5233")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06e596f76b9c1fad6031655c4109d8c4d695eced")]
 [assembly: System.Reflection.AssemblyProductAttribute("MonTrack.Auth")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MonTrack.Auth")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
