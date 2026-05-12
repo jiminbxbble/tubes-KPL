@@ -23,7 +23,7 @@ namespace MonTrack.Auth.Api
                 IsSuccess = true
             };
         }
-
+         
         public static ApiResponse<T> Fail(string message, int statusCode = 400)
         {
             return new ApiResponse<T>
