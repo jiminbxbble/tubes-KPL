@@ -1,0 +1,124 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\Downloads\\tubes-KPL\\PencatatanKeuangan\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F36A52A1-940B-4B07-8096-E33355E75FC7}|..\\PencatatanKeuangan.Tests\\PencatatanKeuangan.Tests.csproj|c:\\users\\user\\downloads\\tubes-kpl\\pencatatankeuangan.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64B093C5-441C-7DBD-27F5-1EBF49A81732}|PencatatanKeuangan.csproj|c:\\users\\user\\downloads\\tubes-kpl\\pencatatankeuangan\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64B093C5-441C-7DBD-27F5-1EBF49A81732}|PencatatanKeuangan.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64B093C5-441C-7DBD-27F5-1EBF49A81732}|PencatatanKeuangan.csproj|c:\\users\\user\\downloads\\tubes-kpl\\pencatatankeuangan\\services\\transactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64B093C5-441C-7DBD-27F5-1EBF49A81732}|PencatatanKeuangan.csproj|solutionrelative:services\\transactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64B093C5-441C-7DBD-27F5-1EBF49A81732}|PencatatanKeuangan.csproj|c:\\users\\user\\downloads\\tubes-kpl\\pencatatankeuangan\\repositories\\datarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64B093C5-441C-7DBD-27F5-1EBF49A81732}|PencatatanKeuangan.csproj|solutionrelative:repositories\\datarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64B093C5-441C-7DBD-27F5-1EBF49A81732}|PencatatanKeuangan.csproj|c:\\users\\user\\downloads\\tubes-kpl\\pencatatankeuangan\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64B093C5-441C-7DBD-27F5-1EBF49A81732}|PencatatanKeuangan.csproj|solutionrelative:models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64B093C5-441C-7DBD-27F5-1EBF49A81732}|PencatatanKeuangan.csproj|c:\\users\\user\\downloads\\tubes-kpl\\pencatatankeuangan\\pencatatankeuangan.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{64B093C5-441C-7DBD-27F5-1EBF49A81732}|PencatatanKeuangan.csproj|solutionrelative:pencatatankeuangan.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 183,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Downloads\\tubes-KPL\\PencatatanKeuangan.Tests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "..\\PencatatanKeuangan.Tests\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\User\\Downloads\\tubes-KPL\\PencatatanKeuangan.Tests\\UnitTest1.cs",
+              "RelativeToolTip": "..\\PencatatanKeuangan.Tests\\UnitTest1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T11:44:27.581Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TransactionManager.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Downloads\\tubes-KPL\\PencatatanKeuangan\\Services\\TransactionManager.cs",
+              "RelativeDocumentMoniker": "Services\\TransactionManager.cs",
+              "ToolTip": "C:\\Users\\User\\Downloads\\tubes-KPL\\PencatatanKeuangan\\Services\\TransactionManager.cs",
+              "RelativeToolTip": "Services\\TransactionManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T03:29:46.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DataRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Downloads\\tubes-KPL\\PencatatanKeuangan\\Repositories\\DataRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\DataRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Downloads\\tubes-KPL\\PencatatanKeuangan\\Repositories\\DataRepository.cs",
+              "RelativeToolTip": "Repositories\\DataRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T03:28:55.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PencatatanKeuangan.csproj",
+              "DocumentMoniker": "C:\\Users\\User\\Downloads\\tubes-KPL\\PencatatanKeuangan\\PencatatanKeuangan.csproj",
+              "RelativeDocumentMoniker": "PencatatanKeuangan.csproj",
+              "ToolTip": "C:\\Users\\User\\Downloads\\tubes-KPL\\PencatatanKeuangan\\PencatatanKeuangan.csproj",
+              "RelativeToolTip": "PencatatanKeuangan.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-05-10T03:27:53.83Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Downloads\\tubes-KPL\\PencatatanKeuangan\\Models\\Transaction.cs",
+              "RelativeDocumentMoniker": "Models\\Transaction.cs",
+              "ToolTip": "C:\\Users\\User\\Downloads\\tubes-KPL\\PencatatanKeuangan\\Models\\Transaction.cs",
+              "RelativeToolTip": "Models\\Transaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T03:27:17.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Downloads\\tubes-KPL\\PencatatanKeuangan\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\User\\Downloads\\tubes-KPL\\PencatatanKeuangan\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T03:24:51.827Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

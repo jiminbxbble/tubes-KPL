@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../PencatatanKeuangan.Tests/PencatatanKeuangan.Tests.csproj" Id="f36a52a1-940b-4b07-8096-e33355e75fc7" />
+  <Project Path="PencatatanKeuangan.csproj" />
+</Solution>
