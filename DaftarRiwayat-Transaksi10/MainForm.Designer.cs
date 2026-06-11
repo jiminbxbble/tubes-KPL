@@ -32,6 +32,7 @@
             txtCari = new TextBox();
             btnCari = new Button();
             lblInfo = new Label();
+            lblTotal = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvRiwayat).BeginInit();
             SuspendLayout();
             // 
@@ -65,17 +66,29 @@
             // lblInfo
             // 
             lblInfo.AutoSize = true;
-            lblInfo.Location = new Point(12, 369);
+            lblInfo.Location = new Point(12, 389);
             lblInfo.Name = "lblInfo";
             lblInfo.Size = new Size(35, 20);
             lblInfo.TabIndex = 3;
             lblInfo.Text = "Info";
+            lblInfo.Click += lblInfo_Click;
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Location = new Point(12, 369);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(50, 20);
+            lblTotal.TabIndex = 4;
+            lblTotal.Text = "label1";
+            lblTotal.Click += lblTotal_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblTotal);
             Controls.Add(lblInfo);
             Controls.Add(btnCari);
             Controls.Add(txtCari);
@@ -94,5 +107,6 @@
         private TextBox txtCari;
         private Button btnCari;
         private Label lblInfo;
+        private Label lblTotal;
     }
 }

@@ -27,15 +27,25 @@ namespace DaftarRiwayat_Transaksi10
         private void RefreshTabel(System.Collections.Generic.List<Transaction> data)
         {
             dgvRiwayat.DataSource = null;
+            int limit = (_config != null && _config.MaxDisplayItems > 0) ? _config.MaxDisplayItems : 10000;
+            var dataYangDitampilkan = data.Take(limit).ToList();
 
-            int limit = (_config != null && _config.MaxDisplayItems > 0) ? _config.MaxDisplayItems : 100;
+            dgvRiwayat.DataSource = dataYangDitampilkan;
 
-            dgvRiwayat.DataSource = data.Take(limit).ToList();
+            // format angka ribuan dengan "N0" untuk memisah ribuan 
+            dgvRiwayat.Columns["Amount"].DefaultCellStyle.Format = "N0";
+
+            // kalkulasi pengeluaran dengan LINQ dari data pada di tabel 
+            decimal totalPengeluaran = (decimal)dataYangDitampilkan.Sum(t => t.Amount);
+
+            // tampilan label dengan format mengikuti Config JSON
+            string mataUang = _config != null ? _config.DefaultCurrency : "IDR";
+            lblTotal.Text = $"Total Pengeluaran: {mataUang} {totalPengeluaran:N0}";
         }
 
         private void btnCari_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -69,7 +79,17 @@ namespace DaftarRiwayat_Transaksi10
             // Tampilkan data ke tabel
             RefreshTabel(_manager.FilterItems(t => true));
 
-            
+
+        }
+
+        private void lblInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTotal_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
