@@ -39,23 +39,22 @@
             // 
             dgvRiwayat.AccessibleRole = AccessibleRole.None;
             dgvRiwayat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRiwayat.Location = new Point(62, 126);
+            dgvRiwayat.Location = new Point(12, 64);
             dgvRiwayat.Name = "dgvRiwayat";
             dgvRiwayat.RowHeadersWidth = 51;
-            dgvRiwayat.Size = new Size(677, 188);
+            dgvRiwayat.Size = new Size(776, 302);
             dgvRiwayat.TabIndex = 0;
             // 
             // txtCari
             // 
-            txtCari.Location = new Point(62, 93);
+            txtCari.Location = new Point(12, 31);
             txtCari.Name = "txtCari";
-            txtCari.Size = new Size(577, 27);
+            txtCari.Size = new Size(676, 27);
             txtCari.TabIndex = 1;
-            txtCari.TextChanged += txtCari_TextChanged;
             // 
             // btnCari
             // 
-            btnCari.Location = new Point(645, 91);
+            btnCari.Location = new Point(694, 29);
             btnCari.Name = "btnCari";
             btnCari.Size = new Size(94, 29);
             btnCari.TabIndex = 2;
@@ -66,7 +65,7 @@
             // lblInfo
             // 
             lblInfo.AutoSize = true;
-            lblInfo.Location = new Point(62, 333);
+            lblInfo.Location = new Point(12, 369);
             lblInfo.Name = "lblInfo";
             lblInfo.Size = new Size(35, 20);
             lblInfo.TabIndex = 3;
@@ -83,6 +82,7 @@
             Controls.Add(dgvRiwayat);
             Name = "MainForm";
             Text = "MainForm";
+            Load += MainForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRiwayat).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -3,8 +3,44 @@
   "WorkspaceRootPath": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\services\\riwayatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\services\\riwayatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\mainform.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\mainform.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\configs\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\configs\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\configs\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\configs\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\services\\configservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\services\\configservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
@@ -13,87 +49,29 @@
     {
       "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\daftarriwayat-transaksi10.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\services\\riwayatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\services\\riwayatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|c:\\arsip bnn\\materi kuliah\\semester 4\\praktikum kpl\\daftarriwayat-transaksi10\\daftarriwayat-transaksi10\\services\\configservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65A378A5-CC27-34DA-6D28-9D54C75D1E24}|DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj|solutionrelative:daftarriwayat-transaksi10\\services\\configservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "DockedHeight": 186,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\Program.cs",
               "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\Program.cs",
               "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\Program.cs",
               "RelativeToolTip": "DaftarRiwayat-Transaksi10\\Program.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-11T13:06:19.587Z",
               "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainForm.cs [Design]",
-              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\MainForm.cs",
-              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\MainForm.cs",
-              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\MainForm.cs [Design]",
-              "RelativeToolTip": "DaftarRiwayat-Transaksi10\\MainForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-11T13:51:23.247Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainForm.cs",
-              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\MainForm.cs",
-              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\MainForm.cs",
-              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\MainForm.cs",
-              "RelativeToolTip": "DaftarRiwayat-Transaksi10\\MainForm.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAASwBgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-11T13:52:51.73Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DaftarRiwayat-Transaksi10",
-              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
-              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
-              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
-              "RelativeToolTip": "DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-06-11T13:49:02.29Z",
               "EditorCaption": ""
             },
             {
@@ -106,19 +84,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DaftarRiwayat-Transaksi10",
-              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
-              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
-              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
-              "RelativeToolTip": "DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-06-11T13:22:41.404Z",
+              "DocumentIndex": 3,
+              "Title": "MainForm.Designer.cs",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\MainForm.Designer.cs",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\MainForm.Designer.cs",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\MainForm.Designer.cs",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi10\\MainForm.Designer.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T14:09:29.559Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\MainForm.cs",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\MainForm.cs",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\MainForm.cs",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi10\\MainForm.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAmwEAAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T13:52:51.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "RiwayatManager.cs",
               "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\Services\\RiwayatManager.cs",
               "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\Services\\RiwayatManager.cs",
@@ -126,35 +126,107 @@
               "RelativeToolTip": "DaftarRiwayat-Transaksi10\\Services\\RiwayatManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-11T13:14:02.792Z"
+              "WhenOpened": "2026-06-11T13:14:02.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainForm.resx",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\MainForm.resx",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\MainForm.resx",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\MainForm.resx",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi10\\MainForm.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2026-06-11T14:29:32.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\MainForm.cs",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\MainForm.cs",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\MainForm.cs [Design]",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi10\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T13:51:23.247Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "config.json",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\Configs\\config.json",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\Configs\\config.json",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\Configs\\config.json",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi10\\Configs\\config.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-11T14:25:16.556Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "ConfigService.cs",
-              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\Services\\ConfigService.cs",
-              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\Services\\ConfigService.cs",
-              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\Services\\ConfigService.cs",
-              "RelativeToolTip": "DaftarRiwayat-Transaksi10\\Services\\ConfigService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-11T13:13:04.106Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "Transaction.cs",
               "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\Models\\Transaction.cs",
               "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\Models\\Transaction.cs",
               "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\Models\\Transaction.cs",
               "RelativeToolTip": "DaftarRiwayat-Transaksi10\\Models\\Transaction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-11T13:11:43.797Z"
+              "WhenOpened": "2026-06-11T13:11:43.797Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AppConfig.cs",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\Configs\\AppConfig.cs",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\Configs\\AppConfig.cs",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\Configs\\AppConfig.cs",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi10\\Configs\\AppConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T14:25:08.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ConfigService.cs",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\Services\\ConfigService.cs",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\Services\\ConfigService.cs",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\Services\\ConfigService.cs",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi10\\Services\\ConfigService.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T13:13:04.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DaftarRiwayat-Transaksi10.csproj",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-11T13:49:02.29Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DaftarRiwayat-Transaksi10",
+              "DocumentMoniker": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
+              "RelativeDocumentMoniker": "DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
+              "ToolTip": "C:\\Arsip BNN\\MATERI KULIAH\\SEMESTER 4\\Praktikum KPL\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
+              "RelativeToolTip": "DaftarRiwayat-Transaksi10\\DaftarRiwayat-Transaksi10.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-11T13:22:41.404Z"
             }
           ]
         }

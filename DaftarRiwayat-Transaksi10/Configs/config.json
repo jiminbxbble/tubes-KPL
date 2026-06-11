@@ -1,5 +1,5 @@
 {
   "DefaultCurrency": "IDR",
-  "MaxDisplayItems": 10,
+  "MaxDisplayItems": 100,
   "SortOrder": "Descending"
 }
