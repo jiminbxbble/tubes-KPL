@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PencatatanKeuangan.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9569602b802074ef68c79825ad761cf66bece99b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a9d553c1958b626d7c9ed3befd91414bf2a2f05")]
 [assembly: System.Reflection.AssemblyProductAttribute("PencatatanKeuangan.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PencatatanKeuangan.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

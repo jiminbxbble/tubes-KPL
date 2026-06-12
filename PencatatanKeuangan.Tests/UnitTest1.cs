@@ -1,4 +1,5 @@
-﻿using Xunit;
+using Xunit;
+using System.IO;
 using PencatatanKeuangan.Models;
 using PencatatanKeuangan.Repositories;
 using PencatatanKeuangan.Services;
@@ -10,15 +11,33 @@ namespace PencatatanKeuangan.Tests
         [Fact]
         public void TestInputValid_HarusBerhasil()
         {
-            // Arrange
-            var repo = new DataRepository<Transaction>();
-            var manager = new TransactionManager(repo);
+            string projectRoot = @"d:\4. Thoriq_KULIAH\4. Matkul\Semester 4\LKPL\TUBES-Thoriq\tubes-KPL";
+            string testFile = Path.Combine(projectRoot, "_Output", "Database", "test_transactions.json");
+            
+            if (File.Exists(testFile))
+            {
+                File.Delete(testFile);
+            }
 
-            // Act
-            manager.RecordTransaction(50000, "Uang Saku", "Dikasih ortu");
+            try
+            {
+                // Arrange
+                var repo = new DataRepository<Transaction>("test_transactions.json");
+                var manager = new TransactionManager(repo);
 
-            // Assert
-            Assert.Equal(50000, manager.GetCurrentBalance());
+                // Act
+                manager.RecordTransaction(50000, "Uang Saku", "Dikasih ortu");
+
+                // Assert
+                Assert.Equal(50000, manager.GetCurrentBalance());
+            }
+            finally
+            {
+                if (File.Exists(testFile))
+                {
+                    File.Delete(testFile);
+                }
+            }
         }
     }
 }

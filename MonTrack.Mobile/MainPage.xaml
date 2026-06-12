@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MonTrack.Mobile.MainPage"
+             BackgroundColor="#1A1A2E">
+
+    <Grid>
+        <!-- Background Gradients -->
+        <BoxView Background="#16213E" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+        
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="20">
+                
+                <!-- Profile Header -->
+                <Grid ColumnDefinitions="*, Auto" Margin="0,20,0,0">
+                    <VerticalStackLayout>
+                        <Label Text="Welcome back," TextColor="#BDC3C7" FontSize="14"/>
+                        <Label Text="Thoriq" TextColor="White" FontSize="24" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                    <Image Grid.Column="1" Source="dotnet_bot.png" WidthRequest="50" HeightRequest="50">
+                        <Image.Clip>
+                            <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25"/>
+                        </Image.Clip>
+                    </Image>
+                </Grid>
+
+                <!-- Balance Card (Glassmorphism inspired) -->
+                <Frame BackgroundColor="#33FFFFFF" BorderColor="#44FFFFFF" HasShadow="True" CornerRadius="20" Padding="25">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="TOTAL BALANCE" TextColor="#BDC3C7" FontSize="12" CharacterSpacing="2"/>
+                        <Label Text="Rp 12.500.000" TextColor="White" FontSize="32" FontAttributes="Bold" Margin="0,10"/>
+                        
+                        <Grid ColumnDefinitions="*, *" Margin="0,15,0,0">
+                            <VerticalStackLayout>
+                                <Label Text="INCOME" TextColor="#55EFC4" FontSize="10"/>
+                                <Label Text="Rp 15.0M" TextColor="White" FontSize="16" FontAttributes="Bold"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1">
+                                <Label Text="EXPENSE" TextColor="#FF7675" FontSize="10"/>
+                                <Label Text="Rp 2.5M" TextColor="White" FontSize="16" FontAttributes="Bold"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Action Buttons -->
+                <Grid ColumnDefinitions="*, *, *" ColumnSpacing="15">
+                    <Button Grid.Column="0" Text="Record" BackgroundColor="#4E31AA" TextColor="White" CornerRadius="15" HeightRequest="80"/>
+                    <Button Grid.Column="1" Text="Budget" BackgroundColor="#3795BD" TextColor="White" CornerRadius="15" HeightRequest="80"/>
+                    <Button Grid.Column="2" Text="Export" BackgroundColor="#27AE60" TextColor="White" CornerRadius="15" HeightRequest="80" Clicked="BtnExport_Clicked"/>
+                </Grid>
+
+                <!-- Recent Transactions Title -->
+                <Grid ColumnDefinitions="*, Auto" Margin="5,10,0,0">
+                    <Label Text="Recent Transactions" TextColor="White" FontSize="18" FontAttributes="Bold"/>
+                    <Label Grid.Column="1" Text="See All" TextColor="#3795BD" VerticalOptions="Center" FontSize="12"/>
+                </Grid>
+
+                <!-- Transaction List Simulation -->
+                <VerticalStackLayout Spacing="10">
+                    <Frame BackgroundColor="#11FFFFFF" BorderColor="Transparent" CornerRadius="15" Padding="15">
+                        <Grid ColumnDefinitions="Auto, *, Auto">
+                            <BoxView WidthRequest="45" HeightRequest="45" Color="#2255EFC4" CornerRadius="10"/>
+                            <VerticalStackLayout Grid.Column="1" Margin="15,0">
+                                <Label Text="Salary" TextColor="White" FontAttributes="Bold"/>
+                                <Label Text="Company Monthly Salary" TextColor="#BDC3C7" FontSize="11"/>
+                            </VerticalStackLayout>
+                            <Label Grid.Column="2" Text="+Rp 15M" TextColor="#55EFC4" VerticalOptions="Center" FontAttributes="Bold"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame BackgroundColor="#11FFFFFF" BorderColor="Transparent" CornerRadius="15" Padding="15">
+                        <Grid ColumnDefinitions="Auto, *, Auto">
+                            <BoxView WidthRequest="45" HeightRequest="45" Color="#22FF7675" CornerRadius="10"/>
+                            <VerticalStackLayout Grid.Column="1" Margin="15,0">
+                                <Label Text="Coffee Shop" TextColor="White" FontAttributes="Bold"/>
+                                <Label Text="Daily Caffeine" TextColor="#BDC3C7" FontSize="11"/>
+                            </VerticalStackLayout>
+                            <Label Grid.Column="2" Text="-Rp 50K" TextColor="#FF7675" VerticalOptions="Center" FontAttributes="Bold"/>
+                        </Grid>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Performance Test Section -->
+                <Button x:Name="BtnPerfTest" Text="Run Stress Test (100K Records)" 
+                        Margin="0,20,0,10" BackgroundColor="Transparent" BorderColor="#44FFFFFF" 
+                        BorderWidth="1" TextColor="#BDC3C7" FontSize="11" CornerRadius="10"
+                        Clicked="BtnPerfTest_Clicked"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        
+        <!-- Floating Action Button -->
+        <Button Text="+" 
+                FontSize="30"
+                TextColor="White"
+                BackgroundColor="#4E31AA" 
+                WidthRequest="65" 
+                HeightRequest="65" 
+                CornerRadius="32"
+                HorizontalOptions="End" 
+                VerticalOptions="End" 
+                Margin="30"
+                Shadow="{Shadow Brush=Black, Offset='0,5', Opacity=0.3}"/>
+    </Grid>
+
+</ContentPage>

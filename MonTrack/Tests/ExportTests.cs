@@ -11,8 +11,8 @@ namespace MonTrack.Tests
     [TestFixture]
     public class ExportTests
     {
-        private ExportApiService _service;
-        private string _testFilePath;
+        private ExportApiService _service = null!;
+        private string _testFilePath = null!;
 
         [SetUp]
         public void Setup()
@@ -40,7 +40,7 @@ namespace MonTrack.Tests
             };
 
             // Act
-            await _service.ExecuteExport("CSV", data, _testFilePath);
+            await _service.ExecuteExport("CSV", data, _testFilePath, true);
 
             // Assert
             Assert.That(File.Exists(_testFilePath), Is.True, "File should be created.");
@@ -56,9 +56,9 @@ namespace MonTrack.Tests
 
             // Act & Assert
             var ex = Assert.ThrowsAsync<ArgumentException>(async () => 
-                await _service.ExecuteExport("CSV", data, _testFilePath));
+                await _service.ExecuteExport("CSV", data, _testFilePath, true));
             
-            Assert.That(ex.Message, Does.Contain("Transaction list cannot be null or empty."));
+            Assert.That(ex!.Message, Does.Contain("Transaction list cannot be null or empty."));
         }
 
         [Test]
@@ -73,9 +73,9 @@ namespace MonTrack.Tests
 
             // Act & Assert
             var ex = Assert.ThrowsAsync<ArgumentException>(async () => 
-                await _service.ExecuteExport("CSV", data, invalidPath));
+                await _service.ExecuteExport("CSV", data, invalidPath, true));
 
-            Assert.That(ex.Message, Does.Contain("File path cannot be null or whitespace."));
+            Assert.That(ex!.Message, Does.Contain("File path cannot be null or whitespace."));
         }
     }
 }

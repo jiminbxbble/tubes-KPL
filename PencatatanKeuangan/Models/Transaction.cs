@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace PencatatanKeuangan.Models
 {
@@ -13,8 +13,8 @@ namespace PencatatanKeuangan.Models
         public int Id { get; set; }
         public TransactionType Type { get; set; }
         public double Amount { get; set; }
-        public string Category { get; set; }
-        public string Description { get; set; }
+        public string Category { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public DateTime Date { get; set; }
     }
 }

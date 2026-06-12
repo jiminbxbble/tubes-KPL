@@ -25,19 +25,22 @@ namespace MonTrack.Services
         }
 
         /// <summary>
-        /// Mengeksekusi proses ekspor secara asinkron (Performance quality attribute).
+        /// Mengeksekusi proses ekspor secara aman (Security validation).
         /// </summary>
-        public async Task ExecuteExport(string format, List<Transaction> data, string path)
+        public async Task ExecuteExport(string format, List<Transaction> data, string path, bool isAuthenticated = true)
         {
+            // Security Validation (Phase 3 Requirement)
+            if (!isAuthenticated)
+            {
+                throw new UnauthorizedAccessException("Sesi tidak valid. Silakan login kembali untuk melakukan ekspor data.");
+            }
+
             if (!_exporters.ContainsKey(format))
             {
                 throw new NotSupportedException($"Format '{format}' is not supported.");
             }
 
-            // Memilih strategi exporter berdasarkan parameter format (Strategy Pattern).
             var exporter = _exporters[format];
-
-            // Menjalankan di background thread agar tidak memblokir thread utama (Async/Performance).
             await Task.Run(() => exporter.Export(data, path));
         }
     }
