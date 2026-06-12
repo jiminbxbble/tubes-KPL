@@ -14,11 +14,23 @@ namespace DaftarRiwayat_Transaksi10.Models
         public string Category { get; private set; }
         public DateTime Date { get; private set; }
         public string Description { get; private set; }
-
-        public Transaction(int id, double amount, string category, DateTime date, string description = "-")
+        private TransactionType _type;
+        public TransactionType Type
         {
-            // PRE-CONDITIONS
-            if (id <= 0) throw new ArgumentException(nameof(id), "ID harus lebih besar dari 0.");
+            get { return _type; }
+            set
+            {
+                // invariant untuk memastikan tipe transaksi valid
+                if (!Enum.IsDefined(typeof(TransactionType), value))
+                    throw new ArgumentOutOfRangeException(nameof(value), "Tipe transaksi tidak valid.");
+                _type = value;
+            }
+        }
+
+        public Transaction(int id, double amount, string category, DateTime date, TransactionType type, string description = "-")
+        {
+            // PRE-CONDITIONS
+            if (id <= 0) throw new ArgumentException(nameof(id), "ID harus lebih besar dari 0.");
 
             if (amount <= 0) throw new ArgumentOutOfRangeException(nameof(amount), "Nominal transaksi harus positif.");
 
@@ -29,14 +41,19 @@ namespace DaftarRiwayat_Transaksi10.Models
             if (description.Length > 100)
                 throw new ArgumentException(nameof(description), "Deskripsi terlalu panjang, maksimal 100 karakter.");
 
+            // Pre-condition khusus untuk enum Type
+            if (!Enum.IsDefined(typeof(TransactionType), type))
+                throw new ArgumentOutOfRangeException(nameof(type), "Tipe transaksi tidak dikenali.");
+
             Id = id;
             Amount = amount;
             Category = category;
             Date = date;
+            Type = type; // Melalui setter yang sudah dilindungi
             Description = string.IsNullOrWhiteSpace(description) ? "-" : description;
 
-            // INVARIANTS
-            ObjectInvariant();
+            // INVARIANTS
+            ObjectInvariant();
         }
 
         private void ObjectInvariant()
@@ -45,17 +62,24 @@ namespace DaftarRiwayat_Transaksi10.Models
             Debug.Assert(Amount > 0);
             Debug.Assert(!string.IsNullOrEmpty(Category));
             Debug.Assert(Description != null);
+            Debug.Assert(Enum.IsDefined(typeof(TransactionType), Type), "Invariant gagal: Tipe transaksi tidak valid.");
         }
 
         public void DisplayInfo()
         {
-            Console.WriteLine($"[{Date.ToShortDateString()}] {Category}: Rp{Amount}");
+            Console.WriteLine($"[{Date.ToShortDateString()}] {Type} - {Category}: Rp{Amount}");
         }
 
         // Override ToString dari RiwayatManager memanggil sesuai formatnya
         public override string ToString()
         {
-            return $"[{Date.ToShortDateString()}] {Category.PadRight(15)} | Rp{Amount,10:N0} | Ket: {Description}";
+            return $"[{Date.ToShortDateString()}] {Type,-12} | {Category.PadRight(15)} | Rp{Amount,10:N0} | Ket: {Description}";
         }
+    }
+
+    public enum TransactionType
+    {
+        Pemasukan,
+        Pengeluaran
     }
 }

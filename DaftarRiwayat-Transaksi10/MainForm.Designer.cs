@@ -30,9 +30,10 @@
         {
             dgvRiwayat = new DataGridView();
             txtCari = new TextBox();
-            btnCari = new Button();
             lblInfo = new Label();
             lblTotal = new Label();
+            cmbTipe = new ComboBox();
+            cmbKategori = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvRiwayat).BeginInit();
             SuspendLayout();
             // 
@@ -43,25 +44,17 @@
             dgvRiwayat.Location = new Point(12, 64);
             dgvRiwayat.Name = "dgvRiwayat";
             dgvRiwayat.RowHeadersWidth = 51;
-            dgvRiwayat.Size = new Size(776, 302);
+            dgvRiwayat.Size = new Size(890, 302);
             dgvRiwayat.TabIndex = 0;
             // 
             // txtCari
             // 
-            txtCari.Location = new Point(12, 31);
+            txtCari.ForeColor = SystemColors.ControlText;
+            txtCari.Location = new Point(326, 31);
             txtCari.Name = "txtCari";
-            txtCari.Size = new Size(676, 27);
+            txtCari.Size = new Size(576, 27);
             txtCari.TabIndex = 1;
-            // 
-            // btnCari
-            // 
-            btnCari.Location = new Point(694, 29);
-            btnCari.Name = "btnCari";
-            btnCari.Size = new Size(94, 29);
-            btnCari.TabIndex = 2;
-            btnCari.Text = "Cari";
-            btnCari.UseVisualStyleBackColor = true;
-            btnCari.Click += btnCari_Click;
+            txtCari.TextChanged += txtCari_TextChanged;
             // 
             // lblInfo
             // 
@@ -83,14 +76,33 @@
             lblTotal.Text = "label1";
             lblTotal.Click += lblTotal_Click;
             // 
+            // cmbTipe
+            // 
+            cmbTipe.FormattingEnabled = true;
+            cmbTipe.Location = new Point(12, 30);
+            cmbTipe.Name = "cmbTipe";
+            cmbTipe.Size = new Size(151, 28);
+            cmbTipe.TabIndex = 5;
+            cmbTipe.Text = "Tipe";
+            // 
+            // cmbKategori
+            // 
+            cmbKategori.FormattingEnabled = true;
+            cmbKategori.Location = new Point(169, 31);
+            cmbKategori.Name = "cmbKategori";
+            cmbKategori.Size = new Size(151, 28);
+            cmbKategori.TabIndex = 6;
+            cmbKategori.Text = "Kategori";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 450);
+            Controls.Add(cmbKategori);
+            Controls.Add(cmbTipe);
             Controls.Add(lblTotal);
             Controls.Add(lblInfo);
-            Controls.Add(btnCari);
             Controls.Add(txtCari);
             Controls.Add(dgvRiwayat);
             Name = "MainForm";
@@ -105,8 +117,9 @@
 
         private DataGridView dgvRiwayat;
         private TextBox txtCari;
-        private Button btnCari;
         private Label lblInfo;
         private Label lblTotal;
+        private ComboBox cmbTipe;
+        private ComboBox cmbKategori;
     }
 }
