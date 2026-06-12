@@ -41,6 +41,11 @@ namespace DaftarRiwayat_Transaksi10
             // tampilan label sesuai format Config JSON
             string mataUang = _config != null ? _config.DefaultCurrency : "IDR";
             lblTotal.Text = $"Total Pengeluaran: {mataUang} {totalPengeluaran:N0}";
+
+            // styling tabel
+            dgvRiwayat.RowHeadersVisible = false;
+            dgvRiwayat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvRiwayat.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         private void btnCari_Click(object sender, EventArgs e)
