@@ -21,6 +21,15 @@ namespace MonTrack.WinForms
         private ExportApiService _exportService;
         private List<PengingatTagihan> _reminders;
 
+        private enum FilterType
+        {
+            All,
+            Pemasukan,
+            Pengeluaran
+        }
+
+        private FilterType _currentFilter = FilterType.All;
+
         // UI Controls
         private Panel headerPanel;
         private Label lblHeaderTitle;
@@ -239,11 +248,76 @@ namespace MonTrack.WinForms
             inputPanel.Controls.Add(btnRecord);
             inputPanel.Controls.Add(lblTxStatus);
 
-            // Right Column: ListView
-            lvTransactions = new ListView
+            // Right Column: Filter Buttons & ListView
+            Panel filterPanel = new Panel
             {
                 Location = new Point(310, 15),
-                Size = new Size(535, 480),
+                Size = new Size(535, 40),
+                BackColor = Color.FromArgb(26, 26, 46)
+            };
+
+            Button btnFilterAll = new Button
+            {
+                Text = "All Transactions",
+                Size = new Size(170, 32),
+                Location = new Point(0, 0),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(78, 49, 170),
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold)
+            };
+            btnFilterAll.FlatAppearance.BorderSize = 0;
+
+            Button btnFilterIncome = new Button
+            {
+                Text = "Income (Pemasukan)",
+                Size = new Size(170, 32),
+                Location = new Point(180, 0),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(34, 34, 59),
+                ForeColor = Color.FromArgb(189, 195, 199),
+                Font = new Font("Segoe UI", 9F, FontStyle.Regular)
+            };
+            btnFilterIncome.FlatAppearance.BorderSize = 0;
+
+            Button btnFilterExpense = new Button
+            {
+                Text = "Expense (Pengeluaran)",
+                Size = new Size(170, 32),
+                Location = new Point(360, 0),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(34, 34, 59),
+                ForeColor = Color.FromArgb(189, 195, 199),
+                Font = new Font("Segoe UI", 9F, FontStyle.Regular)
+            };
+            btnFilterExpense.FlatAppearance.BorderSize = 0;
+
+            btnFilterAll.Click += (s, e) => {
+                _currentFilter = FilterType.All;
+                HighlightActiveFilterButton(btnFilterAll, btnFilterIncome, btnFilterExpense);
+                RefreshData();
+            };
+
+            btnFilterIncome.Click += (s, e) => {
+                _currentFilter = FilterType.Pemasukan;
+                HighlightActiveFilterButton(btnFilterIncome, btnFilterAll, btnFilterExpense);
+                RefreshData();
+            };
+
+            btnFilterExpense.Click += (s, e) => {
+                _currentFilter = FilterType.Pengeluaran;
+                HighlightActiveFilterButton(btnFilterExpense, btnFilterAll, btnFilterIncome);
+                RefreshData();
+            };
+
+            filterPanel.Controls.Add(btnFilterAll);
+            filterPanel.Controls.Add(btnFilterIncome);
+            filterPanel.Controls.Add(btnFilterExpense);
+
+            lvTransactions = new ListView
+            {
+                Location = new Point(310, 65),
+                Size = new Size(535, 430),
                 View = View.Details,
                 FullRowSelect = true,
                 GridLines = true,
@@ -259,6 +333,7 @@ namespace MonTrack.WinForms
             lvTransactions.Columns.Add("Description", 110);
 
             tabTransactions.Controls.Add(inputPanel);
+            tabTransactions.Controls.Add(filterPanel);
             tabTransactions.Controls.Add(lvTransactions);
 
             // --- Tab 2: Bill Reminders Layout ---
@@ -387,7 +462,17 @@ namespace MonTrack.WinForms
 
             // Refresh ListView Transactions
             lvTransactions.Items.Clear();
-            foreach (var tx in _repo.GetAll())
+            var transactions = _repo.GetAll();
+            if (_currentFilter == FilterType.Pemasukan)
+            {
+                transactions = transactions.Where(t => t.Type == TransactionType.Pemasukan).ToList();
+            }
+            else if (_currentFilter == FilterType.Pengeluaran)
+            {
+                transactions = transactions.Where(t => t.Type == TransactionType.Pengeluaran).ToList();
+            }
+
+            foreach (var tx in transactions)
             {
                 var item = new ListViewItem(tx.Id.ToString());
                 item.SubItems.Add(tx.Date.ToString("yyyy-MM-dd HH:mm"));
@@ -591,6 +676,21 @@ namespace MonTrack.WinForms
                                    $"  Size: {info.Length / 1024.0:F2} KB\n" +
                                    $"  Records: {count}\n" +
                                    $"  Time: {ms} ms";
+        }
+
+        private void HighlightActiveFilterButton(Button active, Button inactive1, Button inactive2)
+        {
+            active.BackColor = Color.FromArgb(78, 49, 170);
+            active.ForeColor = Color.White;
+            active.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+
+            inactive1.BackColor = Color.FromArgb(34, 34, 59);
+            inactive1.ForeColor = Color.FromArgb(189, 195, 199);
+            inactive1.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+
+            inactive2.BackColor = Color.FromArgb(34, 34, 59);
+            inactive2.ForeColor = Color.FromArgb(189, 195, 199);
+            inactive2.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)

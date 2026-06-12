@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using PencatatanKeuangan.Models;
@@ -24,6 +24,16 @@ namespace PencatatanKeuangan.Services
         public TransactionManager(DataRepository<Transaction> repository)
         {
             _repository = repository;
+
+            // Re-index transaction IDs to ensure they are unique and strictly sequential
+            var existing = _repository.GetAll();
+            for (int i = 0; i < existing.Count; i++)
+            {
+                existing[i].Id = i + 1;
+            }
+            _nextId = existing.Count + 1;
+
+            _repository.Save();
         }
 
         public void RecordTransaction(double amount, string category, string description)

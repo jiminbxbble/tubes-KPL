@@ -30,7 +30,7 @@ namespace PencatatanKeuangan.Repositories
             return _dataList;
         }
 
-        private void Save()
+        public void Save()
         {
             var options = new JsonSerializerOptions { WriteIndented = true };
             string json = JsonSerializer.Serialize(_dataList, options);
