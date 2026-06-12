@@ -36,6 +36,8 @@ namespace MonTrack.WinForms
         private Label lblHeaderSubtitle;
         private Label lblBalance;
         private TabControl tabControl;
+        private Panel inputPanel;
+        private Panel filterPanel;
 
         // Tab 1: Transactions
         private TabPage tabTransactions;
@@ -128,8 +130,7 @@ namespace MonTrack.WinForms
                 Font = new Font("Segoe UI", 16, FontStyle.Bold),
                 Location = new Point(400, 25),
                 Size = new Size(450, 40),
-                TextAlign = ContentAlignment.MiddleRight,
-                Anchor = AnchorStyles.Top | AnchorStyles.Right
+                TextAlign = ContentAlignment.MiddleRight
             };
 
             headerPanel.Controls.Add(lblHeaderTitle);
@@ -154,12 +155,11 @@ namespace MonTrack.WinForms
 
             // --- Tab 1: Transactions Layout ---
             // Left Column: Entry Form
-            Panel inputPanel = new Panel
+            inputPanel = new Panel
             {
                 Location = new Point(15, 15),
                 Size = new Size(280, 480),
-                BackColor = Color.FromArgb(34, 34, 59),
-                Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left
+                BackColor = Color.FromArgb(34, 34, 59)
             };
 
             lblNewTxTitle = new Label
@@ -251,12 +251,11 @@ namespace MonTrack.WinForms
             inputPanel.Controls.Add(lblTxStatus);
 
             // Right Column: Filter Buttons & ListView
-            Panel filterPanel = new Panel
+            filterPanel = new Panel
             {
                 Location = new Point(310, 15),
                 Size = new Size(535, 40),
-                BackColor = Color.FromArgb(26, 26, 46),
-                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
+                BackColor = Color.FromArgb(26, 26, 46)
             };
 
             Button btnFilterAll = new Button
@@ -326,8 +325,7 @@ namespace MonTrack.WinForms
                 GridLines = true,
                 BackColor = Color.FromArgb(34, 34, 59),
                 ForeColor = Color.White,
-                BorderStyle = BorderStyle.None,
-                Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right
+                BorderStyle = BorderStyle.None
             };
             lvTransactions.Columns.Add("ID", 50);
             lvTransactions.Columns.Add("Date", 130);
@@ -368,8 +366,7 @@ namespace MonTrack.WinForms
                 GridLines = true,
                 BackColor = Color.FromArgb(34, 34, 59),
                 ForeColor = Color.White,
-                BorderStyle = BorderStyle.None,
-                Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right
+                BorderStyle = BorderStyle.None
             };
             lvReminders.Columns.Add("Bill Name", 180);
             lvReminders.Columns.Add("Category", 120);
@@ -386,8 +383,7 @@ namespace MonTrack.WinForms
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
                 Location = new Point(25, 440),
                 Size = new Size(200, 45),
-                FlatStyle = FlatStyle.Flat,
-                Anchor = AnchorStyles.Bottom | AnchorStyles.Left
+                FlatStyle = FlatStyle.Flat
             };
             btnMarkPaid.FlatAppearance.BorderSize = 0;
             btnMarkPaid.Click += BtnMarkPaid_Click;
@@ -397,8 +393,7 @@ namespace MonTrack.WinForms
                 ForeColor = Color.FromArgb(85, 239, 196),
                 Location = new Point(245, 440),
                 Size = new Size(590, 45),
-                TextAlign = ContentAlignment.MiddleLeft,
-                Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right
+                TextAlign = ContentAlignment.MiddleLeft
             };
 
             tabReminders.Controls.Add(lvReminders);
@@ -410,8 +405,7 @@ namespace MonTrack.WinForms
             {
                 Location = new Point(225, 75),
                 Size = new Size(410, 350),
-                BackColor = Color.FromArgb(34, 34, 59),
-                Anchor = AnchorStyles.None
+                BackColor = Color.FromArgb(34, 34, 59)
             };
 
             lblExportTitle = new Label
@@ -718,6 +712,23 @@ namespace MonTrack.WinForms
             inactive2.BackColor = Color.FromArgb(34, 34, 59);
             inactive2.ForeColor = Color.FromArgb(189, 195, 199);
             inactive2.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            // Set anchors after layout has initialized to runtime dimensions
+            inputPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            filterPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lvTransactions.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+
+            lvReminders.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnMarkPaid.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lblReminderStatus.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+
+            exportCard.Anchor = AnchorStyles.None;
+            lblBalance.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
