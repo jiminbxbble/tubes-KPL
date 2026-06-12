@@ -14,11 +14,8 @@ namespace PencatatanKeuangan.Services
         // Teknik: Table-driven construction untuk nentuin Pemasukan/Pengeluaran otomatis
         private readonly Dictionary<string, TransactionType> _categoryTable = new Dictionary<string, TransactionType>(StringComparer.OrdinalIgnoreCase)
         {
-            { "Uang Saku", TransactionType.Pemasukan },
-            { "Gaji", TransactionType.Pemasukan },
-            { "Makan", TransactionType.Pengeluaran },
-            { "Transport", TransactionType.Pengeluaran },
-            { "Dating", TransactionType.Pengeluaran }
+            { "Pemasukan", TransactionType.Pemasukan },
+            { "Pengeluaran", TransactionType.Pengeluaran }
         };
 
         public TransactionManager(DataRepository<Transaction> repository)

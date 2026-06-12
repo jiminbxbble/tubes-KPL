@@ -200,7 +200,7 @@ namespace MonTrack.WinForms
                 FlatStyle = FlatStyle.Flat,
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
-            cmbCategory.Items.AddRange(new object[] { "Uang Saku", "Gaji", "Makan", "Transport", "Dating", "Umum" });
+            cmbCategory.Items.AddRange(new object[] { "Pemasukan", "Pengeluaran" });
             cmbCategory.SelectedIndex = 0;
 
             lblDescription = new Label

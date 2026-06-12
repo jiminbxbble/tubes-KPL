@@ -26,7 +26,7 @@ namespace PencatatanKeuangan.Tests
                 var manager = new TransactionManager(repo);
 
                 // Act
-                manager.RecordTransaction(50000, "Uang Saku", "Dikasih ortu");
+                manager.RecordTransaction(50000, "Pemasukan", "Dikasih ortu");
 
                 // Assert
                 Assert.Equal(50000, manager.GetCurrentBalance());
