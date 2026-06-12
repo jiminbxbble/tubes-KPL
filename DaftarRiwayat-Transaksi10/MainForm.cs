@@ -14,7 +14,7 @@ namespace DaftarRiwayat_Transaksi10
 {
     public partial class MainForm : Form
     {
-        // Panggil class manager dan config
+        // panggil class manager dan config
         private RiwayatManager<Transaction> _manager;
         private AppConfig _config;
 
@@ -38,14 +38,22 @@ namespace DaftarRiwayat_Transaksi10
             // kalkulasi pengeluaran dengan LINQ dari data pada di tabel 
             decimal totalPengeluaran = (decimal)dataYangDitampilkan.Sum(t => t.Amount);
 
-            // tampilan label dengan format mengikuti Config JSON
+            // tampilan label sesuai format Config JSON
             string mataUang = _config != null ? _config.DefaultCurrency : "IDR";
             lblTotal.Text = $"Total Pengeluaran: {mataUang} {totalPengeluaran:N0}";
         }
 
         private void btnCari_Click(object sender, EventArgs e)
         {
+            string keyword = txtCari.Text.ToLower();
 
+            /// Panggil fitur pencarian
+            var hasil = _manager.FilterItems(t =>
+                t.Description.ToLower().Contains(keyword) ||
+                t.Category.ToLower().Contains(keyword)
+            );
+
+            RefreshTabel(hasil);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -78,8 +86,6 @@ namespace DaftarRiwayat_Transaksi10
 
             // Tampilkan data ke tabel
             RefreshTabel(_manager.FilterItems(t => true));
-
-
         }
 
         private void lblInfo_Click(object sender, EventArgs e)
