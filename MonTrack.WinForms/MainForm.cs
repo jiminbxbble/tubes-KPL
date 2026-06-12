@@ -616,7 +616,8 @@ namespace MonTrack.WinForms
             }).ToList();
 
             string format = cmbExportFormat.Text;
-            string exportFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "_Output", "ExportResults");
+            string projectRoot = @"d:\4. Thoriq_KULIAH\4. Matkul\Semester 4\LKPL\TUBES-Thoriq\tubes-KPL";
+            string exportFolder = Path.Combine(projectRoot, "_Output", "Reports");
             Directory.CreateDirectory(exportFolder);
 
             btnExport.Text = "Exporting data...";
