@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using MonTrack.Auth.Services;
 using MonTrack.Auth.States;
 using MonTrack.Auth.StateMachine;
@@ -15,6 +15,7 @@ namespace MonTrack.Auth.Tests
         [SetUp]
         public void Setup()
         {
+            UserDatabase.ResetToDefault();
             _authService = new AuthService();
         }
 

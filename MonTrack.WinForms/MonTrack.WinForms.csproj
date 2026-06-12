@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>MonTrack.WinForms.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MonTrack.Auth\MonTrack.Auth.csproj" />
+    <ProjectReference Include="..\PencatatanKeuangan\PencatatanKeuangan.csproj" />
+    <ProjectReference Include="..\MonTrack\BRACH.csproj" />
+    <ProjectReference Include="..\MonTrack.PengingatTagihan\MonTrack_PengingatTagihan.csproj" />
+  </ItemGroup>
+
+</Project>

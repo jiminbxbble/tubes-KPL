@@ -35,6 +35,15 @@ namespace MonTrack.Auth.Models
 
         public static User? FindByEmail(string email) => _users.FirstOrDefault(u => u.Email == email);
 
+        public static void ResetToDefault()
+        {
+            _users.Clear();
+            _users.Add(new User(1, "rosa@email.com", BCrypt.Net.BCrypt.HashPassword("password123"), true));
+            _users.Add(new User(2, "raissha@email.com", BCrypt.Net.BCrypt.HashPassword("mypassword"), false));
+            _users.Add(new User(3, "putri@email.com", BCrypt.Net.BCrypt.HashPassword("putri1234"), true));
+            Save();
+        }
+
         public static void AddUser(User user)
         {
             _users.Add(user);
