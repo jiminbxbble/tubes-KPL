@@ -126,9 +126,10 @@ namespace MonTrack.WinForms
                 Text = "Current Balance: Rp 0",
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 16, FontStyle.Bold),
-                Location = new Point(500, 25),
-                Size = new Size(340, 35),
-                TextAlign = ContentAlignment.MiddleRight
+                Location = new Point(400, 25),
+                Size = new Size(450, 40),
+                TextAlign = ContentAlignment.MiddleRight,
+                Anchor = AnchorStyles.Top | AnchorStyles.Right
             };
 
             headerPanel.Controls.Add(lblHeaderTitle);
@@ -157,7 +158,8 @@ namespace MonTrack.WinForms
             {
                 Location = new Point(15, 15),
                 Size = new Size(280, 480),
-                BackColor = Color.FromArgb(34, 34, 59)
+                BackColor = Color.FromArgb(34, 34, 59),
+                Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left
             };
 
             lblNewTxTitle = new Label
@@ -253,7 +255,8 @@ namespace MonTrack.WinForms
             {
                 Location = new Point(310, 15),
                 Size = new Size(535, 40),
-                BackColor = Color.FromArgb(26, 26, 46)
+                BackColor = Color.FromArgb(26, 26, 46),
+                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };
 
             Button btnFilterAll = new Button
@@ -323,14 +326,33 @@ namespace MonTrack.WinForms
                 GridLines = true,
                 BackColor = Color.FromArgb(34, 34, 59),
                 ForeColor = Color.White,
-                BorderStyle = BorderStyle.None
+                BorderStyle = BorderStyle.None,
+                Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right
             };
-            lvTransactions.Columns.Add("ID", 40);
-            lvTransactions.Columns.Add("Date", 110);
-            lvTransactions.Columns.Add("Type", 90);
-            lvTransactions.Columns.Add("Amount", 90);
-            lvTransactions.Columns.Add("Category", 90);
-            lvTransactions.Columns.Add("Description", 110);
+            lvTransactions.Columns.Add("ID", 50);
+            lvTransactions.Columns.Add("Date", 130);
+            lvTransactions.Columns.Add("Type", 100);
+            lvTransactions.Columns.Add("Amount", 110);
+            lvTransactions.Columns.Add("Category", 100);
+            lvTransactions.Columns.Add("Description", 120);
+
+            // Dynamically resize Description column to fill remaining space
+            lvTransactions.Resize += (s, e) => {
+                int totalWidth = 0;
+                for (int i = 0; i < lvTransactions.Columns.Count - 1; i++)
+                {
+                    totalWidth += lvTransactions.Columns[i].Width;
+                }
+                int remaining = lvTransactions.Width - totalWidth - 4;
+                if (remaining > 120)
+                {
+                    lvTransactions.Columns[5].Width = remaining;
+                }
+                else
+                {
+                    lvTransactions.Columns[5].Width = 120;
+                }
+            };
 
             tabTransactions.Controls.Add(inputPanel);
             tabTransactions.Controls.Add(filterPanel);
@@ -346,7 +368,8 @@ namespace MonTrack.WinForms
                 GridLines = true,
                 BackColor = Color.FromArgb(34, 34, 59),
                 ForeColor = Color.White,
-                BorderStyle = BorderStyle.None
+                BorderStyle = BorderStyle.None,
+                Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right
             };
             lvReminders.Columns.Add("Bill Name", 180);
             lvReminders.Columns.Add("Category", 120);
@@ -363,7 +386,8 @@ namespace MonTrack.WinForms
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
                 Location = new Point(25, 440),
                 Size = new Size(200, 45),
-                FlatStyle = FlatStyle.Flat
+                FlatStyle = FlatStyle.Flat,
+                Anchor = AnchorStyles.Bottom | AnchorStyles.Left
             };
             btnMarkPaid.FlatAppearance.BorderSize = 0;
             btnMarkPaid.Click += BtnMarkPaid_Click;
@@ -373,7 +397,8 @@ namespace MonTrack.WinForms
                 ForeColor = Color.FromArgb(85, 239, 196),
                 Location = new Point(245, 440),
                 Size = new Size(590, 45),
-                TextAlign = ContentAlignment.MiddleLeft
+                TextAlign = ContentAlignment.MiddleLeft,
+                Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right
             };
 
             tabReminders.Controls.Add(lvReminders);
@@ -385,7 +410,8 @@ namespace MonTrack.WinForms
             {
                 Location = new Point(225, 75),
                 Size = new Size(410, 350),
-                BackColor = Color.FromArgb(34, 34, 59)
+                BackColor = Color.FromArgb(34, 34, 59),
+                Anchor = AnchorStyles.None
             };
 
             lblExportTitle = new Label
