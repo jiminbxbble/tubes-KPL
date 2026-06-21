@@ -34,14 +34,14 @@
             lblNominal = new Label();
             cbKategori = new ComboBox();
             gbInput = new GroupBox();
-            dtpDIbuat = new DateTimePicker();
+            btnBatal = new Button();
+            btnTambah = new Button();
+            lblJatuhTempo = new Label();
+            dtpJatuhTempo = new DateTimePicker();
+            dtpDibuat = new DateTimePicker();
             txtNominal = new TextBox();
             txtNama = new TextBox();
             txtCari = new TextBox();
-            dateTimePicker2 = new DateTimePicker();
-            lblJatuhTempo = new Label();
-            btnTambah = new Button();
-            btnBatal = new Button();
             btnHapus = new Button();
             lblDaftarTagihan = new Label();
             lblCari = new Label();
@@ -102,9 +102,9 @@
             gbInput.Controls.Add(btnBatal);
             gbInput.Controls.Add(btnTambah);
             gbInput.Controls.Add(lblJatuhTempo);
-            gbInput.Controls.Add(dateTimePicker2);
+            gbInput.Controls.Add(dtpJatuhTempo);
             gbInput.Controls.Add(lblNama);
-            gbInput.Controls.Add(dtpDIbuat);
+            gbInput.Controls.Add(dtpDibuat);
             gbInput.Controls.Add(txtNominal);
             gbInput.Controls.Add(lblDibuat);
             gbInput.Controls.Add(lblNominal);
@@ -120,14 +120,59 @@
             gbInput.TabStop = false;
             gbInput.Text = "Kelola Tagihan";
             // 
-            // dtpDIbuat
+            // btnBatal
             // 
-            dtpDIbuat.Format = DateTimePickerFormat.Short;
-            dtpDIbuat.Location = new Point(38, 308);
-            dtpDIbuat.Name = "dtpDIbuat";
-            dtpDIbuat.Size = new Size(219, 27);
-            dtpDIbuat.TabIndex = 9;
-            dtpDIbuat.ValueChanged += dtpDibuat_ValueChanged;
+            btnBatal.BackColor = Color.Crimson;
+            btnBatal.FlatStyle = FlatStyle.Flat;
+            btnBatal.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBatal.ForeColor = Color.White;
+            btnBatal.Location = new Point(99, 478);
+            btnBatal.Name = "btnBatal";
+            btnBatal.Size = new Size(94, 29);
+            btnBatal.TabIndex = 9;
+            btnBatal.Text = "Batal";
+            btnBatal.UseVisualStyleBackColor = false;
+            btnBatal.Click += btnBatal_Click;
+            // 
+            // btnTambah
+            // 
+            btnTambah.BackColor = Color.CornflowerBlue;
+            btnTambah.FlatStyle = FlatStyle.Flat;
+            btnTambah.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTambah.ForeColor = Color.White;
+            btnTambah.Location = new Point(59, 436);
+            btnTambah.Name = "btnTambah";
+            btnTambah.Size = new Size(177, 36);
+            btnTambah.TabIndex = 9;
+            btnTambah.Text = "+ Tambah Tagihan";
+            btnTambah.UseVisualStyleBackColor = false;
+            btnTambah.Click += btnTambah_Click;
+            // 
+            // lblJatuhTempo
+            // 
+            lblJatuhTempo.AutoSize = true;
+            lblJatuhTempo.Location = new Point(38, 361);
+            lblJatuhTempo.Name = "lblJatuhTempo";
+            lblJatuhTempo.Size = new Size(152, 20);
+            lblJatuhTempo.TabIndex = 9;
+            lblJatuhTempo.Text = "Tanggal Jatuh Tempo:";
+            // 
+            // dtpJatuhTempo
+            // 
+            dtpJatuhTempo.Format = DateTimePickerFormat.Short;
+            dtpJatuhTempo.Location = new Point(37, 384);
+            dtpJatuhTempo.Name = "dtpJatuhTempo";
+            dtpJatuhTempo.Size = new Size(220, 27);
+            dtpJatuhTempo.TabIndex = 10;
+            // 
+            // dtpDibuat
+            // 
+            dtpDibuat.Format = DateTimePickerFormat.Short;
+            dtpDibuat.Location = new Point(38, 308);
+            dtpDibuat.Name = "dtpDibuat";
+            dtpDibuat.Size = new Size(219, 27);
+            dtpDibuat.TabIndex = 9;
+            dtpDibuat.ValueChanged += dtpDibuat_ValueChanged;
             // 
             // txtNominal
             // 
@@ -153,51 +198,6 @@
             txtCari.Size = new Size(325, 27);
             txtCari.TabIndex = 8;
             txtCari.TextChanged += txtCari_TextChanged;
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(37, 384);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(220, 27);
-            dateTimePicker2.TabIndex = 10;
-            // 
-            // lblJatuhTempo
-            // 
-            lblJatuhTempo.AutoSize = true;
-            lblJatuhTempo.Location = new Point(38, 361);
-            lblJatuhTempo.Name = "lblJatuhTempo";
-            lblJatuhTempo.Size = new Size(152, 20);
-            lblJatuhTempo.TabIndex = 9;
-            lblJatuhTempo.Text = "Tanggal Jatuh Tempo:";
-            // 
-            // btnTambah
-            // 
-            btnTambah.BackColor = Color.CornflowerBlue;
-            btnTambah.FlatStyle = FlatStyle.Flat;
-            btnTambah.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTambah.ForeColor = Color.White;
-            btnTambah.Location = new Point(59, 436);
-            btnTambah.Name = "btnTambah";
-            btnTambah.Size = new Size(177, 36);
-            btnTambah.TabIndex = 9;
-            btnTambah.Text = "+ Tambah Tagihan";
-            btnTambah.UseVisualStyleBackColor = false;
-            btnTambah.Click += btnTambah_Click;
-            // 
-            // btnBatal
-            // 
-            btnBatal.BackColor = Color.Crimson;
-            btnBatal.FlatStyle = FlatStyle.Flat;
-            btnBatal.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnBatal.ForeColor = Color.White;
-            btnBatal.Location = new Point(99, 478);
-            btnBatal.Name = "btnBatal";
-            btnBatal.Size = new Size(94, 29);
-            btnBatal.TabIndex = 9;
-            btnBatal.Text = "Batal";
-            btnBatal.UseVisualStyleBackColor = false;
-            btnBatal.Click += btnBatal_Click;
             // 
             // btnHapus
             // 
@@ -310,8 +310,8 @@
         private TextBox txtNama;
         private TextBox txtNominal;
         private TextBox txtCari;
-        private DateTimePicker dtpDIbuat;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dtpDibuat;
+        private DateTimePicker dtpJatuhTempo;
         private Label lblJatuhTempo;
         private Button btnTambah;
         private Button btnBatal;
