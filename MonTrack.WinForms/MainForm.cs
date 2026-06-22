@@ -710,7 +710,7 @@ namespace MonTrack.WinForms
             lvReminders = new ListView
             {
                 Location = new Point(310, 110),
-                Size = new Size(535, 385),
+                Size = new Size(535, 330),
                 View = View.Details,
                 FullRowSelect = true,
                 GridLines = true,
@@ -733,7 +733,7 @@ namespace MonTrack.WinForms
                 BackColor = Color.FromArgb(46, 204, 113),
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                Location = new Point(310, 510),
+                Location = new Point(310, 455),
                 Size = new Size(200, 45),
                 FlatStyle = FlatStyle.Flat
             };
@@ -746,7 +746,7 @@ namespace MonTrack.WinForms
                 BackColor = Color.FromArgb(231, 76, 60),
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                Location = new Point(705, 510),
+                Location = new Point(705, 455),
                 Size = new Size(140, 45),
                 FlatStyle = FlatStyle.Flat
             };
@@ -1179,10 +1179,22 @@ namespace MonTrack.WinForms
                     return;
                 }
 
-                selectedReminder.TandaiLunas();
-                lblReminderStatus.ForeColor = Color.FromArgb(85, 239, 196);
-                lblReminderStatus.Text = $"[SUCCESS] Tagihan '{selectedReminder.Nama}' ditandai LUNAS.";
-                RefreshData();
+                try
+                {
+                    // Rekam transaksi pengeluaran keuangan terlebih dahulu untuk tagihan ini
+                    _financeManager.RecordTransaction(selectedReminder.Nominal, "Tagihan", $"Bayar Tagihan: {selectedReminder.Nama}", DateTime.Now);
+                    
+                    // Ubah status tagihan menjadi lunas
+                    selectedReminder.TandaiLunas();
+                    lblReminderStatus.ForeColor = Color.FromArgb(85, 239, 196);
+                    lblReminderStatus.Text = $"[SUCCESS] Tagihan '{selectedReminder.Nama}' ditandai LUNAS dan dicatat ke keuangan.";
+                    RefreshData();
+                }
+                catch (Exception ex)
+                {
+                    lblReminderStatus.ForeColor = Color.FromArgb(255, 118, 117);
+                    lblReminderStatus.Text = $"Gagal membayar: {ex.Message}";
+                }
             }
         }
 
@@ -1331,9 +1343,14 @@ namespace MonTrack.WinForms
             filterPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lvTransactions.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 
+            // Tab 2 Reminders Layout Anchors
+            reminderInputPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             lvReminders.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnMarkPaid.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            lblReminderStatus.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnDeleteReminder.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            txtSearchReminder.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnSearchReminder.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblReminderStatus.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 
             exportCard.Anchor = AnchorStyles.None;
             lblBalance.Anchor = AnchorStyles.Top | AnchorStyles.Right;
