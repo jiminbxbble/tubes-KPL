@@ -177,8 +177,8 @@ namespace MonTrack.WinForms
                 Text = "Current Balance: Rp 0",
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 16, FontStyle.Bold),
-                Location = new Point(400, 25),
-                Size = new Size(450, 40),
+                Location = new Point(200, 25),
+                Size = new Size(650, 40),
                 TextAlign = ContentAlignment.MiddleRight
             };
 
