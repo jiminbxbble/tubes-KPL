@@ -62,6 +62,7 @@ namespace MonTrack.WinForms
         private Label lblTxStatus;
         private Label lblSearch;
         private EntryTextBox txtSearch;
+        private ComboBox cmbFilterCategory;
 
         // Tab 2: Bill Reminders
         private TabPage tabReminders;
@@ -433,18 +434,21 @@ namespace MonTrack.WinForms
             btnFilterAll.Click += (s, e) => {
                 _currentFilter = FilterType.All;
                 HighlightActiveFilterButton(btnFilterAll, btnFilterIncome, btnFilterExpense);
+                UpdateCategoryFilterDropdown(); 
                 RefreshData();
             };
 
             btnFilterIncome.Click += (s, e) => {
                 _currentFilter = FilterType.Pemasukan;
                 HighlightActiveFilterButton(btnFilterIncome, btnFilterAll, btnFilterExpense);
+                UpdateCategoryFilterDropdown(); 
                 RefreshData();
             };
 
             btnFilterExpense.Click += (s, e) => {
                 _currentFilter = FilterType.Pengeluaran;
                 HighlightActiveFilterButton(btnFilterExpense, btnFilterAll, btnFilterIncome);
+                UpdateCategoryFilterDropdown(); 
                 RefreshData();
             };
 
@@ -452,20 +456,37 @@ namespace MonTrack.WinForms
             filterPanel.Controls.Add(btnFilterIncome);
             filterPanel.Controls.Add(btnFilterExpense);
 
+            
+            // Category Filter Dropdown Setup
+            cmbFilterCategory = new ComboBox
+            {
+                Location = new Point(310, 65), 
+                Size = new Size(150, 28),
+                BackColor = Color.FromArgb(22, 22, 37),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                Font = new Font("Segoe UI", 10)
+            };
+            UpdateCategoryFilterDropdown(); // Inisialisasi awal list kategori
+            cmbFilterCategory.SelectedIndexChanged += (s, e) => RefreshData();
+
+
             // Search Bar Setup
             lblSearch = new Label
             {
                 Text = "Search:",
                 ForeColor = Color.FromArgb(189, 195, 199),
                 Font = new Font("Segoe UI", 10),
-                Location = new Point(310, 68),
-                Size = new Size(60, 25)
+                Location = new Point(470, 68),
+                Size = new Size(80, 25),
+                AutoSize = true
             };
 
             txtSearch = new EntryTextBox
             {
-                Location = new Point(380, 65),
-                Size = new Size(465, 28)
+                Location = new Point(540, 65), 
+                Size = new Size(315, 28)       
             };
             txtSearch.TextChanged += (s, e) => RefreshData();
 
@@ -507,6 +528,7 @@ namespace MonTrack.WinForms
 
             tabTransactions.Controls.Add(inputPanel);
             tabTransactions.Controls.Add(filterPanel);
+            tabTransactions.Controls.Add(cmbFilterCategory);
             tabTransactions.Controls.Add(lblSearch);
             tabTransactions.Controls.Add(txtSearch);
             tabTransactions.Controls.Add(lvTransactions);
@@ -848,6 +870,12 @@ namespace MonTrack.WinForms
                 transactions = transactions.Where(t => t.Type == TransactionType.Pengeluaran).ToList();
             }
 
+            if (cmbFilterCategory != null && cmbFilterCategory.SelectedIndex > 0) // Index 0 adalah "All Categories"
+            {
+                string selectedCat = cmbFilterCategory.SelectedItem.ToString();
+                transactions = transactions.Where(t => t.Category == selectedCat).ToList();
+            }
+
             if (txtSearch != null && !string.IsNullOrWhiteSpace(txtSearch.Text))
             {
                 string searchKeyword = txtSearch.Text.Trim();
@@ -922,6 +950,40 @@ namespace MonTrack.WinForms
                 item.Tag = i;
 
                 lvReminders.Items.Add(item);
+            }
+        }
+
+        private void UpdateCategoryFilterDropdown()
+        {
+            if (cmbFilterCategory == null) return;
+
+            // Simpan pilihan saat ini agar tidak tereset jika kategorinya masih valid
+            string currentSelection = cmbFilterCategory.SelectedItem?.ToString();
+
+            cmbFilterCategory.Items.Clear();
+            cmbFilterCategory.Items.Add("All Categories"); // Default opsi semua kategori
+
+            if (_currentFilter == FilterType.All || _currentFilter == FilterType.Pemasukan)
+            {
+                cmbFilterCategory.Items.AddRange(new object[] { "Gaji", "Uang Saku" });
+            }
+
+            if (_currentFilter == FilterType.All || _currentFilter == FilterType.Pengeluaran)
+            {
+                cmbFilterCategory.Items.AddRange(new object[] {
+                    "Makanan dan Minuman", "Tagihan", "Cicilan", "Belanja",
+                    "Transportasi", "Hiburan", "Pendidikan dan Kesehatan"
+                });
+            }
+
+            // Kembalikan ke pilihan sebelumnya jika ada, jika tidak default ke "All Categories"
+            if (currentSelection != null && cmbFilterCategory.Items.Contains(currentSelection))
+            {
+                cmbFilterCategory.SelectedItem = currentSelection;
+            }
+            else
+            {
+                cmbFilterCategory.SelectedIndex = 0;
             }
         }
 
