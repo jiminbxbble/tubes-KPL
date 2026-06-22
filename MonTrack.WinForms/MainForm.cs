@@ -177,8 +177,8 @@ namespace MonTrack.WinForms
                 Text = "Current Balance: Rp 0",
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 16, FontStyle.Bold),
-                Location = new Point(350, 25),
-                Size = new Size(380, 40),
+                Location = new Point(400, 25),
+                Size = new Size(450, 40),
                 TextAlign = ContentAlignment.MiddleRight
             };
 
@@ -188,8 +188,8 @@ namespace MonTrack.WinForms
                 ForeColor = Color.White,
                 BackColor = Color.FromArgb(225, 112, 85),
                 Font = new Font("Segoe UI", 9F, FontStyle.Bold),
-                Location = new Point(745, 28),
-                Size = new Size(95, 32),
+                Location = new Point(15, 460),
+                Size = new Size(250, 40),
                 FlatStyle = FlatStyle.Flat,
                 Cursor = Cursors.Hand
             };
@@ -199,7 +199,6 @@ namespace MonTrack.WinForms
             headerPanel.Controls.Add(lblHeaderTitle);
             headerPanel.Controls.Add(lblHeaderSubtitle);
             headerPanel.Controls.Add(lblBalance);
-            headerPanel.Controls.Add(btnLogout);
 
             // Tab Control Setup
             tabControl = new TabControl
@@ -347,7 +346,7 @@ namespace MonTrack.WinForms
             {
                 ForeColor = Color.FromArgb(255, 118, 117),
                 Location = new Point(15, 420),
-                Size = new Size(250, 80),
+                Size = new Size(250, 35),
                 TextAlign = ContentAlignment.TopLeft
             };
 
@@ -364,6 +363,7 @@ namespace MonTrack.WinForms
             inputPanel.Controls.Add(txtDescription);
             inputPanel.Controls.Add(btnRecord);
             inputPanel.Controls.Add(lblTxStatus);
+            inputPanel.Controls.Add(btnLogout);
 
             // Right Column: Filter Buttons & ListView
             filterPanel = new Panel
@@ -893,7 +893,6 @@ namespace MonTrack.WinForms
 
             exportCard.Anchor = AnchorStyles.None;
             lblBalance.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnLogout.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         }
 
         private void CmbType_SelectedIndexChanged(object sender, EventArgs e)
@@ -936,20 +935,24 @@ namespace MonTrack.WinForms
             }
 
             DateTime selectedDate = dtpDate != null ? dtpDate.Value.Date : DateTime.Today;
+            int year = selectedDate.Year;
+            int month = selectedDate.Month;
+            int daysInMonth = DateTime.DaysInMonth(year, month);
 
             // Title
             using (var titleFont = new Font("Segoe UI", 14, FontStyle.Bold))
             using (var titleBrush = new SolidBrush(Color.White))
             {
-                g.DrawString($"Daily Analytics: {selectedDate:dd MMMM yyyy}", titleFont, titleBrush, new PointF(25, 20));
+                g.DrawString($"Daily Transactions Trend: {selectedDate:MMMM yyyy}", titleFont, titleBrush, new PointF(25, 20));
             }
 
-            var transactions = _repo.GetAll()
-                .Where(t => t.Date.Date == selectedDate)
+            // Retrieve all transactions for the selected month
+            var monthTransactions = _repo.GetAll()
+                .Where(t => t.Date.Year == year && t.Date.Month == month)
                 .ToList();
 
-            double totalIncome = transactions.Where(t => t.Type == TransactionType.Pemasukan).Sum(t => t.Amount);
-            double totalExpense = transactions.Where(t => t.Type == TransactionType.Pengeluaran).Sum(t => t.Amount);
+            double totalIncome = monthTransactions.Where(t => t.Type == TransactionType.Pemasukan).Sum(t => t.Amount);
+            double totalExpense = monthTransactions.Where(t => t.Type == TransactionType.Pengeluaran).Sum(t => t.Amount);
             double netDiff = totalIncome - totalExpense;
 
             // Draw Summary Cards
@@ -959,83 +962,116 @@ namespace MonTrack.WinForms
 
             if (cardW > 10)
             {
-                // Card 1: Total Income
-                DrawSummaryCard(g, 25, cardY, cardW, cardH, "Total Income", totalIncome, Color.FromArgb(85, 239, 196));
-                // Card 2: Total Expense
-                DrawSummaryCard(g, 25 + cardW + 10, cardY, cardW, cardH, "Total Expense", totalExpense, Color.FromArgb(255, 118, 117));
+                // Card 1: Monthly Income
+                DrawSummaryCard(g, 25, cardY, cardW, cardH, "Monthly Income", totalIncome, Color.FromArgb(85, 239, 196));
+                // Card 2: Monthly Expense
+                DrawSummaryCard(g, 25 + cardW + 10, cardY, cardW, cardH, "Monthly Expense", totalExpense, Color.FromArgb(255, 118, 117));
                 // Card 3: Net Balance
                 DrawSummaryCard(g, 25 + (cardW + 10) * 2, cardY, cardW, cardH, "Net Balance", netDiff, netDiff >= 0 ? Color.FromArgb(85, 239, 196) : Color.FromArgb(255, 118, 117));
             }
 
-            var dailyData = transactions
-                .GroupBy(t => new { t.Category, t.Type })
-                .Select(gGroup => new
-                {
-                    Category = gGroup.Key.Category,
-                    Type = gGroup.Key.Type,
-                    Amount = gGroup.Sum(t => t.Amount)
-                })
-                .OrderByDescending(x => x.Amount)
-                .ToList();
+            // Chart area bounds
+            int paddingLeft = 70;
+            int paddingRight = 30;
+            int paddingTop = 150;
+            int paddingBottom = 50;
 
-            if (dailyData.Count == 0)
+            int chartWidth = width - paddingLeft - paddingRight;
+            int chartHeight = height - paddingTop - paddingBottom;
+
+            if (chartWidth <= 0 || chartHeight <= 0) return;
+
+            // Group transactions by day of the month
+            var dailyTotals = Enumerable.Range(1, daysInMonth).Select(d => new
             {
-                using (var infoFont = new Font("Segoe UI", 12, FontStyle.Italic))
-                using (var infoBrush = new SolidBrush(Color.FromArgb(189, 195, 199)))
-                {
-                    string msg = "No transactions recorded on this date.";
-                    SizeF size = g.MeasureString(msg, infoFont);
-                    g.DrawString(msg, infoFont, infoBrush, (width - size.Width) / 2, cardY + cardH + 80);
-                }
-                return;
+                Day = d,
+                Income = monthTransactions.Where(t => t.Date.Day == d && t.Type == TransactionType.Pemasukan).Sum(t => t.Amount),
+                Expense = monthTransactions.Where(t => t.Date.Day == d && t.Type == TransactionType.Pengeluaran).Sum(t => t.Amount)
+            }).ToList();
+
+            double maxVal = dailyTotals.Max(d => Math.Max(d.Income, d.Expense));
+            if (maxVal == 0) maxVal = 100000; // default minimum scale
+
+            // Draw Y-axis line & Grid lines
+            using (var gridPen = new Pen(Color.FromArgb(40, 255, 255, 255), 1))
+            using (var labelFont = new Font("Segoe UI", 8))
+            using (var labelBrush = new SolidBrush(Color.FromArgb(189, 195, 199)))
+            {
+                gridPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+                
+                // Draw bottom line (Rp 0)
+                float zeroY = paddingTop + chartHeight;
+                g.DrawLine(new Pen(Color.FromArgb(100, 255, 255, 255), 1), paddingLeft, zeroY, width - paddingRight, zeroY);
+                g.DrawString("Rp 0", labelFont, labelBrush, 10, zeroY - 6);
+
+                // Draw Max line
+                g.DrawLine(gridPen, paddingLeft, paddingTop, width - paddingRight, paddingTop);
+                g.DrawString(FormatAmount(maxVal), labelFont, labelBrush, 10, paddingTop - 6);
+
+                // Draw Half-Max line
+                float midY = paddingTop + (chartHeight / 2f);
+                g.DrawLine(gridPen, paddingLeft, midY, width - paddingRight, midY);
+                g.DrawString(FormatAmount(maxVal / 2f), labelFont, labelBrush, 10, midY - 6);
             }
 
-            // Draw Horizontal Bars for category breakdown
-            int startY = cardY + cardH + 30;
-            int barHeight = 25;
-            int barSpacing = 40;
-            int maxBarWidth = width - 350; // space left for text labels
-            double maxAmount = dailyData.Max(x => x.Amount);
-            if (maxAmount == 0) maxAmount = 1;
+            // Draw Daily Bars
+            float spacing = chartWidth / (float)daysInMonth;
+            float groupWidth = spacing * 0.8f;
+            float barW = groupWidth / 2f - 1f;
+            barW = Math.Max(2f, barW);
 
-            using (var categoryFont = new Font("Segoe UI", 9.5F, FontStyle.Bold))
-            using (var amountFont = new Font("Segoe UI", 9F, FontStyle.Regular))
-            using (var textBrush = new SolidBrush(Color.White))
-            using (var subBrush = new SolidBrush(Color.FromArgb(189, 195, 199)))
-            using (var incomeBrush = new System.Drawing.Drawing2D.LinearGradientBrush(new Rectangle(0, 0, 100, 100), Color.FromArgb(85, 239, 196), Color.FromArgb(46, 204, 113), 0F))
-            using (var expenseBrush = new System.Drawing.Drawing2D.LinearGradientBrush(new Rectangle(0, 0, 100, 100), Color.FromArgb(255, 118, 117), Color.FromArgb(231, 76, 60), 0F))
+            using (var incomeBrush = new System.Drawing.Drawing2D.LinearGradientBrush(new Rectangle(0, 0, 100, 100), Color.FromArgb(85, 239, 196), Color.FromArgb(46, 204, 113), 90F))
+            using (var expenseBrush = new System.Drawing.Drawing2D.LinearGradientBrush(new Rectangle(0, 0, 100, 100), Color.FromArgb(255, 118, 117), Color.FromArgb(231, 76, 60), 90F))
+            using (var labelFont = new Font("Segoe UI", 7.5F))
+            using (var labelBrush = new SolidBrush(Color.FromArgb(189, 195, 199)))
+            using (var highlightPen = new Pen(Color.White, 1.5f))
             {
-                for (int i = 0; i < dailyData.Count; i++)
+                for (int i = 0; i < daysInMonth; i++)
                 {
-                    var item = dailyData[i];
-                    int currentY = startY + (i * barSpacing);
+                    var data = dailyTotals[i];
+                    float centerX = paddingLeft + (i * spacing) + (spacing / 2f);
+                    float groupLeft = centerX - (groupWidth / 2f);
 
-                    if (currentY + barHeight > height - 20)
-                        break; // Prevent overflow off the screen
+                    float incomeH = (float)((data.Income / maxVal) * chartHeight);
+                    float expenseH = (float)((data.Expense / maxVal) * chartHeight);
 
-                    // Draw Category Label
-                    g.DrawString(item.Category, categoryFont, textBrush, 25, currentY + 3);
+                    float zeroY = paddingTop + chartHeight;
 
-                    // Draw type indicator (Pemasukan / Pengeluaran)
-                    string typeStr = item.Type == TransactionType.Pemasukan ? "Income" : "Expense";
-                    g.DrawString($"({typeStr})", amountFont, subBrush, 160, currentY + 4);
+                    // Draw Income Bar (Left side of group)
+                    if (incomeH > 0)
+                    {
+                        float x = groupLeft;
+                        float y = zeroY - incomeH;
+                        incomeBrush.ResetTransform();
+                        incomeBrush.TranslateTransform(x, y);
+                        incomeBrush.ScaleTransform(barW / 100f, incomeH / 100f);
+                        g.FillRectangle(incomeBrush, x, y, barW, incomeH);
+                    }
 
-                    // Calculate bar width
-                    float barW = (float)((item.Amount / maxAmount) * maxBarWidth);
-                    barW = Math.Max(15f, barW);
+                    // Draw Expense Bar (Right side of group)
+                    if (expenseH > 0)
+                    {
+                        float x = groupLeft + barW + 1;
+                        float y = zeroY - expenseH;
+                        expenseBrush.ResetTransform();
+                        expenseBrush.TranslateTransform(x, y);
+                        expenseBrush.ScaleTransform(barW / 100f, expenseH / 100f);
+                        g.FillRectangle(expenseBrush, x, y, barW, expenseH);
+                    }
 
-                    // Select brush
-                    var brush = item.Type == TransactionType.Pemasukan ? incomeBrush : expenseBrush;
-                    brush.ResetTransform();
-                    brush.TranslateTransform(250, currentY);
-                    brush.ScaleTransform(barW / 100f, barHeight / 100f);
+                    // Highlight the day currently selected in Date Picker
+                    if (data.Day == selectedDate.Day)
+                    {
+                        g.DrawRectangle(highlightPen, groupLeft - 1, paddingTop - 5, groupWidth + 2, chartHeight + 10);
+                    }
 
-                    // Draw Bar
-                    g.FillRectangle(brush, 250, currentY, barW, barHeight);
-
-                    // Draw value next to the bar
-                    string amtStr = $"Rp {item.Amount:N0}";
-                    g.DrawString(amtStr, categoryFont, textBrush, 250 + barW + 10, currentY + 3);
+                    // Draw Date Label below X Axis
+                    if (data.Day % 2 != 0 || daysInMonth <= 15 || data.Day == selectedDate.Day) // prevent crowding of labels
+                    {
+                        string dayStr = data.Day.ToString();
+                        SizeF labelSize = g.MeasureString(dayStr, labelFont);
+                        g.DrawString(dayStr, labelFont, labelBrush, centerX - (labelSize.Width / 2f), zeroY + 8);
+                    }
                 }
             }
         }
