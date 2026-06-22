@@ -1,9 +1,9 @@
 # 💰 MONTRACK: APLIKASI MANAJEMEN KEUANGAN
 
-[![Framework/Tech](https://img.shields.io/badge/Tech_Stack-[Ganti_Tech_Stack]-blue.svg)]()
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Framework/Tech](https://img.shields.io/badge/Tech_Stack-.NET-blue.svg)]()
+[![License: MIT](https://img.shields.io/badge/License-TelkomUniversity-red.svg)](https://opensource.org/licenses/Telkom-University)
 
-Aplikasi manajemen keuangan personal yang dirancang untuk membantu pengguna mencatat pemasukan maupun pengeluaran, melacak tagihan, dan menganalisis kesehatan finansial secara dengan analytic charts dan export data semua transaksi melalui csv/pdf
+Aplikasi manajemen keuangan personal yang dirancang untuk membantu pengguna mencatat pemasukan maupun pengeluaran, melacak tagihan, dan menganalisis kesehatan finansial dengan analytic charts dan export data semua transaksi melalui csv/pdf
 
 ---
 
@@ -32,7 +32,7 @@ Fitur inti untuk mencatat arus kas (pemasukan dan pengeluaran). Pengguna dapat m
 ---
 
 ### 3. Halaman Pengingat Tagihan (Bill Reminder)
-Halaman khusus untuk mengelola tagihan rutin bulanan (listrik, internet, langganan, dll). Fitur ini membantu pengguna agar tidak terlewat membayar tagihan sebelum jatuh tempo.
+Halaman khusus untuk mengelola tagihan rutin bulanan (listrik, internet, cicilan, dll). Fitur ini membantu pengguna agar tidak terlewat membayar tagihan sebelum jatuh tempo.
 
 | UI Pengingat Tagihan |
 | :---: |
@@ -41,8 +41,7 @@ Halaman khusus untuk mengelola tagihan rutin bulanan (listrik, internet, langgan
 ---
 
 ### 4. Halaman Daftar & Riwayat Transaksi
-Menampilkan seluruh daftar transaksi yang pernah dicatat oleh pengguna secara kronologis. Halaman ini dilengkapi dengan fitur pencarian untuk memudahkan pelacakan pengeluaran masa lalu.
-
+Menampilkan seluruh daftar transaksi yang pernah dicatat oleh pengguna secara runut.
 | Income | Expense|
 |---|---|
 | <img width="1045" height="713" alt="image" src="https://github.com/user-attachments/assets/f7fb5c48-c24e-4fd7-998e-7f96ab08fae7" /> | <img width="1050" height="719" alt="image" src="https://github.com/user-attachments/assets/e5e1fc83-c76c-452a-8397-88f71c0f4d32" />
@@ -50,7 +49,7 @@ Menampilkan seluruh daftar transaksi yang pernah dicatat oleh pengguna secara kr
 ---
 
 ### 5. Halaman Analytics & Chart
-Visualisasi data keuangan dalam bentuk grafik yang interaktif (misal: *pie chart* distribusi pengeluaran atau *line chart* tren saldo). Memudahkan pengguna melakukan evaluasi finansial mingguan atau bulanan.
+Visualisasi data keuangan dalam bentuk grafik yang interaktif dengan diagram batang. Memudahkan pengguna melakukan evaluasi finansial mingguan atau bulanan.
 
 | UI Analytics & Chart |
 | :---: |
