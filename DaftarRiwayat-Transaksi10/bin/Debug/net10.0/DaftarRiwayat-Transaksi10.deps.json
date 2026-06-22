@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "DaftarRiwayat-Transaksi10/1.0.0": {
+        "runtime": {
+          "DaftarRiwayat-Transaksi10.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DaftarRiwayat-Transaksi10/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
