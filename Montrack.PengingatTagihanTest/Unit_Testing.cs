@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MonTrack_PengingatTagihan;
 using System;
 
@@ -28,6 +28,15 @@ namespace Unit_Testing
             tagihan.TandaiLunas();
 
             Assert.AreEqual(PengingatTagihan.TagihanState.Lunas, tagihan.StatusSaatIni);
+        }
+
+        [TestMethod]
+        public void TestCustomDeadlineDanRepetisi()
+        {
+            var customDeadline = DateTime.Now.AddDays(45);
+            var tagihan = new PengingatTagihan("PLN Custom", "Listrik", 50000, DateTime.Now, customDeadline, "Bulanan");
+            Assert.AreEqual(customDeadline, tagihan.Deadline);
+            Assert.AreEqual("Bulanan", tagihan.Repetisi);
         }
     }
 }

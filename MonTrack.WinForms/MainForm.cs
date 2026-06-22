@@ -81,6 +81,8 @@ namespace MonTrack.WinForms
         private DateTimePicker dtpReminderCreatedDate;
         private Label lblReminderDeadline;
         private DateTimePicker dtpReminderDeadline;
+        private Label lblReminderRepeat;
+        private ComboBox cmbReminderRepeat;
         private Button btnSaveReminder;
         private Label lblDaftarTagihan;
         private Label lblSearchReminder;
@@ -537,7 +539,7 @@ namespace MonTrack.WinForms
             reminderInputPanel = new Panel
             {
                 Location = new Point(15, 15),
-                Size = new Size(280, 520),
+                Size = new Size(280, 540),
                 BackColor = Color.FromArgb(34, 34, 59)
             };
 
@@ -631,8 +633,28 @@ namespace MonTrack.WinForms
                 Size = new Size(250, 28),
                 Format = DateTimePickerFormat.Custom,
                 CustomFormat = "yyyy-MM-dd",
-                Enabled = false
+                Enabled = true
             };
+
+            lblReminderRepeat = new Label
+            {
+                Text = "Pengulangan Tagihan:",
+                ForeColor = Color.FromArgb(189, 195, 199),
+                Location = new Point(15, 350),
+                Size = new Size(250, 20)
+            };
+
+            cmbReminderRepeat = new ComboBox
+            {
+                Location = new Point(15, 370),
+                Size = new Size(250, 28),
+                BackColor = Color.FromArgb(22, 22, 37),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                DropDownStyle = ComboBoxStyle.DropDownList
+            };
+            cmbReminderRepeat.Items.AddRange(new object[] { "Sekali", "Mingguan", "Bulanan" });
+            cmbReminderRepeat.SelectedIndex = 0;
 
             btnSaveReminder = new Button
             {
@@ -640,7 +662,7 @@ namespace MonTrack.WinForms
                 BackColor = Color.FromArgb(78, 49, 170),
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                Location = new Point(15, 360),
+                Location = new Point(15, 415),
                 Size = new Size(250, 45),
                 FlatStyle = FlatStyle.Flat
             };
@@ -650,8 +672,8 @@ namespace MonTrack.WinForms
             lblReminderStatus = new Label
             {
                 ForeColor = Color.FromArgb(255, 118, 117),
-                Location = new Point(15, 420),
-                Size = new Size(250, 85),
+                Location = new Point(15, 470),
+                Size = new Size(250, 60),
                 TextAlign = ContentAlignment.TopLeft
             };
 
@@ -666,6 +688,8 @@ namespace MonTrack.WinForms
             reminderInputPanel.Controls.Add(dtpReminderCreatedDate);
             reminderInputPanel.Controls.Add(lblReminderDeadline);
             reminderInputPanel.Controls.Add(dtpReminderDeadline);
+            reminderInputPanel.Controls.Add(lblReminderRepeat);
+            reminderInputPanel.Controls.Add(cmbReminderRepeat);
             reminderInputPanel.Controls.Add(btnSaveReminder);
             reminderInputPanel.Controls.Add(lblReminderStatus);
 
@@ -720,11 +744,12 @@ namespace MonTrack.WinForms
             };
             lvReminders.Columns.Add("Id", 40);
             lvReminders.Columns.Add("Nama", 110);
-            lvReminders.Columns.Add("Kategori", 100);
-            lvReminders.Columns.Add("Nominal", 100);
-            lvReminders.Columns.Add("TanggalDibuat", 100);
-            lvReminders.Columns.Add("TanggalJatuhTempo", 100);
-            lvReminders.Columns.Add("StatusSaatIni", 85);
+            lvReminders.Columns.Add("Kategori", 90);
+            lvReminders.Columns.Add("Nominal", 90);
+            lvReminders.Columns.Add("TanggalDibuat", 95);
+            lvReminders.Columns.Add("TanggalJatuhTempo", 95);
+            lvReminders.Columns.Add("Repetisi", 80);
+            lvReminders.Columns.Add("StatusSaatIni", 80);
             lvReminders.SelectedIndexChanged += LvReminders_SelectedIndexChanged;
 
             btnMarkPaid = new Button
@@ -930,6 +955,7 @@ namespace MonTrack.WinForms
                 item.SubItems.Add($"Rp {r.Nominal:N0}");
                 item.SubItems.Add(r.TanggalDibuat.ToString("yyyy-MM-dd"));
                 item.SubItems.Add(r.Deadline.ToString("yyyy-MM-dd"));
+                item.SubItems.Add(r.Repetisi ?? "Sekali");
                 item.SubItems.Add(r.StatusSaatIni.ToString());
 
                 // Color coding for status
@@ -1026,16 +1052,8 @@ namespace MonTrack.WinForms
 
         private void UpdateDeadlineDisplay()
         {
-            if (cmbReminderCategory == null || cmbReminderCategory.SelectedItem == null || dtpReminderDeadline == null || dtpReminderCreatedDate == null) return;
-            string kat = cmbReminderCategory.SelectedItem.ToString();
-            int days = 30;
-            if (kat == "Listrik") days = 20;
-            else if (kat == "Air") days = 15;
-            else if (kat == "Internet") days = 30;
-            else if (kat == "Sewa Rumah") days = 7;
-            else if (kat == "Netflix") days = 30;
-
-            dtpReminderDeadline.Value = dtpReminderCreatedDate.Value.AddDays(days);
+            if (dtpReminderDeadline == null || dtpReminderCreatedDate == null) return;
+            dtpReminderDeadline.Value = dtpReminderCreatedDate.Value.AddDays(30);
         }
 
         private void LvReminders_SelectedIndexChanged(object sender, EventArgs e)
@@ -1047,6 +1065,7 @@ namespace MonTrack.WinForms
                 txtReminderAmount.Text = "";
                 cmbReminderCategory.SelectedIndex = 0;
                 dtpReminderCreatedDate.Value = DateTime.Today;
+                if (cmbReminderRepeat != null) cmbReminderRepeat.SelectedIndex = 0;
                 btnSaveReminder.Text = "+ Tambah Tagihan";
                 return;
             }
@@ -1065,6 +1084,13 @@ namespace MonTrack.WinForms
                 dtpReminderCreatedDate.Value = r.TanggalDibuat;
                 dtpReminderDeadline.Value = r.Deadline;
 
+                if (cmbReminderRepeat != null)
+                {
+                    int repIndex = cmbReminderRepeat.FindStringExact(r.Repetisi ?? "Sekali");
+                    if (repIndex >= 0) cmbReminderRepeat.SelectedIndex = repIndex;
+                    else cmbReminderRepeat.SelectedIndex = 0;
+                }
+
                 btnSaveReminder.Text = "Simpan Perubahan";
             }
         }
@@ -1076,6 +1102,8 @@ namespace MonTrack.WinForms
             string category = cmbReminderCategory.Text;
             string amountText = txtReminderAmount.Text.Trim();
             DateTime createdDate = dtpReminderCreatedDate.Value;
+            DateTime deadline = dtpReminderDeadline.Value;
+            string repetisi = cmbReminderRepeat != null ? cmbReminderRepeat.Text : "Sekali";
 
             if (string.IsNullOrEmpty(name))
             {
@@ -1095,14 +1123,14 @@ namespace MonTrack.WinForms
             {
                 if (_selectedReminderIndex == -1)
                 {
-                    var newReminder = new PengingatTagihan(name, category, nominal, createdDate);
+                    var newReminder = new PengingatTagihan(name, category, nominal, createdDate, deadline, repetisi);
                     _reminders.Add(newReminder);
                     lblReminderStatus.ForeColor = Color.FromArgb(85, 239, 196);
                     lblReminderStatus.Text = "Tagihan berhasil ditambahkan!";
                 }
                 else
                 {
-                    var updatedReminder = new PengingatTagihan(name, category, nominal, createdDate);
+                    var updatedReminder = new PengingatTagihan(name, category, nominal, createdDate, deadline, repetisi);
                     _reminders[_selectedReminderIndex] = updatedReminder;
                     lblReminderStatus.ForeColor = Color.FromArgb(85, 239, 196);
                     lblReminderStatus.Text = "Tagihan berhasil diubah!";
@@ -1114,6 +1142,7 @@ namespace MonTrack.WinForms
                 txtReminderAmount.Text = "";
                 cmbReminderCategory.SelectedIndex = 0;
                 dtpReminderCreatedDate.Value = DateTime.Today;
+                if (cmbReminderRepeat != null) cmbReminderRepeat.SelectedIndex = 0;
                 btnSaveReminder.Text = "+ Tambah Tagihan";
 
                 RefreshData();

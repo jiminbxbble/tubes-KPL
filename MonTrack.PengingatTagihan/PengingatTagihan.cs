@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -30,9 +30,10 @@ namespace MonTrack_PengingatTagihan
         public string Kelompok { get; private set; }
         public int Nominal { get; set; }
         public DateTime TanggalDibuat { get; set; }
-        public DateTime Deadline { get; private set; }
+        public DateTime Deadline { get; set; }
+        public string Repetisi { get; set; } = "Sekali";
 
-        public PengingatTagihan(string nama, string kategori, int nominal, DateTime tanggalDibuat)
+        public PengingatTagihan(string nama, string kategori, int nominal, DateTime tanggalDibuat, DateTime? deadline = null, string repetisi = "Sekali")
         {
             Debug.Assert(nominal > 0, "Nominal harus lebih besar dari nol!");
 
@@ -43,12 +44,13 @@ namespace MonTrack_PengingatTagihan
             this.Kategori = kategori;
             this.Nominal = nominal;
             this.TanggalDibuat = tanggalDibuat;
+            this.Repetisi = repetisi;
 
             this.StatusSaatIni = TagihanState.Tersedia;
 
             var config = TabelKonfigurasi[kategori];
             this.Kelompok = config.Kelompok;
-            this.Deadline = tanggalDibuat.AddDays(config.HariTenggatWaktu);
+            this.Deadline = deadline ?? tanggalDibuat.AddDays(config.HariTenggatWaktu);
 
             UpdateStatusBerdasarkanWaktu();
         }
