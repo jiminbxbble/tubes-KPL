@@ -4,10 +4,13 @@ using System.Diagnostics;
 
 namespace MonTrack_PengingatTagihan
 {
-    public class KonfigurasiTagihan
+    public static class KategoriTagihan
     {
-        public string Kelompok { get; set; }
-        public int HariTenggatWaktu { get; set; }
+        public const string Utilitas = "Utilitas";
+        public const string LayananDigital = "Layanan digital";
+        public const string Pendidikan = "Pendidikan";
+        public const string Finansial = "Finansial & Cicilan";
+        public const string Asuransi = "Asuransi & Kesehatan";
     }
 
     public class PengingatTagihan
@@ -15,14 +18,13 @@ namespace MonTrack_PengingatTagihan
         public enum TagihanState { Tersedia, Lunas, Terlambat }
         public TagihanState StatusSaatIni { get; private set; }
 
-        private static readonly Dictionary<string, KonfigurasiTagihan> 
-        TabelKonfigurasi = new Dictionary<string, KonfigurasiTagihan>(StringComparer.OrdinalIgnoreCase)
+        public static readonly HashSet<string> ValidKategori = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
-            { "Listrik", new KonfigurasiTagihan { Kelompok = "Utilitas", HariTenggatWaktu = 20 } },
-            { "Air", new KonfigurasiTagihan { Kelompok = "Utilitas", HariTenggatWaktu = 15 } },
-            { "Internet", new KonfigurasiTagihan { Kelompok = "Layanan Digital", HariTenggatWaktu = 30 } },
-            { "Sewa Rumah", new KonfigurasiTagihan { Kelompok = "Tempat Tinggal", HariTenggatWaktu = 7 } },
-            { "Netflix", new KonfigurasiTagihan { Kelompok = "Hiburan", HariTenggatWaktu = 30 } }
+            KategoriTagihan.Utilitas,
+            KategoriTagihan.LayananDigital,
+            KategoriTagihan.Pendidikan,
+            KategoriTagihan.Finansial,
+            KategoriTagihan.Asuransi
         };
 
         public string Nama { get; set; }
@@ -37,8 +39,8 @@ namespace MonTrack_PengingatTagihan
         {
             Debug.Assert(nominal > 0, "Nominal harus lebih besar dari nol!");
 
-            if (!TabelKonfigurasi.ContainsKey(kategori))
-                throw new ArgumentException($"Kategori '{kategori}' tidak ditemukan di tabel konfigurasi!");
+            if (!ValidKategori.Contains(kategori))
+                throw new ArgumentException($"Kategori '{kategori}' tidak ditemukan di daftar kategori valid!");
 
             this.Nama = nama;
             this.Kategori = kategori;
@@ -48,9 +50,8 @@ namespace MonTrack_PengingatTagihan
 
             this.StatusSaatIni = TagihanState.Tersedia;
 
-            var config = TabelKonfigurasi[kategori];
-            this.Kelompok = config.Kelompok;
-            this.Deadline = deadline ?? tanggalDibuat.AddDays(config.HariTenggatWaktu);
+            this.Kelompok = kategori;
+            this.Deadline = deadline ?? tanggalDibuat.AddDays(30);
 
             UpdateStatusBerdasarkanWaktu();
         }

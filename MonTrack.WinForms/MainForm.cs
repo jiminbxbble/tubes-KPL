@@ -133,11 +133,11 @@ namespace MonTrack.WinForms
             // Initialize Reminders Seed Data
             _reminders = new List<PengingatTagihan>
             {
-                new PengingatTagihan("Langganan Biznet", "Internet", 300000, DateTime.Now.AddDays(-35)),
-                new PengingatTagihan("PDAM Bulan Ini", "Air", 50000, DateTime.Now.AddDays(-5)),
-                new PengingatTagihan("Token PLN", "Listrik", 150000, DateTime.Now.AddDays(-10)),
-                new PengingatTagihan("Kost Bulanan", "Sewa Rumah", 2000000, DateTime.Now.AddDays(-8)),
-                new PengingatTagihan("Netflix Premium", "Netflix", 75000, DateTime.Now)
+                new PengingatTagihan("Langganan Biznet", KategoriTagihan.LayananDigital, 300000, DateTime.Now.AddDays(-35)),
+                new PengingatTagihan("PDAM Bulan Ini", KategoriTagihan.Utilitas, 50000, DateTime.Now.AddDays(-5)),
+                new PengingatTagihan("Token PLN", KategoriTagihan.Utilitas, 150000, DateTime.Now.AddDays(-10)),
+                new PengingatTagihan("Kost Bulanan", KategoriTagihan.Utilitas, 2000000, DateTime.Now.AddDays(-8)),
+                new PengingatTagihan("Netflix Premium", KategoriTagihan.LayananDigital, 75000, DateTime.Now)
             };
 
             InitializeComponent();
@@ -583,7 +583,13 @@ namespace MonTrack.WinForms
                 FlatStyle = FlatStyle.Flat,
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
-            cmbReminderCategory.Items.AddRange(new object[] { "Internet", "Air", "Listrik", "Sewa Rumah", "Netflix" });
+            cmbReminderCategory.Items.AddRange(new object[] { 
+                KategoriTagihan.Utilitas, 
+                KategoriTagihan.LayananDigital, 
+                KategoriTagihan.Pendidikan, 
+                KategoriTagihan.Finansial, 
+                KategoriTagihan.Asuransi 
+            });
             cmbReminderCategory.SelectedIndex = 0;
             cmbReminderCategory.SelectedIndexChanged += (s, e) => UpdateDeadlineDisplay();
 
