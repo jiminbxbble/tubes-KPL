@@ -315,7 +315,7 @@ namespace MonTrack.WinForms
                     await Task.Delay(500);
 
                     // Open Dashboard
-                    var mainForm = new MainForm();
+                    var mainForm = new MainForm(email);
                     mainForm.Show();
                     this.Hide();
                 }

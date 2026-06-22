@@ -15,7 +15,16 @@ namespace PencatatanKeuangan.Services
         private readonly Dictionary<string, TransactionType> _categoryTable = new Dictionary<string, TransactionType>(StringComparer.OrdinalIgnoreCase)
         {
             { "Pemasukan", TransactionType.Pemasukan },
-            { "Pengeluaran", TransactionType.Pengeluaran }
+            { "Pengeluaran", TransactionType.Pengeluaran },
+            { "Gaji", TransactionType.Pemasukan },
+            { "Uang Saku", TransactionType.Pemasukan },
+            { "Makanan dan Minuman", TransactionType.Pengeluaran },
+            { "Tagihan", TransactionType.Pengeluaran },
+            { "Cicilan", TransactionType.Pengeluaran },
+            { "Belanja", TransactionType.Pengeluaran },
+            { "Transportasi", TransactionType.Pengeluaran },
+            { "Hiburan", TransactionType.Pengeluaran },
+            { "Pendidikan dan Kesehatan", TransactionType.Pengeluaran }
         };
 
         public TransactionManager(DataRepository<Transaction> repository)
@@ -50,6 +59,12 @@ namespace PencatatanKeuangan.Services
             TransactionType type = _categoryTable.ContainsKey(category)
                 ? _categoryTable[category]
                 : TransactionType.Pengeluaran;
+
+            // Pastikan pengeluaran tidak melebihi saldo berjalan
+            if (type == TransactionType.Pengeluaran && amount > GetCurrentBalance())
+            {
+                throw new InvalidOperationException("Saldo tidak mencukupi untuk melakukan transaksi pengeluaran ini!");
+            }
 
             var transaction = new Transaction
             {

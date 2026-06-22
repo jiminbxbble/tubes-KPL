@@ -38,6 +38,11 @@ namespace MonTrack.WinForms
         private TabControl tabControl;
         private Panel inputPanel;
         private Panel filterPanel;
+        private string _userEmail = string.Empty;
+        private Label lblType;
+        private ComboBox cmbType;
+        private TabPage tabReports;
+        private Panel pnlChart;
 
         // Tab 1: Transactions
         private TabPage tabTransactions;
@@ -67,12 +72,22 @@ namespace MonTrack.WinForms
         private Button btnExport;
         private Label lblExportStatus;
 
-        public MainForm()
+        public MainForm(string userEmail = "")
         {
-            // Initialize Core Services
-            _repo = new DataRepository<Transaction>();
+            _userEmail = string.IsNullOrEmpty(userEmail) ? "default" : userEmail;
+            string safeEmail = _userEmail.Replace("@", "_").Replace(".", "_");
+            string userDbFile = $"transactions_{safeEmail}.json";
+
+            // Initialize Core Services with user-specific database file
+            _repo = new DataRepository<Transaction>(userDbFile);
             _financeManager = new TransactionManager(_repo);
             _exportService = new ExportApiService();
+
+            // Seed default data if database is empty
+            if (_repo.GetAll().Count == 0)
+            {
+                SeedDefaultTransactions();
+            }
 
             // Initialize Reminders Seed Data
             _reminders = new List<PengingatTagihan>
@@ -86,6 +101,23 @@ namespace MonTrack.WinForms
 
             InitializeComponent();
             RefreshData();
+        }
+
+        private void SeedDefaultTransactions()
+        {
+            // 5 Incomes (Pemasukan)
+            _financeManager.RecordTransaction(15000000, "Gaji", "Monthly Salary");
+            _financeManager.RecordTransaction(500000, "Uang Saku", "Bulanan dari Ortu");
+            _financeManager.RecordTransaction(2000000, "Gaji", "Bonus Project");
+            _financeManager.RecordTransaction(100000, "Uang Saku", "Hadiah Ulang Tahun");
+            _financeManager.RecordTransaction(1500000, "Gaji", "Freelance Design");
+
+            // 5 Expenses (Pengeluaran)
+            _financeManager.RecordTransaction(50000, "Makanan dan Minuman", "Coffee Shop");
+            _financeManager.RecordTransaction(200000, "Transportasi", "Bensin Mobil");
+            _financeManager.RecordTransaction(1200000, "Belanja", "Belanja Bulanan");
+            _financeManager.RecordTransaction(150000, "Makanan dan Minuman", "Dinner Malam Minggu");
+            _financeManager.RecordTransaction(300000, "Transportasi", "Tiket Kereta Api");
         }
 
         private void InitializeComponent()
@@ -147,10 +179,12 @@ namespace MonTrack.WinForms
             // Register Tab Pages
             tabTransactions = new TabPage { Text = " Transactions ", BackColor = Color.FromArgb(26, 26, 46) };
             tabReminders = new TabPage { Text = " Bill Reminders ", BackColor = Color.FromArgb(26, 26, 46) };
+            tabReports = new TabPage { Text = " Analytics & Chart ", BackColor = Color.FromArgb(26, 26, 46) };
             tabExport = new TabPage { Text = " Data Export ", BackColor = Color.FromArgb(26, 26, 46) };
 
             tabControl.TabPages.Add(tabTransactions);
             tabControl.TabPages.Add(tabReminders);
+            tabControl.TabPages.Add(tabReports);
             tabControl.TabPages.Add(tabExport);
 
             // --- Tab 1: Transactions Layout ---
@@ -175,47 +209,69 @@ namespace MonTrack.WinForms
             {
                 Text = "Amount (Rp)",
                 ForeColor = Color.FromArgb(189, 195, 199),
-                Location = new Point(15, 55),
+                Location = new Point(15, 50),
                 Size = new Size(250, 20)
             };
 
             txtAmount = new EntryTextBox
             {
-                Location = new Point(15, 75),
+                Location = new Point(15, 70),
                 Size = new Size(250, 28)
             };
 
-            lblCategory = new Label
+            lblType = new Label
             {
-                Text = "Category",
+                Text = "Transaction Type",
                 ForeColor = Color.FromArgb(189, 195, 199),
-                Location = new Point(15, 115),
+                Location = new Point(15, 110),
                 Size = new Size(250, 20)
             };
 
-            cmbCategory = new ComboBox
+            cmbType = new ComboBox
             {
-                Location = new Point(15, 135),
+                Location = new Point(15, 130),
                 Size = new Size(250, 28),
                 BackColor = Color.FromArgb(22, 22, 37),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
-            cmbCategory.Items.AddRange(new object[] { "Pemasukan", "Pengeluaran" });
+            cmbType.Items.AddRange(new object[] { "Pemasukan", "Pengeluaran" });
+            cmbType.SelectedIndex = 0;
+            cmbType.SelectedIndexChanged += CmbType_SelectedIndexChanged;
+
+            lblCategory = new Label
+            {
+                Text = "Category",
+                ForeColor = Color.FromArgb(189, 195, 199),
+                Location = new Point(15, 170),
+                Size = new Size(250, 20)
+            };
+
+            cmbCategory = new ComboBox
+            {
+                Location = new Point(15, 190),
+                Size = new Size(250, 28),
+                BackColor = Color.FromArgb(22, 22, 37),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                DropDownStyle = ComboBoxStyle.DropDownList
+            };
+            // Populate initial categories based on Pemasukan
+            cmbCategory.Items.AddRange(new object[] { "Gaji", "Uang Saku" });
             cmbCategory.SelectedIndex = 0;
 
             lblDescription = new Label
             {
                 Text = "Description",
                 ForeColor = Color.FromArgb(189, 195, 199),
-                Location = new Point(15, 175),
+                Location = new Point(15, 230),
                 Size = new Size(250, 20)
             };
 
             txtDescription = new EntryTextBox
             {
-                Location = new Point(15, 195),
+                Location = new Point(15, 250),
                 Size = new Size(250, 28)
             };
 
@@ -225,7 +281,7 @@ namespace MonTrack.WinForms
                 BackColor = Color.FromArgb(78, 49, 170),
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                Location = new Point(15, 250),
+                Location = new Point(15, 300),
                 Size = new Size(250, 45),
                 FlatStyle = FlatStyle.Flat
             };
@@ -235,14 +291,16 @@ namespace MonTrack.WinForms
             lblTxStatus = new Label
             {
                 ForeColor = Color.FromArgb(255, 118, 117),
-                Location = new Point(15, 310),
-                Size = new Size(250, 50),
+                Location = new Point(15, 360),
+                Size = new Size(250, 80),
                 TextAlign = ContentAlignment.TopLeft
             };
 
             inputPanel.Controls.Add(lblNewTxTitle);
             inputPanel.Controls.Add(lblAmount);
             inputPanel.Controls.Add(txtAmount);
+            inputPanel.Controls.Add(lblType);
+            inputPanel.Controls.Add(cmbType);
             inputPanel.Controls.Add(lblCategory);
             inputPanel.Controls.Add(cmbCategory);
             inputPanel.Controls.Add(lblDescription);
@@ -469,6 +527,16 @@ namespace MonTrack.WinForms
 
             tabExport.Controls.Add(exportCard);
 
+            // --- Tab 4: Analytics & Chart Layout ---
+            pnlChart = new Panel
+            {
+                Dock = DockStyle.Fill,
+                BackColor = Color.FromArgb(34, 34, 59)
+            };
+            pnlChart.Paint += PnlChart_Paint;
+            pnlChart.Resize += (s, e) => pnlChart.Invalidate();
+            tabReports.Controls.Add(pnlChart);
+
             // Add main panels
             this.Controls.Add(tabControl);
             this.Controls.Add(headerPanel);
@@ -479,6 +547,12 @@ namespace MonTrack.WinForms
             // Update Balance Display
             double balance = _financeManager.GetCurrentBalance();
             lblBalance.Text = $"Current Balance: Rp {balance:N0}";
+
+            // Refresh Chart Display
+            if (pnlChart != null)
+            {
+                pnlChart.Invalidate();
+            }
 
             // Refresh ListView Transactions
             lvTransactions.Items.Clear();
@@ -636,52 +710,78 @@ namespace MonTrack.WinForms
             }).ToList();
 
             string format = cmbExportFormat.Text;
-            string projectRoot = @"d:\4. Thoriq_KULIAH\4. Matkul\Semester 4\LKPL\TUBES-Thoriq\tubes-KPL";
-            string exportFolder = Path.Combine(projectRoot, "_Output", "Reports");
-            Directory.CreateDirectory(exportFolder);
+            string defaultFileName = $"export_{DateTime.Now:yyyyMMdd_HHmmss}";
 
-            btnExport.Text = "Exporting data...";
-            lblExportStatus.ForeColor = Color.White;
-            lblExportStatus.Text = "Preparing file structure...";
-
-            try
+            using (SaveFileDialog sfd = new SaveFileDialog())
             {
-                var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-
                 if (format == "CSV")
                 {
-                    string path = Path.Combine(exportFolder, $"export_{DateTime.Now:yyyyMMdd_HHmmss}.csv");
-                    await _exportService.ExecuteExport("CSV", exportData, path);
-                    stopwatch.Stop();
-                    DisplayExportResult(path, stopwatch.ElapsedMilliseconds, exportData.Count, "CSV");
+                    sfd.Filter = "CSV files (*.csv)|*.csv";
+                    sfd.FileName = defaultFileName + ".csv";
                 }
                 else if (format == "PDF")
                 {
-                    string path = Path.Combine(exportFolder, $"export_{DateTime.Now:yyyyMMdd_HHmmss}.pdf");
-                    await _exportService.ExecuteExport("PDF", exportData, path);
-                    stopwatch.Stop();
-                    DisplayExportResult(path, stopwatch.ElapsedMilliseconds, exportData.Count, "PDF");
+                    sfd.Filter = "PDF files (*.pdf)|*.pdf";
+                    sfd.FileName = defaultFileName + ".pdf";
                 }
                 else // Both
                 {
-                    string csvPath = Path.Combine(exportFolder, $"export_{DateTime.Now:yyyyMMdd_HHmmss}.csv");
-                    string pdfPath = Path.Combine(exportFolder, $"export_{DateTime.Now:yyyyMMdd_HHmmss}.pdf");
-                    
-                    await _exportService.ExecuteExport("CSV", exportData, csvPath);
-                    await _exportService.ExecuteExport("PDF", exportData, pdfPath);
-                    
-                    stopwatch.Stop();
-                    lblExportStatus.ForeColor = Color.FromArgb(85, 239, 196);
-                    lblExportStatus.Text = $"✓ Both CSV & PDF exported successfully!\n" +
-                                           $"  Records: {exportData.Count}\n" +
-                                           $"  Time: {stopwatch.ElapsedMilliseconds} ms\n" +
-                                           $"  Folder: {exportFolder}";
+                    sfd.Filter = "All files (*.*)|*.*";
+                    sfd.FileName = defaultFileName; // Base name
+                    sfd.Title = "Select base name and folder for CSV & PDF exports";
                 }
-            }
-            catch (Exception ex)
-            {
-                lblExportStatus.ForeColor = Color.FromArgb(255, 118, 117);
-                lblExportStatus.Text = $"Export failed: {ex.Message}";
+
+                if (sfd.ShowDialog() != DialogResult.OK)
+                {
+                    btnExport.Enabled = true;
+                    lblExportStatus.ForeColor = Color.FromArgb(255, 118, 117);
+                    lblExportStatus.Text = "Export cancelled by user.";
+                    return;
+                }
+
+                string targetPath = sfd.FileName;
+
+                btnExport.Text = "Exporting data...";
+                lblExportStatus.ForeColor = Color.White;
+                lblExportStatus.Text = "Preparing file structure...";
+
+                try
+                {
+                    var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+
+                    if (format == "CSV")
+                    {
+                        await _exportService.ExecuteExport("CSV", exportData, targetPath);
+                        stopwatch.Stop();
+                        DisplayExportResult(targetPath, stopwatch.ElapsedMilliseconds, exportData.Count, "CSV");
+                    }
+                    else if (format == "PDF")
+                    {
+                        await _exportService.ExecuteExport("PDF", exportData, targetPath);
+                        stopwatch.Stop();
+                        DisplayExportResult(targetPath, stopwatch.ElapsedMilliseconds, exportData.Count, "PDF");
+                    }
+                    else // Both
+                    {
+                        string csvPath = Path.ChangeExtension(targetPath, ".csv");
+                        string pdfPath = Path.ChangeExtension(targetPath, ".pdf");
+                        
+                        await _exportService.ExecuteExport("CSV", exportData, csvPath);
+                        await _exportService.ExecuteExport("PDF", exportData, pdfPath);
+                        
+                        stopwatch.Stop();
+                        lblExportStatus.ForeColor = Color.FromArgb(85, 239, 196);
+                        lblExportStatus.Text = $"✓ Both CSV & PDF exported successfully!\n" +
+                                               $"  Records: {exportData.Count}\n" +
+                                               $"  Time: {stopwatch.ElapsedMilliseconds} ms\n" +
+                                               $"  Folder: {Path.GetDirectoryName(targetPath)}";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lblExportStatus.ForeColor = Color.FromArgb(255, 118, 117);
+                    lblExportStatus.Text = $"Export failed: {ex.Message}";
+                }
             }
 
             btnExport.Text = "Export Report Now";
@@ -729,6 +829,196 @@ namespace MonTrack.WinForms
 
             exportCard.Anchor = AnchorStyles.None;
             lblBalance.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        }
+
+        private void CmbType_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            cmbCategory.Items.Clear();
+            if (cmbType.Text == "Pemasukan")
+            {
+                cmbCategory.Items.AddRange(new object[] { "Gaji", "Uang Saku" });
+            }
+            else
+            {
+                cmbCategory.Items.AddRange(new object[] { 
+                    "Makanan dan Minuman", 
+                    "Tagihan", 
+                    "Cicilan", 
+                    "Belanja", 
+                    "Transportasi", 
+                    "Hiburan", 
+                    "Pendidikan dan Kesehatan" 
+                });
+            }
+            if (cmbCategory.Items.Count > 0)
+            {
+                cmbCategory.SelectedIndex = 0;
+            }
+        }
+
+        private void PnlChart_Paint(object? sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            int width = pnlChart.Width;
+            int height = pnlChart.Height;
+
+            // Draw Background card
+            using (var bgBrush = new SolidBrush(Color.FromArgb(34, 34, 59)))
+            {
+                g.FillRectangle(bgBrush, 0, 0, width, height);
+            }
+
+            // Title
+            using (var titleFont = new Font("Segoe UI", 14, FontStyle.Bold))
+            using (var titleBrush = new SolidBrush(Color.White))
+            {
+                g.DrawString("Monthly Difference (Pemasukan - Pengeluaran)", titleFont, titleBrush, new PointF(25, 20));
+            }
+
+            // Retrieve Data
+            var monthlyData = _repo.GetAll()
+                .GroupBy(t => new { t.Date.Year, t.Date.Month })
+                .Select(gGroup => new
+                {
+                    MonthKey = $"{gGroup.Key.Year}-{gGroup.Key.Month:D2}",
+                    MonthName = new DateTime(gGroup.Key.Year, gGroup.Key.Month, 1).ToString("MMM yyyy"),
+                    Income = gGroup.Where(t => t.Type == TransactionType.Pemasukan).Sum(t => t.Amount),
+                    Expense = gGroup.Where(t => t.Type == TransactionType.Pengeluaran).Sum(t => t.Amount)
+                })
+                .Select(x => new
+                {
+                    x.MonthKey,
+                    x.MonthName,
+                    x.Income,
+                    x.Expense,
+                    Difference = x.Income - x.Expense
+                })
+                .OrderBy(m => m.MonthKey)
+                .ToList();
+
+            if (monthlyData.Count == 0)
+            {
+                using (var infoFont = new Font("Segoe UI", 12, FontStyle.Italic))
+                using (var infoBrush = new SolidBrush(Color.FromArgb(189, 195, 199)))
+                {
+                    string msg = "Tidak ada data transaksi untuk ditampilkan.";
+                    SizeF size = g.MeasureString(msg, infoFont);
+                    g.DrawString(msg, infoFont, infoBrush, (width - size.Width) / 2, (height - size.Height) / 2);
+                }
+                return;
+            }
+
+            // Chart area bounds
+            int paddingLeft = 60;
+            int paddingRight = 40;
+            int paddingTop = 80;
+            int paddingBottom = 60;
+
+            int chartWidth = width - paddingLeft - paddingRight;
+            int chartHeight = height - paddingTop - paddingBottom;
+
+            if (chartWidth <= 0 || chartHeight <= 0) return;
+
+            // Find max absolute difference to scale
+            double maxVal = monthlyData.Max(m => Math.Abs(m.Difference));
+            if (maxVal == 0) maxVal = 100000; // prevent division by zero
+
+            // Y-axis middle (0 line)
+            float zeroY = paddingTop + (chartHeight / 2f);
+
+            // Draw Y Grid lines & Labels
+            using (var gridPen = new Pen(Color.FromArgb(50, 255, 255, 255), 1))
+            using (var labelFont = new Font("Segoe UI", 8))
+            using (var labelBrush = new SolidBrush(Color.FromArgb(189, 195, 199)))
+            {
+                gridPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+
+                // Draw 0 line
+                g.DrawLine(new Pen(Color.FromArgb(150, 255, 255, 255), 1), paddingLeft, zeroY, width - paddingRight, zeroY);
+                g.DrawString("Rp 0", labelFont, labelBrush, 10, zeroY - 6);
+
+                // Draw +Max and -Max lines
+                float topY = paddingTop;
+                float bottomY = height - paddingBottom;
+
+                g.DrawLine(gridPen, paddingLeft, topY, width - paddingRight, topY);
+                g.DrawString($"+{FormatAmount(maxVal)}", labelFont, labelBrush, 10, topY - 6);
+
+                g.DrawLine(gridPen, paddingLeft, bottomY, width - paddingRight, bottomY);
+                g.DrawString($"-{FormatAmount(maxVal)}", labelFont, labelBrush, 10, bottomY - 6);
+            }
+
+            // Draw Bars
+            int count = monthlyData.Count;
+            float barWidth = Math.Max(20f, (chartWidth / (float)count) * 0.5f);
+            float spacing = chartWidth / (float)count;
+
+            using (var surplusBrush = new System.Drawing.Drawing2D.LinearGradientBrush(new Rectangle(0, 0, 100, 100), Color.FromArgb(85, 239, 196), Color.FromArgb(46, 204, 113), 90F))
+            using (var deficitBrush = new System.Drawing.Drawing2D.LinearGradientBrush(new Rectangle(0, 0, 100, 100), Color.FromArgb(255, 118, 117), Color.FromArgb(231, 76, 60), 90F))
+            using (var labelFont = new Font("Segoe UI", 8.5F))
+            using (var textFont = new Font("Segoe UI", 8, FontStyle.Bold))
+            using (var textBrush = new SolidBrush(Color.White))
+            using (var labelBrush = new SolidBrush(Color.FromArgb(189, 195, 199)))
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    var data = monthlyData[i];
+                    float centerX = paddingLeft + (i * spacing) + (spacing / 2f);
+                    float x = centerX - (barWidth / 2f);
+
+                    // Calculate bar height scaled to chart area
+                    float valH = (float)((Math.Abs(data.Difference) / maxVal) * (chartHeight / 2f));
+                    float y = 0;
+
+                    System.Drawing.Drawing2D.LinearGradientBrush barBrush;
+                    if (data.Difference >= 0)
+                    {
+                        y = zeroY - valH;
+                        barBrush = surplusBrush;
+                    }
+                    else
+                    {
+                        y = zeroY;
+                        barBrush = deficitBrush;
+                    }
+
+                    // Reset gradient brush bounds to match the bar
+                    barBrush.ResetTransform();
+                    barBrush.TranslateTransform(x, y);
+                    barBrush.ScaleTransform(barWidth / 100f, valH / 100f);
+
+                    // Draw bar
+                    g.FillRectangle(barBrush, x, y, barWidth, Math.Max(2, valH));
+
+                    // Draw value above/below bar
+                    string valStr = (data.Difference >= 0 ? "+" : "") + FormatAmount(data.Difference);
+                    SizeF valSize = g.MeasureString(valStr, textFont);
+                    float valY = data.Difference >= 0 ? y - valSize.Height - 4 : y + valH + 4;
+                    g.DrawString(valStr, textFont, textBrush, centerX - (valSize.Width / 2f), valY);
+
+                    // Draw Month Label below X Axis
+                    SizeF labelSize = g.MeasureString(data.MonthName, labelFont);
+                    float labelY = height - paddingBottom + 10;
+                    g.DrawString(data.MonthName, labelFont, labelBrush, centerX - (labelSize.Width / 2f), labelY);
+
+                    // Draw a small dot on X axis
+                    g.FillEllipse(textBrush, centerX - 2, zeroY - 2, 4, 4);
+                }
+            }
+        }
+
+        private string FormatAmount(double val)
+        {
+            double absVal = Math.Abs(val);
+            if (absVal >= 1000000000)
+                return $"Rp {(val / 1000000000.0):F1}M";
+            if (absVal >= 1000000)
+                return $"Rp {(val / 1000000.0):F1}jt";
+            if (absVal >= 1000)
+                return $"Rp {(val / 1000.0):F0}rb";
+            return $"Rp {val:N0}";
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
