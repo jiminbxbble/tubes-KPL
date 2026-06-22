@@ -9,10 +9,26 @@ namespace PencatatanKeuangan.Repositories
         private List<T> _dataList = new List<T>();
         private readonly string _filePath;
 
+        private string GetProjectRoot()
+        {
+            string baseDir = System.AppDomain.CurrentDomain.BaseDirectory;
+            System.IO.DirectoryInfo? dir = new System.IO.DirectoryInfo(baseDir);
+            while (dir != null)
+            {
+                if (System.IO.File.Exists(System.IO.Path.Combine(dir.FullName, "MonTrack.sln")) ||
+                    dir.Name.Equals("tubes-KPL", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    return dir.FullName;
+                }
+                dir = dir.Parent;
+            }
+            return baseDir;
+        }
+
         public DataRepository(string fileName = "transactions.json")
         {
             // Simpan di dalam folder proyek agar rapi
-            string projectRoot = @"d:\4. Thoriq_KULIAH\4. Matkul\Semester 4\LKPL\TUBES-Thoriq\tubes-KPL";
+            string projectRoot = GetProjectRoot();
             string folder = Path.Combine(projectRoot, "_Output", "Database");
             Directory.CreateDirectory(folder);
             _filePath = Path.Combine(folder, fileName);

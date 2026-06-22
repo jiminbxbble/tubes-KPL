@@ -8,10 +8,26 @@ namespace PencatatanKeuangan.Tests
 {
     public class TransactionTests
     {
+        private static string GetProjectRoot()
+        {
+            string baseDir = System.AppDomain.CurrentDomain.BaseDirectory;
+            System.IO.DirectoryInfo? dir = new System.IO.DirectoryInfo(baseDir);
+            while (dir != null)
+            {
+                if (System.IO.File.Exists(System.IO.Path.Combine(dir.FullName, "MonTrack.sln")) ||
+                    dir.Name.Equals("tubes-KPL", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    return dir.FullName;
+                }
+                dir = dir.Parent;
+            }
+            return baseDir;
+        }
+
         [Fact]
         public void TestInputValid_HarusBerhasil()
         {
-            string projectRoot = @"d:\4. Thoriq_KULIAH\4. Matkul\Semester 4\LKPL\TUBES-Thoriq\tubes-KPL";
+            string projectRoot = GetProjectRoot();
             string testFile = Path.Combine(projectRoot, "_Output", "Database", "test_transactions.json");
             
             if (File.Exists(testFile))
@@ -43,7 +59,7 @@ namespace PencatatanKeuangan.Tests
         [Fact]
         public void TestNegativeBalance_ShouldThrowException()
         {
-            string projectRoot = @"d:\4. Thoriq_KULIAH\4. Matkul\Semester 4\LKPL\TUBES-Thoriq\tubes-KPL";
+            string projectRoot = GetProjectRoot();
             string testFile = Path.Combine(projectRoot, "_Output", "Database", "test_neg_transactions.json");
             
             if (File.Exists(testFile))
@@ -74,7 +90,7 @@ namespace PencatatanKeuangan.Tests
         [Fact]
         public void TestNewCategoriesMapping_ShouldInferCorrectType()
         {
-            string projectRoot = @"d:\4. Thoriq_KULIAH\4. Matkul\Semester 4\LKPL\TUBES-Thoriq\tubes-KPL";
+            string projectRoot = GetProjectRoot();
             string testFile = Path.Combine(projectRoot, "_Output", "Database", "test_cat_transactions.json");
             
             if (File.Exists(testFile))

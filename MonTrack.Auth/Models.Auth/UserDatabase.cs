@@ -11,10 +11,26 @@ namespace MonTrack.Auth.Models
         private static List<User> _users;
         private static readonly string _filePath;
 
+        private static string GetProjectRoot()
+        {
+            string baseDir = System.AppDomain.CurrentDomain.BaseDirectory;
+            System.IO.DirectoryInfo? dir = new System.IO.DirectoryInfo(baseDir);
+            while (dir != null)
+            {
+                if (System.IO.File.Exists(System.IO.Path.Combine(dir.FullName, "MonTrack.sln")) ||
+                    dir.Name.Equals("tubes-KPL", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    return dir.FullName;
+                }
+                dir = dir.Parent;
+            }
+            return baseDir;
+        }
+
         static UserDatabase()
         {
             // Simpan di dalam folder proyek agar rapi
-            string projectRoot = @"d:\4. Thoriq_KULIAH\4. Matkul\Semester 4\LKPL\TUBES-Thoriq\tubes-KPL";
+            string projectRoot = GetProjectRoot();
             string folder = Path.Combine(projectRoot, "_Output", "Database");
             Directory.CreateDirectory(folder);
             _filePath = Path.Combine(folder, "users.json");
