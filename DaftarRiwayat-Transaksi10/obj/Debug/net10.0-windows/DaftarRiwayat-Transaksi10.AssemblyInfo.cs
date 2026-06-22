@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DaftarRiwayat-Transaksi10")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a122d9f8e7ed15b7eb39be9140b8c2dd4de09882")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95bbe00ad08585c817638c71f805c03394435827")]
 [assembly: System.Reflection.AssemblyProductAttribute("DaftarRiwayat-Transaksi10")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DaftarRiwayat-Transaksi10")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
