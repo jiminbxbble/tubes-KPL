@@ -9,7 +9,7 @@ namespace MonTrack.Auth.Models
     public static class UserDatabase
     {
         private static List<User> _users;
-        private static readonly string _filePath;
+        private static string _filePath;
 
         private static string GetProjectRoot()
         {
@@ -50,6 +50,14 @@ namespace MonTrack.Auth.Models
         public static List<User> GetUsers() => _users;
 
         public static User? FindByEmail(string email) => _users.FirstOrDefault(u => u.Email == email);
+
+        public static void SetTestMode()
+        {
+            string projectRoot = GetProjectRoot();
+            string folder = Path.Combine(projectRoot, "_Output", "Database");
+            _filePath = Path.Combine(folder, "users_test.json");
+            _users = Load();
+        }
 
         public static void ResetToDefault()
         {

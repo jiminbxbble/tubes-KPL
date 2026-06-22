@@ -15,6 +15,7 @@ namespace MonTrack.Auth.Tests
         [SetUp]
         public void Setup()
         {
+            UserDatabase.SetTestMode();
             UserDatabase.ResetToDefault();
             _authService = new AuthService();
         }

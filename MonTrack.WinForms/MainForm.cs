@@ -60,12 +60,33 @@ namespace MonTrack.WinForms
         private EntryTextBox txtDescription;
         private Button btnRecord;
         private Label lblTxStatus;
+        private Label lblSearch;
+        private EntryTextBox txtSearch;
 
         // Tab 2: Bill Reminders
         private TabPage tabReminders;
         private ListView lvReminders;
         private Button btnMarkPaid;
         private Label lblReminderStatus;
+        private Panel reminderInputPanel;
+        private Label lblReminderTitle;
+        private Label lblReminderName;
+        private EntryTextBox txtReminderName;
+        private Label lblReminderCategory;
+        private ComboBox cmbReminderCategory;
+        private Label lblReminderAmount;
+        private EntryTextBox txtReminderAmount;
+        private Label lblReminderCreatedDate;
+        private DateTimePicker dtpReminderCreatedDate;
+        private Label lblReminderDeadline;
+        private DateTimePicker dtpReminderDeadline;
+        private Button btnSaveReminder;
+        private Label lblDaftarTagihan;
+        private Label lblSearchReminder;
+        private EntryTextBox txtSearchReminder;
+        private Button btnSearchReminder;
+        private Button btnDeleteReminder;
+        private int _selectedReminderIndex = -1;
 
         // Tab 3: Data Export
         private TabPage tabExport;
@@ -431,10 +452,27 @@ namespace MonTrack.WinForms
             filterPanel.Controls.Add(btnFilterIncome);
             filterPanel.Controls.Add(btnFilterExpense);
 
+            // Search Bar Setup
+            lblSearch = new Label
+            {
+                Text = "Search:",
+                ForeColor = Color.FromArgb(189, 195, 199),
+                Font = new Font("Segoe UI", 10),
+                Location = new Point(310, 68),
+                Size = new Size(60, 25)
+            };
+
+            txtSearch = new EntryTextBox
+            {
+                Location = new Point(380, 65),
+                Size = new Size(465, 28)
+            };
+            txtSearch.TextChanged += (s, e) => RefreshData();
+
             lvTransactions = new ListView
             {
-                Location = new Point(310, 65),
-                Size = new Size(535, 430),
+                Location = new Point(310, 110),
+                Size = new Size(535, 385),
                 View = View.Details,
                 FullRowSelect = true,
                 GridLines = true,
@@ -469,13 +507,188 @@ namespace MonTrack.WinForms
 
             tabTransactions.Controls.Add(inputPanel);
             tabTransactions.Controls.Add(filterPanel);
+            tabTransactions.Controls.Add(lblSearch);
+            tabTransactions.Controls.Add(txtSearch);
             tabTransactions.Controls.Add(lvTransactions);
 
             // --- Tab 2: Bill Reminders Layout ---
+            reminderInputPanel = new Panel
+            {
+                Location = new Point(15, 15),
+                Size = new Size(280, 520),
+                BackColor = Color.FromArgb(34, 34, 59)
+            };
+
+            lblReminderTitle = new Label
+            {
+                Text = "Kelola Tagihan",
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Location = new Point(15, 15),
+                Size = new Size(250, 25)
+            };
+
+            lblReminderName = new Label
+            {
+                Text = "Nama Tagihan:",
+                ForeColor = Color.FromArgb(189, 195, 199),
+                Location = new Point(15, 50),
+                Size = new Size(250, 20)
+            };
+
+            txtReminderName = new EntryTextBox
+            {
+                Location = new Point(15, 70),
+                Size = new Size(250, 28)
+            };
+
+            lblReminderCategory = new Label
+            {
+                Text = "Kategori:",
+                ForeColor = Color.FromArgb(189, 195, 199),
+                Location = new Point(15, 110),
+                Size = new Size(250, 20)
+            };
+
+            cmbReminderCategory = new ComboBox
+            {
+                Location = new Point(15, 130),
+                Size = new Size(250, 28),
+                BackColor = Color.FromArgb(22, 22, 37),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                DropDownStyle = ComboBoxStyle.DropDownList
+            };
+            cmbReminderCategory.Items.AddRange(new object[] { "Internet", "Air", "Listrik", "Sewa Rumah", "Netflix" });
+            cmbReminderCategory.SelectedIndex = 0;
+            cmbReminderCategory.SelectedIndexChanged += (s, e) => UpdateDeadlineDisplay();
+
+            lblReminderAmount = new Label
+            {
+                Text = "Nominal:",
+                ForeColor = Color.FromArgb(189, 195, 199),
+                Location = new Point(15, 170),
+                Size = new Size(250, 20)
+            };
+
+            txtReminderAmount = new EntryTextBox
+            {
+                Location = new Point(15, 190),
+                Size = new Size(250, 28)
+            };
+
+            lblReminderCreatedDate = new Label
+            {
+                Text = "Tanggal Tagihan Dibuat:",
+                ForeColor = Color.FromArgb(189, 195, 199),
+                Location = new Point(15, 230),
+                Size = new Size(250, 20)
+            };
+
+            dtpReminderCreatedDate = new DateTimePicker
+            {
+                Location = new Point(15, 250),
+                Size = new Size(250, 28),
+                Format = DateTimePickerFormat.Custom,
+                CustomFormat = "yyyy-MM-dd",
+                MaxDate = DateTime.Today.AddYears(1)
+            };
+            dtpReminderCreatedDate.ValueChanged += (s, e) => UpdateDeadlineDisplay();
+
+            lblReminderDeadline = new Label
+            {
+                Text = "Tanggal Jatuh Tempo:",
+                ForeColor = Color.FromArgb(189, 195, 199),
+                Location = new Point(15, 290),
+                Size = new Size(250, 20)
+            };
+
+            dtpReminderDeadline = new DateTimePicker
+            {
+                Location = new Point(15, 310),
+                Size = new Size(250, 28),
+                Format = DateTimePickerFormat.Custom,
+                CustomFormat = "yyyy-MM-dd",
+                Enabled = false
+            };
+
+            btnSaveReminder = new Button
+            {
+                Text = "+ Tambah Tagihan",
+                BackColor = Color.FromArgb(78, 49, 170),
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Location = new Point(15, 360),
+                Size = new Size(250, 45),
+                FlatStyle = FlatStyle.Flat
+            };
+            btnSaveReminder.FlatAppearance.BorderSize = 0;
+            btnSaveReminder.Click += BtnSaveReminder_Click;
+
+            lblReminderStatus = new Label
+            {
+                ForeColor = Color.FromArgb(255, 118, 117),
+                Location = new Point(15, 420),
+                Size = new Size(250, 85),
+                TextAlign = ContentAlignment.TopLeft
+            };
+
+            reminderInputPanel.Controls.Add(lblReminderTitle);
+            reminderInputPanel.Controls.Add(lblReminderName);
+            reminderInputPanel.Controls.Add(txtReminderName);
+            reminderInputPanel.Controls.Add(lblReminderCategory);
+            reminderInputPanel.Controls.Add(cmbReminderCategory);
+            reminderInputPanel.Controls.Add(lblReminderAmount);
+            reminderInputPanel.Controls.Add(txtReminderAmount);
+            reminderInputPanel.Controls.Add(lblReminderCreatedDate);
+            reminderInputPanel.Controls.Add(dtpReminderCreatedDate);
+            reminderInputPanel.Controls.Add(lblReminderDeadline);
+            reminderInputPanel.Controls.Add(dtpReminderDeadline);
+            reminderInputPanel.Controls.Add(btnSaveReminder);
+            reminderInputPanel.Controls.Add(lblReminderStatus);
+
+            lblDaftarTagihan = new Label
+            {
+                Text = "Daftar Tagihan",
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 14, FontStyle.Bold),
+                Location = new Point(310, 15),
+                Size = new Size(200, 30)
+            };
+
+            lblSearchReminder = new Label
+            {
+                Text = "Cari Tagihan:",
+                ForeColor = Color.FromArgb(189, 195, 199),
+                Font = new Font("Segoe UI", 10),
+                Location = new Point(310, 68),
+                Size = new Size(100, 25)
+            };
+
+            txtSearchReminder = new EntryTextBox
+            {
+                Location = new Point(420, 65),
+                Size = new Size(325, 28)
+            };
+            txtSearchReminder.TextChanged += (s, e) => RefreshData();
+
+            btnSearchReminder = new Button
+            {
+                Text = "Search",
+                BackColor = Color.FromArgb(34, 34, 59),
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 9F),
+                Location = new Point(755, 65),
+                Size = new Size(90, 28),
+                FlatStyle = FlatStyle.Flat
+            };
+            btnSearchReminder.FlatAppearance.BorderSize = 0;
+            btnSearchReminder.Click += (s, e) => RefreshData();
+
             lvReminders = new ListView
             {
-                Location = new Point(25, 20),
-                Size = new Size(810, 400),
+                Location = new Point(310, 110),
+                Size = new Size(535, 385),
                 View = View.Details,
                 FullRowSelect = true,
                 GridLines = true,
@@ -483,37 +696,49 @@ namespace MonTrack.WinForms
                 ForeColor = Color.White,
                 BorderStyle = BorderStyle.None
             };
-            lvReminders.Columns.Add("Bill Name", 180);
-            lvReminders.Columns.Add("Category", 120);
-            lvReminders.Columns.Add("Group", 120);
-            lvReminders.Columns.Add("Amount (Rp)", 120);
-            lvReminders.Columns.Add("Deadline", 120);
-            lvReminders.Columns.Add("Status", 130);
+            lvReminders.Columns.Add("Id", 40);
+            lvReminders.Columns.Add("Nama", 110);
+            lvReminders.Columns.Add("Kategori", 100);
+            lvReminders.Columns.Add("Nominal", 100);
+            lvReminders.Columns.Add("TanggalDibuat", 100);
+            lvReminders.Columns.Add("TanggalJatuhTempo", 100);
+            lvReminders.Columns.Add("StatusSaatIni", 85);
+            lvReminders.SelectedIndexChanged += LvReminders_SelectedIndexChanged;
 
             btnMarkPaid = new Button
             {
-                Text = "Mark Selected as Paid",
-                BackColor = Color.FromArgb(55, 149, 189),
+                Text = "Tandai Sudah Lunas \u2611",
+                BackColor = Color.FromArgb(46, 204, 113),
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                Location = new Point(25, 440),
+                Location = new Point(310, 510),
                 Size = new Size(200, 45),
                 FlatStyle = FlatStyle.Flat
             };
             btnMarkPaid.FlatAppearance.BorderSize = 0;
             btnMarkPaid.Click += BtnMarkPaid_Click;
 
-            lblReminderStatus = new Label
+            btnDeleteReminder = new Button
             {
-                ForeColor = Color.FromArgb(85, 239, 196),
-                Location = new Point(245, 440),
-                Size = new Size(590, 45),
-                TextAlign = ContentAlignment.MiddleLeft
+                Text = "Hapus",
+                BackColor = Color.FromArgb(231, 76, 60),
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Location = new Point(705, 510),
+                Size = new Size(140, 45),
+                FlatStyle = FlatStyle.Flat
             };
+            btnDeleteReminder.FlatAppearance.BorderSize = 0;
+            btnDeleteReminder.Click += BtnDeleteReminder_Click;
 
+            tabReminders.Controls.Add(reminderInputPanel);
+            tabReminders.Controls.Add(lblDaftarTagihan);
+            tabReminders.Controls.Add(lblSearchReminder);
+            tabReminders.Controls.Add(txtSearchReminder);
+            tabReminders.Controls.Add(btnSearchReminder);
             tabReminders.Controls.Add(lvReminders);
             tabReminders.Controls.Add(btnMarkPaid);
-            tabReminders.Controls.Add(lblReminderStatus);
+            tabReminders.Controls.Add(btnDeleteReminder);
 
             // --- Tab 3: Data Export Layout ---
             exportCard = new Panel
@@ -623,6 +848,12 @@ namespace MonTrack.WinForms
                 transactions = transactions.Where(t => t.Type == TransactionType.Pengeluaran).ToList();
             }
 
+            if (txtSearch != null && !string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                string searchKeyword = txtSearch.Text.Trim();
+                transactions = transactions.Where(t => t.Description != null && t.Description.IndexOf(searchKeyword, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+            }
+
             foreach (var tx in transactions)
             {
                 var item = new ListViewItem(tx.Id.ToString());
@@ -647,14 +878,30 @@ namespace MonTrack.WinForms
 
             // Refresh ListView Reminders
             lvReminders.Items.Clear();
-            foreach (var r in _reminders)
+            string searchReminder = txtSearchReminder != null ? txtSearchReminder.Text.Trim() : "";
+
+            for (int i = 0; i < _reminders.Count; i++)
             {
+                var r = _reminders[i];
                 r.UpdateStatusBerdasarkanWaktu();
-                var item = new ListViewItem(r.Nama);
+
+                // Apply search filter if active
+                if (!string.IsNullOrEmpty(searchReminder))
+                {
+                    bool matchName = r.Nama != null && r.Nama.IndexOf(searchReminder, StringComparison.OrdinalIgnoreCase) >= 0;
+                    bool matchCat = r.Kategori != null && r.Kategori.IndexOf(searchReminder, StringComparison.OrdinalIgnoreCase) >= 0;
+                    if (!matchName && !matchCat)
+                    {
+                        continue;
+                    }
+                }
+
+                var item = new ListViewItem((i + 1).ToString()); // Id is 1-based index
+                item.SubItems.Add(r.Nama);
                 item.SubItems.Add(r.Kategori);
-                item.SubItems.Add(r.Kelompok);
                 item.SubItems.Add($"Rp {r.Nominal:N0}");
-                item.SubItems.Add(r.Deadline.ToShortDateString());
+                item.SubItems.Add(r.TanggalDibuat.ToString("yyyy-MM-dd"));
+                item.SubItems.Add(r.Deadline.ToString("yyyy-MM-dd"));
                 item.SubItems.Add(r.StatusSaatIni.ToString());
 
                 // Color coding for status
@@ -670,6 +917,9 @@ namespace MonTrack.WinForms
                 {
                     item.ForeColor = Color.FromArgb(250, 177, 160);
                 }
+
+                // Tag the item with its original index in _reminders
+                item.Tag = i;
 
                 lvReminders.Items.Add(item);
             }
@@ -712,6 +962,139 @@ namespace MonTrack.WinForms
             }
         }
 
+        private void UpdateDeadlineDisplay()
+        {
+            if (cmbReminderCategory == null || cmbReminderCategory.SelectedItem == null || dtpReminderDeadline == null || dtpReminderCreatedDate == null) return;
+            string kat = cmbReminderCategory.SelectedItem.ToString();
+            int days = 30;
+            if (kat == "Listrik") days = 20;
+            else if (kat == "Air") days = 15;
+            else if (kat == "Internet") days = 30;
+            else if (kat == "Sewa Rumah") days = 7;
+            else if (kat == "Netflix") days = 30;
+
+            dtpReminderDeadline.Value = dtpReminderCreatedDate.Value.AddDays(days);
+        }
+
+        private void LvReminders_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvReminders.SelectedItems.Count == 0)
+            {
+                _selectedReminderIndex = -1;
+                txtReminderName.Text = "";
+                txtReminderAmount.Text = "";
+                cmbReminderCategory.SelectedIndex = 0;
+                dtpReminderCreatedDate.Value = DateTime.Today;
+                btnSaveReminder.Text = "+ Tambah Tagihan";
+                return;
+            }
+
+            var selectedItem = lvReminders.SelectedItems[0];
+            if (selectedItem.Tag is int index && index >= 0 && index < _reminders.Count)
+            {
+                _selectedReminderIndex = index;
+                var r = _reminders[index];
+                txtReminderName.Text = r.Nama;
+                txtReminderAmount.Text = r.Nominal.ToString();
+                
+                int catIndex = cmbReminderCategory.FindStringExact(r.Kategori);
+                if (catIndex >= 0) cmbReminderCategory.SelectedIndex = catIndex;
+                
+                dtpReminderCreatedDate.Value = r.TanggalDibuat;
+                dtpReminderDeadline.Value = r.Deadline;
+
+                btnSaveReminder.Text = "Simpan Perubahan";
+            }
+        }
+
+        private void BtnSaveReminder_Click(object sender, EventArgs e)
+        {
+            lblReminderStatus.Text = "";
+            string name = txtReminderName.Text.Trim();
+            string category = cmbReminderCategory.Text;
+            string amountText = txtReminderAmount.Text.Trim();
+            DateTime createdDate = dtpReminderCreatedDate.Value;
+
+            if (string.IsNullOrEmpty(name))
+            {
+                lblReminderStatus.ForeColor = Color.FromArgb(255, 118, 117);
+                lblReminderStatus.Text = "Nama tagihan harus diisi.";
+                return;
+            }
+
+            if (string.IsNullOrEmpty(amountText) || !int.TryParse(amountText, out int nominal) || nominal <= 0)
+            {
+                lblReminderStatus.ForeColor = Color.FromArgb(255, 118, 117);
+                lblReminderStatus.Text = "Nominal harus berupa angka positif.";
+                return;
+            }
+
+            try
+            {
+                if (_selectedReminderIndex == -1)
+                {
+                    var newReminder = new PengingatTagihan(name, category, nominal, createdDate);
+                    _reminders.Add(newReminder);
+                    lblReminderStatus.ForeColor = Color.FromArgb(85, 239, 196);
+                    lblReminderStatus.Text = "Tagihan berhasil ditambahkan!";
+                }
+                else
+                {
+                    var updatedReminder = new PengingatTagihan(name, category, nominal, createdDate);
+                    _reminders[_selectedReminderIndex] = updatedReminder;
+                    lblReminderStatus.ForeColor = Color.FromArgb(85, 239, 196);
+                    lblReminderStatus.Text = "Tagihan berhasil diubah!";
+                }
+
+                // Reset inputs
+                _selectedReminderIndex = -1;
+                txtReminderName.Text = "";
+                txtReminderAmount.Text = "";
+                cmbReminderCategory.SelectedIndex = 0;
+                dtpReminderCreatedDate.Value = DateTime.Today;
+                btnSaveReminder.Text = "+ Tambah Tagihan";
+
+                RefreshData();
+            }
+            catch (Exception ex)
+            {
+                lblReminderStatus.ForeColor = Color.FromArgb(255, 118, 117);
+                lblReminderStatus.Text = $"Error: {ex.Message}";
+            }
+        }
+
+        private void BtnDeleteReminder_Click(object sender, EventArgs e)
+        {
+            lblReminderStatus.Text = "";
+
+            if (lvReminders.SelectedItems.Count == 0)
+            {
+                lblReminderStatus.ForeColor = Color.FromArgb(255, 118, 117);
+                lblReminderStatus.Text = "Pilih tagihan dari daftar untuk dihapus.";
+                return;
+            }
+
+            var selectedItem = lvReminders.SelectedItems[0];
+            if (selectedItem.Tag is int index && index >= 0 && index < _reminders.Count)
+            {
+                string billName = _reminders[index].Nama;
+                _reminders.RemoveAt(index);
+                
+                lblReminderStatus.ForeColor = Color.FromArgb(85, 239, 196);
+                lblReminderStatus.Text = $"Tagihan '{billName}' berhasil dihapus.";
+                
+                // Clear selection
+                _selectedReminderIndex = -1;
+                txtReminderName.Text = "";
+                txtReminderAmount.Text = "";
+                cmbReminderCategory.SelectedIndex = 0;
+                dtpReminderCreatedDate.Value = DateTime.Today;
+                btnSaveReminder.Text = "+ Tambah Tagihan";
+
+                RefreshData();
+            }
+        }
+
         private void BtnMarkPaid_Click(object sender, EventArgs e)
         {
             lblReminderStatus.Text = "";
@@ -719,25 +1102,24 @@ namespace MonTrack.WinForms
             if (lvReminders.SelectedItems.Count == 0)
             {
                 lblReminderStatus.ForeColor = Color.FromArgb(255, 118, 117);
-                lblReminderStatus.Text = "Please select a bill reminder from the list.";
+                lblReminderStatus.Text = "Pilih tagihan dari daftar untuk ditandai lunas.";
                 return;
             }
 
-            string selectedBillName = lvReminders.SelectedItems[0].Text;
-            var selectedReminder = _reminders.FirstOrDefault(x => x.Nama == selectedBillName);
-
-            if (selectedReminder != null)
+            var selectedItem = lvReminders.SelectedItems[0];
+            if (selectedItem.Tag is int index && index >= 0 && index < _reminders.Count)
             {
+                var selectedReminder = _reminders[index];
                 if (selectedReminder.StatusSaatIni == PengingatTagihan.TagihanState.Lunas)
                 {
                     lblReminderStatus.ForeColor = Color.FromArgb(250, 177, 160);
-                    lblReminderStatus.Text = $"[INFO] {selectedReminder.Nama} was already marked as paid.";
+                    lblReminderStatus.Text = $"[INFO] {selectedReminder.Nama} sudah berstatus lunas.";
                     return;
                 }
 
                 selectedReminder.TandaiLunas();
                 lblReminderStatus.ForeColor = Color.FromArgb(85, 239, 196);
-                lblReminderStatus.Text = $"[SUCCESS] Bill '{selectedReminder.Nama}' marked as PAID.";
+                lblReminderStatus.Text = $"[SUCCESS] Tagihan '{selectedReminder.Nama}' ditandai LUNAS.";
                 RefreshData();
             }
         }
