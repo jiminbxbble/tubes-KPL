@@ -1,4 +1,4 @@
-# 💰 MONTRACK: APLIKASI MANAJEMEN KEUANGAN
+<img width="1163" height="684" alt="image" src="https://github.com/user-attachments/assets/96e5ec0d-e36b-49d6-a494-2b411e8763e2" /># 💰 MONTRACK: APLIKASI MANAJEMEN KEUANGAN
 
 [![Framework/Tech](https://img.shields.io/badge/Tech_Stack-.NET-blue.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-TelkomUniversity-red.svg)](https://opensource.org/licenses/Telkom-University)
@@ -31,20 +31,20 @@ Fitur inti untuk mencatat arus kas (pemasukan dan pengeluaran). Pengguna dapat m
 
 ---
 
-### 3. Halaman Pengingat Tagihan (Bill Reminder)
+### 3. Halaman Daftar & Riwayat Transaksi
+Menampilkan seluruh daftar transaksi yang pernah dicatat oleh pengguna. Halaman ini dilengkapi dengan fitur pencarian dan filter berdasarkan kategori atau rentang tanggal untuk memudahkan pelacakan pengeluaran masa lalu.
+| Income | Expense|
+|---|---|
+| <img width="1098" height="751" alt="Screenshot 2026-06-22 185900" src="https://github.com/user-attachments/assets/b5cdceb7-c5ce-499d-858e-f883a8b93811" /> | <img width="1092" height="758" alt="Screenshot 2026-06-22 185326" src="https://github.com/user-attachments/assets/2a469b63-795b-4c92-85d3-7620f3dd5b27" />
+
+---
+
+### 4. Halaman Pengingat Tagihan (Bill Reminder)
 Halaman khusus untuk mengelola tagihan rutin bulanan (listrik, internet, cicilan, dll). Fitur ini membantu pengguna agar tidak terlewat membayar tagihan sebelum jatuh tempo.
 
 | UI Pengingat Tagihan |
 | :---: |
-| <img width="1056" height="726" alt="image" src="https://github.com/user-attachments/assets/b50f193b-f9e1-4b61-9317-32ae27779d9b" />
-
----
-
-### 4. Halaman Daftar & Riwayat Transaksi
-Menampilkan seluruh daftar transaksi yang pernah dicatat oleh pengguna secara runut.
-| Income | Expense|
-|---|---|
-| <img width="1045" height="713" alt="image" src="https://github.com/user-attachments/assets/f7fb5c48-c24e-4fd7-998e-7f96ab08fae7" /> | <img width="1050" height="719" alt="image" src="https://github.com/user-attachments/assets/e5e1fc83-c76c-452a-8397-88f71c0f4d32" />
+| <img width="1163" height="684" alt="image" src="https://github.com/user-attachments/assets/0597dc6c-ebd9-4b99-a3fe-d56a3d8962de" />
 
 ---
 
@@ -72,7 +72,7 @@ Fitur untuk mengunduh seluruh riwayat transaksi keuangan ke dalam format dokumen
 * **Autentikasi Aman:** Menggunakan enkripsi [sebutkan jika ada, misal: JWT/Firebase].
 * **Manajemen Arus Kas:** Pencatatan pemasukan dan pengeluaran yang fleksibel.
 * **Sistem Alergi Tagihan:** Notifikasi atau penanda tagihan yang mendekati tenggat waktu.
-* **Riwayat & Pelacakan Transaksi:** Log riwayat yang lengkap dengan filter pencarian yang dinamis.
+* **Riwayat & Pelacakan Transaksi:** Log riwayat yang lengkap dengan filter kategori dan pencarian yang dinamis.
 * **Visualisasi Data Dinamis:** Chart interaktif yang responsif.
 * **Ekspor Multi-Format:** Konversi data transaksi ke PDF/Excel hanya dengan satu klik.
 
