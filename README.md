@@ -27,7 +27,8 @@ Fitur inti untuk mencatat arus kas (pemasukan dan pengeluaran). Pengguna dapat m
 
 | UI Pencatatan Keuangan |
 | :---: |
-| <img width="1055" height="719" alt="image" src="https://github.com/user-attachments/assets/9e4f2d88-fd60-4ee0-b8f1-b0883ba81d17" />
+| <img width="827" height="588" alt="image" src="https://github.com/user-attachments/assets/d0cd2b32-5414-4879-b14f-4a7d7b8b83e5" />
+
 
 ---
 
@@ -65,6 +66,12 @@ Fitur untuk mengunduh seluruh riwayat transaksi keuangan ke dalam format dokumen
 | UI Export Data |
 | :---: |
 | <img width="1053" height="724" alt="image" src="https://github.com/user-attachments/assets/31c556db-f1d8-481c-8660-70454c02deb9" />
+
+| Hasil PDF | Hasil CSV |
+|---|---|
+| <img width="847" height="578" alt="image" src="https://github.com/user-attachments/assets/68921769-04f3-443e-a1fb-7c99986e9b30" /> | <img width="759" height="292" alt="image" src="https://github.com/user-attachments/assets/a95ea69c-5988-4789-852e-1744c2ea7890" />
+
+
 
 ---
 
