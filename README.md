@@ -1,4 +1,4 @@
-<img width="1163" height="684" alt="image" src="https://github.com/user-attachments/assets/96e5ec0d-e36b-49d6-a494-2b411e8763e2" /># 💰 MONTRACK: APLIKASI MANAJEMEN KEUANGAN
+# 💰 MONTRACK: APLIKASI MANAJEMEN KEUANGAN
 
 [![Framework/Tech](https://img.shields.io/badge/Tech_Stack-.NET-blue.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-TelkomUniversity-red.svg)](https://opensource.org/licenses/Telkom-University)
