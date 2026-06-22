@@ -314,7 +314,10 @@ namespace MonTrack.WinForms
                     lblStatus.Text = "Access Granted!";
                     await Task.Delay(500);
 
-                    // Open Dashboard
+                    // Mengapa email dikirim ke MainForm saat pembuatan objek:
+                    // Untuk menginisialisasi penyimpanan database pengguna secara spesifik (Multi-User Isolation).
+                    // Hal ini memastikan bahwa setelah masuk, data transaksi yang ditampilkan dan dimodifikasi
+                    // hanyalah data yang dimiliki oleh pengguna tersebut secara aman dan privat.
                     var mainForm = new MainForm(email);
                     mainForm.Show();
                     this.Hide();

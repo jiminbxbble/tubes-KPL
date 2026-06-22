@@ -7,7 +7,10 @@ using MonTrack.Models;
 namespace MonTrack.Services
 {
     /// <summary>
-    /// Class sebagai implementasi teknik API internal untuk proses ekspor data.
+    /// Layanan API internal untuk memfasilitasi ekspor data transaksi.
+    /// Menerapkan Strategy Pattern untuk memenuhi Open/Closed Principle (OCP) pada spesifikasi CLO4.
+    /// Mengapa: Agar penambahan format ekspor baru (misal: Excel/JSON) di masa depan tidak perlu mengubah
+    /// logika kelas ini, melainkan cukup membuat implementasi baru dari interface IDataExporter.
     /// </summary>
     public class ExportApiService
     {
@@ -15,21 +18,29 @@ namespace MonTrack.Services
 
         public ExportApiService()
         {
-            // Strategy Pattern: Menyiapkan berbagai strategi ekspor yang didukung.
+            // Mengapa menggunakan Dictionary sebagai map strategi:
+            // Memudahkan penambahan strategi baru secara dinamis dan pencarian dengan kompleksitas O(1)
+            // tanpa memerlukan struktur pengkondisian percabangan (switch/if-else) yang rumit.
             _exporters = new Dictionary<string, IDataExporter>(StringComparer.OrdinalIgnoreCase)
             {
                 { "CSV", new CsvExporter() },
                 { "PDF", new PdfExporter() }
-                // Bisa ditambahkan exporter lain tanpa mengubah class ini (OCP).
             };
         }
 
         /// <summary>
-        /// Mengeksekusi proses ekspor secara aman (Security validation).
+        /// Mengeksekusi proses ekspor data secara asinkron berdasarkan format yang dipilih.
+        /// Mengapa: Menjalankan ekspor di thread terpisah (Task.Run) agar thread UI utama tidak membeku (freeze)
+        /// saat memproses data berukuran besar, menjaga user experience tetap responsif.
         /// </summary>
+        /// <param name="format">Format ekspor target (CSV/PDF).</param>
+        /// <param name="data">Daftar transaksi yang akan diekspor.</param>
+        /// <param name="path">Jalur penyimpanan berkas output.</param>
+        /// <param name="isAuthenticated">Status autentikasi sesi pengguna.</param>
         public async Task ExecuteExport(string format, List<Transaction> data, string path, bool isAuthenticated = true)
         {
-            // Security Validation (Phase 3 Requirement)
+            // Mengapa validasi keamanan diletakkan di sini:
+            // Mencegah kebocoran data sensitif apabila API ini diakses dari luar sesi masuk resmi (Secure Coding).
             if (!isAuthenticated)
             {
                 throw new UnauthorizedAccessException("Sesi tidak valid. Silakan login kembali untuk melakukan ekspor data.");

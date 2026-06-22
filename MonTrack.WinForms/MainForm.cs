@@ -72,18 +72,31 @@ namespace MonTrack.WinForms
         private Button btnExport;
         private Label lblExportStatus;
 
+        /// <summary>
+        /// Konstruktor utama MainForm.
+        /// Menerapkan Pemisahan Berkas per Pengguna (Multi-User Isolation) untuk privasi data dan keamanan.
+        /// Mengapa: Agar setiap pengguna memiliki berkas transaksi terisolasi sendiri (transactions_[email].json)
+        /// dan tidak terjadi kebocoran data atau tabrakan data (collision) antar akun yang berbeda pada sistem yang sama.
+        /// </summary>
+        /// <param name="userEmail">Email pengguna yang berhasil login dari LoginForm.</param>
         public MainForm(string userEmail = "")
         {
             _userEmail = string.IsNullOrEmpty(userEmail) ? "default" : userEmail;
+            
+            // Mengapa karakter non-alfanumerik disanitasi:
+            // Mencegah error penulisan nama file di sistem operasi Windows (karena simbol '@' dan '.' 
+            // dapat memicu masalah keamanan path traversal atau ketidakkompatibilitas sistem berkas).
             string safeEmail = _userEmail.Replace("@", "_").Replace(".", "_");
             string userDbFile = $"transactions_{safeEmail}.json";
 
-            // Initialize Core Services with user-specific database file
+            // Initialize Core Services dengan database terisolasi milik user
             _repo = new DataRepository<Transaction>(userDbFile);
             _financeManager = new TransactionManager(_repo);
             _exportService = new ExportApiService();
 
-            // Seed default data if database is empty
+            // Seed default data jika database user baru masih kosong
+            // Mengapa: Memberikan data dummy awal yang representatif (5 Pemasukan & 5 Pengeluaran)
+            // agar tampilan UI dashboard tidak kosong melongpong saat pertama kali digunakan (UX-Friendly).
             if (_repo.GetAll().Count == 0)
             {
                 SeedDefaultTransactions();
@@ -712,6 +725,10 @@ namespace MonTrack.WinForms
             string format = cmbExportFormat.Text;
             string defaultFileName = $"export_{DateTime.Now:yyyyMMdd_HHmmss}";
 
+            // Mengapa menggunakan SaveFileDialog secara interaktif:
+            // Dibandingkan hardcoding absolute path (yang akan menyebabkan I/O Crash jika folder target
+            // tidak eksis di laptop lain), SaveFileDialog memberikan fleksibilitas penuh bagi pengguna
+            // untuk memilih lokasi penyimpanan secara portabel di perangkat mana saja secara aman.
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
                 if (format == "CSV")
@@ -724,13 +741,16 @@ namespace MonTrack.WinForms
                     sfd.Filter = "PDF files (*.pdf)|*.pdf";
                     sfd.FileName = defaultFileName + ".pdf";
                 }
-                else // Both
+                else // Keduanya (CSV & PDF)
                 {
                     sfd.Filter = "All files (*.*)|*.*";
-                    sfd.FileName = defaultFileName; // Base name
+                    sfd.FileName = defaultFileName; // Nama dasar tanpa ekstensi
                     sfd.Title = "Select base name and folder for CSV & PDF exports";
                 }
 
+                // Mengapa hasil dialog diperiksa:
+                // Menangani skenario di mana pengguna membatalkan dialog ekspor (Defensive Programming)
+                // agar UI tidak crash dan tombol kembali diaktifkan kembali secara wajar.
                 if (sfd.ShowDialog() != DialogResult.OK)
                 {
                     btnExport.Enabled = true;
