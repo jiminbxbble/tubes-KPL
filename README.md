@@ -73,6 +73,7 @@ Fitur untuk mengunduh seluruh riwayat transaksi keuangan ke dalam format dokumen
 * **Autentikasi Aman:** Menggunakan enkripsi [sebutkan jika ada, misal: JWT/Firebase].
 * **Manajemen Arus Kas:** Pencatatan pemasukan dan pengeluaran yang fleksibel.
 * **Sistem Alergi Tagihan:** Notifikasi atau penanda tagihan yang mendekati tenggat waktu.
+* **Riwayat & Pelacakan Transaksi:** Log riwayat yang lengkap dengan filter pencarian yang dinamis.
 * **Visualisasi Data Dinamis:** Chart interaktif yang responsif.
 * **Ekspor Multi-Format:** Konversi data transaksi ke PDF/Excel hanya dengan satu klik.
 
