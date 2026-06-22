@@ -208,7 +208,7 @@ namespace MonTrack.WinForms
             UpdateLayout();
         }
 
-        private void ToggleMode_Click(object? sender, EventArgs e)
+        private void ToggleMode_Click(object sender, EventArgs e)
         {
             _isSignUpMode = !_isSignUpMode;
             UpdateLayout();
@@ -251,7 +251,7 @@ namespace MonTrack.WinForms
             }
         }
 
-        private async void BtnSubmit_Click(object? sender, EventArgs e)
+        private async void BtnSubmit_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text;
             string password = txtPassword.Text;

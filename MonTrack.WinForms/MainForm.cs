@@ -631,7 +631,7 @@ namespace MonTrack.WinForms
             }
         }
 
-        private void BtnRecord_Click(object? sender, EventArgs e)
+        private void BtnRecord_Click(object sender, EventArgs e)
         {
             lblTxStatus.Text = "";
             string amountText = txtAmount.Text;
@@ -668,7 +668,7 @@ namespace MonTrack.WinForms
             }
         }
 
-        private void BtnMarkPaid_Click(object? sender, EventArgs e)
+        private void BtnMarkPaid_Click(object sender, EventArgs e)
         {
             lblReminderStatus.Text = "";
 
@@ -698,7 +698,7 @@ namespace MonTrack.WinForms
             }
         }
 
-        private async void BtnExport_Click(object? sender, EventArgs e)
+        private async void BtnExport_Click(object sender, EventArgs e)
         {
             lblExportStatus.Text = "";
             btnExport.Enabled = false;
@@ -851,7 +851,7 @@ namespace MonTrack.WinForms
             lblBalance.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         }
 
-        private void CmbType_SelectedIndexChanged(object? sender, EventArgs e)
+        private void CmbType_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbCategory.Items.Clear();
             if (cmbType.Text == "Pemasukan")
@@ -876,7 +876,7 @@ namespace MonTrack.WinForms
             }
         }
 
-        private void PnlChart_Paint(object? sender, PaintEventArgs e)
+        private void PnlChart_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;

@@ -488,4 +488,16 @@ _Output/
 spesifikasi Tubes
 
 #laporan
-Laporan-
+Laporan
+
+# Folder bagian anggota kelompok (local only, tidak perlu masuk Git)
+BAGIAN DANI/
+BAGIAN DANI/**
+BAGIAN RAI/
+BAGIAN RAI/**
+BAGIAN THORIQ/
+BAGIAN THORIQ/**
+BAGIAN ROSSA/
+BAGIAN ROSSA/**
+BAGIAN RAFIKAH/
+BAGIAN RAFIKAH/**
