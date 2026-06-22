@@ -42,7 +42,7 @@ namespace PencatatanKeuangan.Services
             _repository.Save();
         }
 
-        public void RecordTransaction(double amount, string category, string description)
+        public void RecordTransaction(double amount, string category, string description, DateTime? date = null)
         {
             // Teknik: Defensive Programming / Design by Contract (DbC)
             // Pre-conditions (Syarat sebelum fungsi jalan)
@@ -73,7 +73,7 @@ namespace PencatatanKeuangan.Services
                 Amount = amount,
                 Category = category,
                 Description = description,
-                Date = DateTime.Now
+                Date = date ?? DateTime.Now
             };
 
             _repository.Add(transaction);

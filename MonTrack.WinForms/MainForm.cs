@@ -35,6 +35,8 @@ namespace MonTrack.WinForms
         private Label lblHeaderTitle;
         private Label lblHeaderSubtitle;
         private Label lblBalance;
+        private Button btnLogout;
+        private bool _isLoggingOut = false;
         private TabControl tabControl;
         private Panel inputPanel;
         private Panel filterPanel;
@@ -48,6 +50,8 @@ namespace MonTrack.WinForms
         private TabPage tabTransactions;
         private ListView lvTransactions;
         private Label lblNewTxTitle;
+        private Label lblDate;
+        private DateTimePicker dtpDate;
         private Label lblAmount;
         private EntryTextBox txtAmount;
         private Label lblCategory;
@@ -173,14 +177,29 @@ namespace MonTrack.WinForms
                 Text = "Current Balance: Rp 0",
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 16, FontStyle.Bold),
-                Location = new Point(400, 25),
-                Size = new Size(450, 40),
+                Location = new Point(350, 25),
+                Size = new Size(380, 40),
                 TextAlign = ContentAlignment.MiddleRight
             };
+
+            btnLogout = new Button
+            {
+                Text = "Log Out",
+                ForeColor = Color.White,
+                BackColor = Color.FromArgb(225, 112, 85),
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                Location = new Point(745, 28),
+                Size = new Size(95, 32),
+                FlatStyle = FlatStyle.Flat,
+                Cursor = Cursors.Hand
+            };
+            btnLogout.FlatAppearance.BorderSize = 0;
+            btnLogout.Click += BtnLogout_Click;
 
             headerPanel.Controls.Add(lblHeaderTitle);
             headerPanel.Controls.Add(lblHeaderSubtitle);
             headerPanel.Controls.Add(lblBalance);
+            headerPanel.Controls.Add(btnLogout);
 
             // Tab Control Setup
             tabControl = new TabControl
@@ -205,7 +224,7 @@ namespace MonTrack.WinForms
             inputPanel = new Panel
             {
                 Location = new Point(15, 15),
-                Size = new Size(280, 480),
+                Size = new Size(280, 520),
                 BackColor = Color.FromArgb(34, 34, 59)
             };
 
@@ -218,17 +237,40 @@ namespace MonTrack.WinForms
                 Size = new Size(250, 25)
             };
 
-            lblAmount = new Label
+            lblDate = new Label
             {
-                Text = "Amount (Rp)",
+                Text = "Transaction Date",
                 ForeColor = Color.FromArgb(189, 195, 199),
                 Location = new Point(15, 50),
                 Size = new Size(250, 20)
             };
 
-            txtAmount = new EntryTextBox
+            dtpDate = new DateTimePicker
             {
                 Location = new Point(15, 70),
+                Size = new Size(250, 28),
+                Format = DateTimePickerFormat.Custom,
+                CustomFormat = "yyyy-MM-dd",
+                MaxDate = DateTime.Now
+            };
+            dtpDate.ValueChanged += (s, e) => {
+                if (pnlChart != null)
+                {
+                    pnlChart.Invalidate();
+                }
+            };
+
+            lblAmount = new Label
+            {
+                Text = "Amount (Rp)",
+                ForeColor = Color.FromArgb(189, 195, 199),
+                Location = new Point(15, 110),
+                Size = new Size(250, 20)
+            };
+
+            txtAmount = new EntryTextBox
+            {
+                Location = new Point(15, 130),
                 Size = new Size(250, 28)
             };
 
@@ -236,13 +278,13 @@ namespace MonTrack.WinForms
             {
                 Text = "Transaction Type",
                 ForeColor = Color.FromArgb(189, 195, 199),
-                Location = new Point(15, 110),
+                Location = new Point(15, 170),
                 Size = new Size(250, 20)
             };
 
             cmbType = new ComboBox
             {
-                Location = new Point(15, 130),
+                Location = new Point(15, 190),
                 Size = new Size(250, 28),
                 BackColor = Color.FromArgb(22, 22, 37),
                 ForeColor = Color.White,
@@ -257,13 +299,13 @@ namespace MonTrack.WinForms
             {
                 Text = "Category",
                 ForeColor = Color.FromArgb(189, 195, 199),
-                Location = new Point(15, 170),
+                Location = new Point(15, 230),
                 Size = new Size(250, 20)
             };
 
             cmbCategory = new ComboBox
             {
-                Location = new Point(15, 190),
+                Location = new Point(15, 250),
                 Size = new Size(250, 28),
                 BackColor = Color.FromArgb(22, 22, 37),
                 ForeColor = Color.White,
@@ -278,13 +320,13 @@ namespace MonTrack.WinForms
             {
                 Text = "Description",
                 ForeColor = Color.FromArgb(189, 195, 199),
-                Location = new Point(15, 230),
+                Location = new Point(15, 290),
                 Size = new Size(250, 20)
             };
 
             txtDescription = new EntryTextBox
             {
-                Location = new Point(15, 250),
+                Location = new Point(15, 310),
                 Size = new Size(250, 28)
             };
 
@@ -294,7 +336,7 @@ namespace MonTrack.WinForms
                 BackColor = Color.FromArgb(78, 49, 170),
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                Location = new Point(15, 300),
+                Location = new Point(15, 360),
                 Size = new Size(250, 45),
                 FlatStyle = FlatStyle.Flat
             };
@@ -304,12 +346,14 @@ namespace MonTrack.WinForms
             lblTxStatus = new Label
             {
                 ForeColor = Color.FromArgb(255, 118, 117),
-                Location = new Point(15, 360),
+                Location = new Point(15, 420),
                 Size = new Size(250, 80),
                 TextAlign = ContentAlignment.TopLeft
             };
 
             inputPanel.Controls.Add(lblNewTxTitle);
+            inputPanel.Controls.Add(lblDate);
+            inputPanel.Controls.Add(dtpDate);
             inputPanel.Controls.Add(lblAmount);
             inputPanel.Controls.Add(txtAmount);
             inputPanel.Controls.Add(lblType);
@@ -654,7 +698,7 @@ namespace MonTrack.WinForms
 
             try
             {
-                _financeManager.RecordTransaction(amount, category, description);
+                _financeManager.RecordTransaction(amount, category, description, dtpDate.Value);
                 lblTxStatus.ForeColor = Color.FromArgb(85, 239, 196);
                 lblTxStatus.Text = "Transaction recorded successfully!";
                 txtAmount.Text = "";
@@ -849,6 +893,7 @@ namespace MonTrack.WinForms
 
             exportCard.Anchor = AnchorStyles.None;
             lblBalance.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnLogout.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         }
 
         private void CmbType_SelectedIndexChanged(object sender, EventArgs e)
@@ -890,142 +935,135 @@ namespace MonTrack.WinForms
                 g.FillRectangle(bgBrush, 0, 0, width, height);
             }
 
+            DateTime selectedDate = dtpDate != null ? dtpDate.Value.Date : DateTime.Today;
+
             // Title
             using (var titleFont = new Font("Segoe UI", 14, FontStyle.Bold))
             using (var titleBrush = new SolidBrush(Color.White))
             {
-                g.DrawString("Monthly Difference (Pemasukan - Pengeluaran)", titleFont, titleBrush, new PointF(25, 20));
+                g.DrawString($"Daily Analytics: {selectedDate:dd MMMM yyyy}", titleFont, titleBrush, new PointF(25, 20));
             }
 
-            // Retrieve Data
-            var monthlyData = _repo.GetAll()
-                .GroupBy(t => new { t.Date.Year, t.Date.Month })
-                .Select(gGroup => new
-                {
-                    MonthKey = $"{gGroup.Key.Year}-{gGroup.Key.Month:D2}",
-                    MonthName = new DateTime(gGroup.Key.Year, gGroup.Key.Month, 1).ToString("MMM yyyy"),
-                    Income = gGroup.Where(t => t.Type == TransactionType.Pemasukan).Sum(t => t.Amount),
-                    Expense = gGroup.Where(t => t.Type == TransactionType.Pengeluaran).Sum(t => t.Amount)
-                })
-                .Select(x => new
-                {
-                    x.MonthKey,
-                    x.MonthName,
-                    x.Income,
-                    x.Expense,
-                    Difference = x.Income - x.Expense
-                })
-                .OrderBy(m => m.MonthKey)
+            var transactions = _repo.GetAll()
+                .Where(t => t.Date.Date == selectedDate)
                 .ToList();
 
-            if (monthlyData.Count == 0)
+            double totalIncome = transactions.Where(t => t.Type == TransactionType.Pemasukan).Sum(t => t.Amount);
+            double totalExpense = transactions.Where(t => t.Type == TransactionType.Pengeluaran).Sum(t => t.Amount);
+            double netDiff = totalIncome - totalExpense;
+
+            // Draw Summary Cards
+            int cardY = 60;
+            int cardH = 65;
+            int cardW = (width - 70) / 3;
+
+            if (cardW > 10)
+            {
+                // Card 1: Total Income
+                DrawSummaryCard(g, 25, cardY, cardW, cardH, "Total Income", totalIncome, Color.FromArgb(85, 239, 196));
+                // Card 2: Total Expense
+                DrawSummaryCard(g, 25 + cardW + 10, cardY, cardW, cardH, "Total Expense", totalExpense, Color.FromArgb(255, 118, 117));
+                // Card 3: Net Balance
+                DrawSummaryCard(g, 25 + (cardW + 10) * 2, cardY, cardW, cardH, "Net Balance", netDiff, netDiff >= 0 ? Color.FromArgb(85, 239, 196) : Color.FromArgb(255, 118, 117));
+            }
+
+            var dailyData = transactions
+                .GroupBy(t => new { t.Category, t.Type })
+                .Select(gGroup => new
+                {
+                    Category = gGroup.Key.Category,
+                    Type = gGroup.Key.Type,
+                    Amount = gGroup.Sum(t => t.Amount)
+                })
+                .OrderByDescending(x => x.Amount)
+                .ToList();
+
+            if (dailyData.Count == 0)
             {
                 using (var infoFont = new Font("Segoe UI", 12, FontStyle.Italic))
                 using (var infoBrush = new SolidBrush(Color.FromArgb(189, 195, 199)))
                 {
-                    string msg = "Tidak ada data transaksi untuk ditampilkan.";
+                    string msg = "No transactions recorded on this date.";
                     SizeF size = g.MeasureString(msg, infoFont);
-                    g.DrawString(msg, infoFont, infoBrush, (width - size.Width) / 2, (height - size.Height) / 2);
+                    g.DrawString(msg, infoFont, infoBrush, (width - size.Width) / 2, cardY + cardH + 80);
                 }
                 return;
             }
 
-            // Chart area bounds
-            int paddingLeft = 60;
-            int paddingRight = 40;
-            int paddingTop = 80;
-            int paddingBottom = 60;
+            // Draw Horizontal Bars for category breakdown
+            int startY = cardY + cardH + 30;
+            int barHeight = 25;
+            int barSpacing = 40;
+            int maxBarWidth = width - 350; // space left for text labels
+            double maxAmount = dailyData.Max(x => x.Amount);
+            if (maxAmount == 0) maxAmount = 1;
 
-            int chartWidth = width - paddingLeft - paddingRight;
-            int chartHeight = height - paddingTop - paddingBottom;
-
-            if (chartWidth <= 0 || chartHeight <= 0) return;
-
-            // Find max absolute difference to scale
-            double maxVal = monthlyData.Max(m => Math.Abs(m.Difference));
-            if (maxVal == 0) maxVal = 100000; // prevent division by zero
-
-            // Y-axis middle (0 line)
-            float zeroY = paddingTop + (chartHeight / 2f);
-
-            // Draw Y Grid lines & Labels
-            using (var gridPen = new Pen(Color.FromArgb(50, 255, 255, 255), 1))
-            using (var labelFont = new Font("Segoe UI", 8))
-            using (var labelBrush = new SolidBrush(Color.FromArgb(189, 195, 199)))
+            using (var categoryFont = new Font("Segoe UI", 9.5F, FontStyle.Bold))
+            using (var amountFont = new Font("Segoe UI", 9F, FontStyle.Regular))
+            using (var textBrush = new SolidBrush(Color.White))
+            using (var subBrush = new SolidBrush(Color.FromArgb(189, 195, 199)))
+            using (var incomeBrush = new System.Drawing.Drawing2D.LinearGradientBrush(new Rectangle(0, 0, 100, 100), Color.FromArgb(85, 239, 196), Color.FromArgb(46, 204, 113), 0F))
+            using (var expenseBrush = new System.Drawing.Drawing2D.LinearGradientBrush(new Rectangle(0, 0, 100, 100), Color.FromArgb(255, 118, 117), Color.FromArgb(231, 76, 60), 0F))
             {
-                gridPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+                for (int i = 0; i < dailyData.Count; i++)
+                {
+                    var item = dailyData[i];
+                    int currentY = startY + (i * barSpacing);
 
-                // Draw 0 line
-                g.DrawLine(new Pen(Color.FromArgb(150, 255, 255, 255), 1), paddingLeft, zeroY, width - paddingRight, zeroY);
-                g.DrawString("Rp 0", labelFont, labelBrush, 10, zeroY - 6);
+                    if (currentY + barHeight > height - 20)
+                        break; // Prevent overflow off the screen
 
-                // Draw +Max and -Max lines
-                float topY = paddingTop;
-                float bottomY = height - paddingBottom;
+                    // Draw Category Label
+                    g.DrawString(item.Category, categoryFont, textBrush, 25, currentY + 3);
 
-                g.DrawLine(gridPen, paddingLeft, topY, width - paddingRight, topY);
-                g.DrawString($"+{FormatAmount(maxVal)}", labelFont, labelBrush, 10, topY - 6);
+                    // Draw type indicator (Pemasukan / Pengeluaran)
+                    string typeStr = item.Type == TransactionType.Pemasukan ? "Income" : "Expense";
+                    g.DrawString($"({typeStr})", amountFont, subBrush, 160, currentY + 4);
 
-                g.DrawLine(gridPen, paddingLeft, bottomY, width - paddingRight, bottomY);
-                g.DrawString($"-{FormatAmount(maxVal)}", labelFont, labelBrush, 10, bottomY - 6);
+                    // Calculate bar width
+                    float barW = (float)((item.Amount / maxAmount) * maxBarWidth);
+                    barW = Math.Max(15f, barW);
+
+                    // Select brush
+                    var brush = item.Type == TransactionType.Pemasukan ? incomeBrush : expenseBrush;
+                    brush.ResetTransform();
+                    brush.TranslateTransform(250, currentY);
+                    brush.ScaleTransform(barW / 100f, barHeight / 100f);
+
+                    // Draw Bar
+                    g.FillRectangle(brush, 250, currentY, barW, barHeight);
+
+                    // Draw value next to the bar
+                    string amtStr = $"Rp {item.Amount:N0}";
+                    g.DrawString(amtStr, categoryFont, textBrush, 250 + barW + 10, currentY + 3);
+                }
+            }
+        }
+
+        private void DrawSummaryCard(Graphics g, int x, int y, int w, int h, string title, double amount, Color accentColor)
+        {
+            // Draw background card boundary
+            using (var cardBg = new SolidBrush(Color.FromArgb(45, 45, 75)))
+            using (var borderPen = new Pen(accentColor, 1.5f))
+            {
+                g.FillRectangle(cardBg, x, y, w, h);
+                g.DrawRectangle(borderPen, x, y, w, h);
             }
 
-            // Draw Bars
-            int count = monthlyData.Count;
-            float barWidth = Math.Max(20f, (chartWidth / (float)count) * 0.5f);
-            float spacing = chartWidth / (float)count;
-
-            using (var surplusBrush = new System.Drawing.Drawing2D.LinearGradientBrush(new Rectangle(0, 0, 100, 100), Color.FromArgb(85, 239, 196), Color.FromArgb(46, 204, 113), 90F))
-            using (var deficitBrush = new System.Drawing.Drawing2D.LinearGradientBrush(new Rectangle(0, 0, 100, 100), Color.FromArgb(255, 118, 117), Color.FromArgb(231, 76, 60), 90F))
-            using (var labelFont = new Font("Segoe UI", 8.5F))
-            using (var textFont = new Font("Segoe UI", 8, FontStyle.Bold))
-            using (var textBrush = new SolidBrush(Color.White))
-            using (var labelBrush = new SolidBrush(Color.FromArgb(189, 195, 199)))
+            // Draw title text
+            using (var titleFont = new Font("Segoe UI", 8.5F, FontStyle.Regular))
+            using (var textBrush = new SolidBrush(Color.FromArgb(200, 200, 200)))
             {
-                for (int i = 0; i < count; i++)
-                {
-                    var data = monthlyData[i];
-                    float centerX = paddingLeft + (i * spacing) + (spacing / 2f);
-                    float x = centerX - (barWidth / 2f);
+                g.DrawString(title, titleFont, textBrush, x + 10, y + 8);
+            }
 
-                    // Calculate bar height scaled to chart area
-                    float valH = (float)((Math.Abs(data.Difference) / maxVal) * (chartHeight / 2f));
-                    float y = 0;
-
-                    System.Drawing.Drawing2D.LinearGradientBrush barBrush;
-                    if (data.Difference >= 0)
-                    {
-                        y = zeroY - valH;
-                        barBrush = surplusBrush;
-                    }
-                    else
-                    {
-                        y = zeroY;
-                        barBrush = deficitBrush;
-                    }
-
-                    // Reset gradient brush bounds to match the bar
-                    barBrush.ResetTransform();
-                    barBrush.TranslateTransform(x, y);
-                    barBrush.ScaleTransform(barWidth / 100f, valH / 100f);
-
-                    // Draw bar
-                    g.FillRectangle(barBrush, x, y, barWidth, Math.Max(2, valH));
-
-                    // Draw value above/below bar
-                    string valStr = (data.Difference >= 0 ? "+" : "") + FormatAmount(data.Difference);
-                    SizeF valSize = g.MeasureString(valStr, textFont);
-                    float valY = data.Difference >= 0 ? y - valSize.Height - 4 : y + valH + 4;
-                    g.DrawString(valStr, textFont, textBrush, centerX - (valSize.Width / 2f), valY);
-
-                    // Draw Month Label below X Axis
-                    SizeF labelSize = g.MeasureString(data.MonthName, labelFont);
-                    float labelY = height - paddingBottom + 10;
-                    g.DrawString(data.MonthName, labelFont, labelBrush, centerX - (labelSize.Width / 2f), labelY);
-
-                    // Draw a small dot on X axis
-                    g.FillEllipse(textBrush, centerX - 2, zeroY - 2, 4, 4);
-                }
+            // Draw amount text
+            using (var amountFont = new Font("Segoe UI", 12F, FontStyle.Bold))
+            using (var amountBrush = new SolidBrush(Color.White))
+            {
+                string sign = amount >= 0 && title == "Net Balance" ? "+" : "";
+                string amtStr = $"{sign}Rp {amount:N0}";
+                g.DrawString(amtStr, amountFont, amountBrush, x + 10, y + 28);
             }
         }
 
@@ -1041,10 +1079,21 @@ namespace MonTrack.WinForms
             return $"Rp {val:N0}";
         }
 
+        private void BtnLogout_Click(object sender, EventArgs e)
+        {
+            _isLoggingOut = true;
+            this.Close();
+            var loginForm = new LoginForm();
+            loginForm.Show();
+        }
+
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
             base.OnFormClosed(e);
-            Application.Exit(); // Ensure full process shutdown when main form is closed
+            if (!_isLoggingOut)
+            {
+                Application.Exit(); // Ensure full process shutdown when main form is closed
+            }
         }
     }
 }
